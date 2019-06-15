@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.manning.pulsar</groupId>
+  <artifactId>chapter2</artifactId>
+  <version>0.0.1</version>
+  
+  <properties>
+     <pulsar.version>2.3.2</pulsar.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+  		<groupId>org.apache.pulsar</groupId>
+  		<artifactId>pulsar-client</artifactId>
+  		<version>${pulsar.version}</version>
+	</dependency>
+  </dependencies>
+</project>
