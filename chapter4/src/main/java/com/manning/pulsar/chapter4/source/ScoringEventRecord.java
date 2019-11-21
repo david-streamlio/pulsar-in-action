@@ -1,23 +1,35 @@
-package com.manning.pulsar.chapter4;
+package com.manning.pulsar.chapter4.source;
 
-import java.util.Optional;
+import java.io.IOException;
+
 import org.apache.pulsar.functions.api.Record;
 
-public class RandomIntRecord implements Record<Integer> {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class ScoringEventRecord implements Record<String> {
 	
-	private Integer value;
-	private Long time;
+	private static final ObjectMapper mapper = new ObjectMapper();
+	private ScoringEvent event;
 	
-	public RandomIntRecord(Integer value) {
-		this.value = value;
-		this.time = System.currentTimeMillis();
+	public ScoringEventRecord(ScoringEvent event) {
+		this.event = event;
+	}
+	
+	public ScoringEventRecord(String s) {
+		try {
+			this.event = mapper.readValue(s, ScoringEvent.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public Integer getValue() {
-		return value;
-	}
-	
-	public Optional<Long> getEventTime() {
-		return Optional.ofNullable(this.time);
+	public String getValue() {
+		try {
+			return mapper.writeValueAsString(event);
+		} catch (JsonProcessingException e) {
+			return null;
+		}
 	}
 }

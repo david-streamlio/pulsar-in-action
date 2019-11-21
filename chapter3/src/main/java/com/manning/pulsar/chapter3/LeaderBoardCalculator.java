@@ -30,5 +30,4 @@ public class LeaderBoardCalculator {
 	private static void calculate(Message<String> msg) {
 		// Parse the JSON and perform the calculation.
 	}
-
 }

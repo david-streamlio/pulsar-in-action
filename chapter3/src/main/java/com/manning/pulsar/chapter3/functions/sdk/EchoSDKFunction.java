@@ -1,6 +1,5 @@
 package com.manning.pulsar.chapter3.functions.sdk;
 
-
 import java.util.stream.Collectors;
 
 import org.apache.pulsar.functions.api.Context;
