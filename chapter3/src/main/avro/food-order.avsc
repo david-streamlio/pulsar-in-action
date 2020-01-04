@@ -1,0 +1,62 @@
+{
+    "namespace":"com.gottaeat.customer",
+    "type":"record",
+    "name":"Order",
+    "fields":[
+      {"name":"order_id","type": "long"},
+      {"name":"time_placed", "type":"string"},
+      {"name":"order_status","type": 
+          {"name":"order_status", "type": "enum", 
+           "symbols": ["NEW", "ACCEPTED", "READY", 
+                       "DISPATCHED", "DELIVERED"]}, "default":"NEW"},
+	 {"name":"customer_id","type": "long"},
+	 {"name":"resturant_id","type": "long"},
+	 {"name":"total","type": "float"},
+	 {"name":"order_details","type":{
+	     "type":"array",
+	     "items": {
+	     "namespace":"com.gottaeat.customer",
+		"name":"OrderDetail",
+		"type":"record",
+		"fields": [
+		  {"name":"quantity","type": "int"},
+		  {"name":"total","type": "float"},
+		  {"name":"item_detail","type":{
+		      "namespace":"com.gottaeat.customer",
+		      "type":"record",
+		      "name":"FoodItem",
+		      "fields":[
+			{"name":"item_id","type": "long"},
+			{"name":"item_name","type": "string"},	
+			{"name":"item_description","type":"string"},
+			{"name":"price","type": "float"}
+		      ]
+		    }
+		  }
+		]}}
+	    },
+	    {"name":"delivery_location","type":{
+	       "namespace":"com.gottaeat.customer",
+	       "type":"record",
+	       "name":"Address",
+	       "fields":[
+		  {"name":"street","type": "string"},
+		  {"name":"city","type": "string"},	
+		  {"name":"state","type": "string"},
+		  {"name":"zip","type": "string"}
+		]}},
+		{"name":"payment_method","type":{
+	       "namespace":"com.gottaeat.customer",
+	       "type":"record",
+	       "name":"CreditCard",
+	       "fields":[
+		  {"name":"card_type","type": 
+            {"name":"card_type", "type": "enum", 
+             "symbols": ["MASTERCARD", "AMEX", 
+                       "VISA", "DISCOVER"]}},
+		  {"name":"account_number","type": "string"},	
+		  {"name":"ccv","type": "string"},
+		  {"name":"billing_zip","type": "string"}
+		]}}
+    ]
+}

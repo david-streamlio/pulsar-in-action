@@ -4,64 +4,43 @@
   <artifactId>chapter4</artifactId>
   <version>0.0.1</version>
   
+  <properties>
+     <pulsar.version>2.4.1</pulsar.version>
+  </properties>
+  
   <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.nifi</groupId>
-                <artifactId>nifi-nar-maven-plugin</artifactId>
-                <version>1.2.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <finalName>${project.artifactId}-${project.version}</finalName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default-nar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>nar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+   <plugins>
+	  <plugin>
+		<groupId>org.apache.nifi</groupId>
+		<artifactId>nifi-nar-maven-plugin</artifactId>
+		<version>1.2.0</version>
+		<extensions>true</extensions>
+		<executions>
+			<execution>
+				<phase>package</phase>
+				<goals>
+					<goal>nar</goal>
+				</goals>
+			</execution>
+		</executions>
+	  </plugin>
+    </plugins>
+</build>
+  
+  
+  <dependencies>
+    <dependency>
+  		<groupId>org.apache.pulsar</groupId>
+  		<artifactId>pulsar-client</artifactId>
+  		<version>${pulsar.version}</version>
+	</dependency>
 
-    <dependencies>
-    	<dependency>
-    		<groupId>org.apache.pulsar</groupId>
-    		<artifactId>pulsar-io-core</artifactId>
-    		<version>2.4.1</version>
-		</dependency>
-		
-		<dependency>
-    		<groupId>com.fasterxml.jackson.core</groupId>
-    		<artifactId>jackson-databind</artifactId>
-    		<version>2.9.10</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>junit</groupId>
-    		<artifactId>junit</artifactId>
-    		<version>4.12</version>
-    		<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-  			<groupId>org.mockito</groupId>
-  			<artifactId>mockito-core</artifactId>
-  			<version>3.0.0</version>
-  			<scope>test</scope>
-		</dependency>
-
-    </dependencies>
-    
+	<dependency>
+		<groupId>org.apache.pulsar</groupId>
+		<artifactId>pulsar-functions-api</artifactId>
+		<version>${pulsar.version}</version>
+	</dependency>
+	
+  </dependencies>
+  
 </project>

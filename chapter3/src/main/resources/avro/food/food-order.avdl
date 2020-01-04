@@ -1,0 +1,57 @@
+@namespace("com.gottaeat.customer")
+protocol OrderEntry {
+
+  enum OrderStatus {
+    NEW,
+    ACCEPTED,
+    READY, 
+    DISPATCHED,
+    DELIVERED
+  }
+  
+  enum CardType {
+    MASTERCARD, 
+    AMEX, 
+    VISA, 
+    DISCOVER
+  }
+  
+  record Address {
+    string street;
+    string city;
+    string state;
+    string zip;
+  }
+  
+  record CreditCard {
+    CardType card_type;
+    string account_number;
+    string billing_zip;
+    string ccv;
+  }
+  
+  record FoodItem {
+    long item_id;
+    string item_name;
+    string item_description;
+    float price;
+  }
+
+  record OrderDetail {
+     int quantity;
+     float total;
+     FoodItem food_item;
+  }
+
+  record Order {
+    long order_id;
+    string time_placed;
+    OrderStatus order_status;
+    long customer_id;
+    long resturant_id;
+    array<OrderDetail> details;
+    Address delivery_location;
+    CreditCard payment_method;
+    float total;
+  }
+}
