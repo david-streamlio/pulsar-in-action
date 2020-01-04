@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter4;
+package com.manning.pulsar.chapter5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,13 +28,6 @@ public class DirectorySourceTest {
 	public final void badInputDirTest() throws Exception {
 		map = new HashMap<String, Object> ();
 		map.put("inputDir", "");
-		source.open(map, mockSourceContext);
-	}
-	
-	@Test
-	public final void anotherTest() throws Exception {
-		map = new HashMap<String, Object> ();
-		map.put("inputDir", "/tmp/events");
 		source.open(map, mockSourceContext);
 	}
 

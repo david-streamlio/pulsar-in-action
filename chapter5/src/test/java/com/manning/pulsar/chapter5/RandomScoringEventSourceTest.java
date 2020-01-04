@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter4;
+package com.manning.pulsar.chapter5;
 
 import static org.junit.Assert.assertNotNull;
 
