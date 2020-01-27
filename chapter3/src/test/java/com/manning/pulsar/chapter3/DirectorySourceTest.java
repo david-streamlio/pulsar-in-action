@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5;
+package com.manning.pulsar.chapter3;
 
 import java.util.HashMap;
 import java.util.Map;

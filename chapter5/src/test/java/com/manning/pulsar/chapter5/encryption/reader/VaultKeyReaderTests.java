@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapterX.encryption.reader;
+package com.manning.pulsar.chapter5.encryption.reader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
