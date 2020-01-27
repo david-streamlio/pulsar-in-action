@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3;
+package com.manning.pulsar.chapter6;
 
 public interface DataGenerator<T> {
 

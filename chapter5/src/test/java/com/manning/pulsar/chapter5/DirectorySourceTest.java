@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.manning.pulsar.chapter5.source.DirectorySource;
+import com.manning.pulsar.chapter3.source.DirectorySource;
 
 public class DirectorySourceTest {
 	

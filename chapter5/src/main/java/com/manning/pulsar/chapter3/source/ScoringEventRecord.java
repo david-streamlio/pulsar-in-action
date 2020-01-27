@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.source;
+package com.manning.pulsar.chapter3.source;
 
 import java.io.IOException;
 

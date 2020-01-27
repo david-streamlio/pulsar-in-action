@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3;
+package com.manning.pulsar.chapter6;
 
 
 import java.io.File;
@@ -17,6 +17,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.pulsar.client.api.AuthenticationFactory;
+import org.apache.pulsar.client.api.ClientBuilder;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
@@ -30,8 +31,13 @@ public class DataPublisher {
 	private static PulsarClient client;
 	private static Producer<Order> producer;
 	private static DataGenerator<Order> generator = new FoodOrderGenerator();
+	
+	private static String hostname;
 	private static String topicName;
+	private static String trustCertPath;
 	private static String tokenFilePath;
+	private static String clientCertPath;
+	private static String keyFilePath;
 	
 	public static final void main(String[] args) throws IOException {
 		
@@ -43,6 +49,14 @@ public class DataPublisher {
 		try {
 			CommandLine cmd = parser.parse(generateOptions(), args);
 			topicName = cmd.getArgs()[0];
+			
+			if (cmd.hasOption("h")) {
+				hostname = cmd.getOptionValue("h");
+			}
+			
+			if (cmd.hasOption("trust")) {
+				trustCertPath = cmd.getOptionValue("trust");
+			}
 			
 			if (cmd.hasOption('n')) {
 				num = Integer.parseInt(cmd.getOptionValue('n'));
@@ -66,6 +80,18 @@ public class DataPublisher {
 				tokenFilePath = cmd.getOptionValue('t');
 			} else if (cmd.hasOption("token")) {
 				tokenFilePath = cmd.getOptionValue("token");
+			}
+			
+			if (cmd.hasOption('c')) {
+				clientCertPath = cmd.getOptionValue('c');
+			} else if (cmd.hasOption("client-cert")) {
+				clientCertPath = cmd.getOptionValue("client-cert");
+			}
+			
+			if (cmd.hasOption('k')) {
+				keyFilePath = cmd.getOptionValue('k');
+			} else if (cmd.hasOption("key")) {
+				keyFilePath = cmd.getOptionValue("key");
 			}
 			
 			if (filename != null) {
@@ -131,7 +157,29 @@ public class DataPublisher {
 		  .desc("Rate (in messages per second) at which to produce")
 		  .build();
 	   
-	   final Option props = Option.builder("D").hasArgs()
+	   final Option clientCertOption = Option.builder("c")
+		  .longOpt("client-cert")
+		  .hasArg()
+		  .desc("The full pathname to the client certificate for authentication ")
+		  .build();  
+		
+		final Option privateKeyOption = Option.builder("k")
+		  .longOpt("key")
+		  .hasArg()
+		  .desc("The full pathname to the private key associated with the client certificate")
+		  .build();  
+		
+		final Option hostOption = Option.builder("h")
+		  .longOpt("hostname")
+		  .hasArg()
+		  .desc("Full DNS name of the Pulsar host")
+		  .build();  
+		
+		final Option trustCertOption = Option.builder("trust")
+			.hasArg()
+			.build();
+	   
+	    final Option props = Option.builder("D").hasArgs()
           .valueSeparator('=')
           .build();
 	   
@@ -140,13 +188,17 @@ public class DataPublisher {
 	   options.addOption(fileOption);
 	   options.addOption(rateOption);
 	   options.addOption(tokenOption);
+	   options.addOption(clientCertOption);
+	   options.addOption(privateKeyOption);
+	   options.addOption(hostOption);
+	   options.addOption(trustCertOption);
 	   options.addOption(props);
 	   return options;
 	}
 	
 	private static final void usage() {
 		HelpFormatter formatter = new HelpFormatter();
-		formatter.printHelp("schema-tool <command>", generateOptions(), true);
+		formatter.printHelp("data-publisher <command>", generateOptions(), true);
 	}
 	
 	private static Producer<Order> getProducer() throws PulsarClientException {
@@ -164,18 +216,32 @@ public class DataPublisher {
 	private static PulsarClient getPulsarClient() throws PulsarClientException {
 	
 		if (client == null) {
-			client = PulsarClient.builder()
-					.serviceUrl("pulsar://localhost:6650")
-					.authentication(
-					        AuthenticationFactory.token(() -> {
-								try {
-									return new String(Files.readAllBytes(Paths.get(tokenFilePath)), Charsets.UTF_8).trim();
-								} catch (IOException e) {
-									return "";
-								}
-							}))
-					
-					.build();
+			ClientBuilder builder = PulsarClient.builder();
+			
+			if (tokenFilePath != null) {
+				builder = builder
+						.authentication(
+						        AuthenticationFactory.token(() -> {
+									try {
+										return new String(Files.readAllBytes(Paths.get(tokenFilePath)), Charsets.UTF_8).trim();
+									} catch (IOException e) {
+										return "";
+									}
+								}));
+			} else if (clientCertPath != null) {
+				builder = builder.authentication(AuthenticationFactory.TLS(clientCertPath, keyFilePath));
+			}
+			
+			if (trustCertPath == null) {
+				builder = builder.serviceUrl("pulsar://" + hostname + ":6650");
+			} else {
+				builder = builder.serviceUrl("pulsar+ssl://" + hostname + ":6651/")
+							.enableTlsHostnameVerification(false) // false by default, in any case
+						    .allowTlsInsecureConnection(false)
+							.tlsTrustCertsFilePath(trustCertPath);
+			}
+			
+			client = builder.build();
 		}
 		return client;
 	}

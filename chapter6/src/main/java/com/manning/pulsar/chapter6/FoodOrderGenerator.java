@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3;
+package com.manning.pulsar.chapter6;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
