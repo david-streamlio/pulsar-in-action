@@ -1,0 +1,12 @@
+@namespace("com.gottaeat.domain.common")
+
+protocol CommonsProtocol {
+
+  record Address {
+    string street; 
+    string city; 
+    string state; 
+    string zip;
+  }
+  
+}

@@ -3,6 +3,7 @@ package com.manning.pulsar.chapter5.clients;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
+import org.apache.pulsar.client.api.Schema;
 
 public class TlsAuthClient {
 	public static void main(String[] args) throws PulsarClientException {
@@ -18,11 +19,11 @@ public class TlsAuthClient {
 			       "tlsKeyFile:" + HOME + "/admin-pk8.pem")
 			    .build();
 
-		Producer<byte[]> producer = 
-		  client.newProducer().topic(TOPIC).create();
+		Producer<String> producer = 
+				client.newProducer(Schema.STRING).topic(TOPIC).create();
 		
 		for (int idx = 0; idx < 100; idx++) {
-			producer.send("Hello TLS Auth".getBytes());
+			producer.send("Hello TLS Auth");
 		}	
 		System.exit(0);
 	}

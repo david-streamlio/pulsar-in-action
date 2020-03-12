@@ -1,69 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.manning.pulsar</groupId>
-  <artifactId>chapter6</artifactId>
+  <groupId>com.gottaeat</groupId>
+  <artifactId>GottaEat-Services</artifactId>
   <version>0.0.1</version>
-  
-  <properties>
-     <pulsar.version>2.4.2</pulsar.version>
-  </properties>
-  
-  <build>
-   <plugins>
-	 <plugin>
-		<groupId>org.apache.avro</groupId>
-		<artifactId>avro-maven-plugin</artifactId>
-		<version>1.9.1</version>
-		<executions>
-			<execution>
-        <phase>generate-sources</phase>
-        <goals>
-          <goal>idl-protocol</goal>
-        </goals>
-        <configuration>
-          <sourceDirectory>${project.basedir}/src/main/resources/avro/food</sourceDirectory>
-          <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-        </configuration>
-      </execution>
-		</executions>
-	</plugin>
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-compiler-plugin</artifactId>
-		<configuration>
-    		<source>1.8</source>
-    		<target>1.8</target>
-  		</configuration>
-	</plugin>
-  </plugins>
-</build>
-  
-  
-  <dependencies>
-    <dependency>
-  		<groupId>org.apache.pulsar</groupId>
-  		<artifactId>pulsar-client</artifactId>
-  		<version>${pulsar.version}</version>
-	</dependency>
-	
-	<dependency>
-  		<groupId>org.apache.avro</groupId>
-  		<artifactId>avro</artifactId>
-  		<version>1.9.1</version>
-  	</dependency>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>customer-mobile-app-simulator</module>
+  	<module>domain-schema</module>
   	
-  	<dependency>
-    	<groupId>commons-cli</groupId>
-    	<artifactId>commons-cli</artifactId>
-    	<version>1.4</version>
-	</dependency>
-	
-	<dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>commons-lang3</artifactId>
-    	<version>3.9</version>
-	</dependency>
-	
-  </dependencies>
-  
+  	<module>order-validation-service</module>
+  </modules>
 </project>

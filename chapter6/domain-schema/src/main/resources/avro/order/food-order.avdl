@@ -1,0 +1,30 @@
+@namespace("com.gottaeat.domain.order")
+protocol OrderProtocol {
+
+  import idl "../common/common.avdl";
+  import idl "../payment/payment-commons.avdl";
+  import idl "../resturant/resturant.avdl";
+  
+  record FoodOrder {
+    long order_id;
+    long customer_id;
+    long resturant_id;
+    string time_placed;
+    OrderStatus order_status;
+    array<OrderDetail> details;
+    com.gottaeat.domain.common.Address delivery_location;
+    com.gottaeat.domain.payment.CreditCard payment_method;
+    float total = 0.0;
+  }
+  
+  record OrderDetail {
+     int quantity;
+     float total;
+     com.gottaeat.domain.resturant.MenuItem food_item;
+  }
+  
+  enum OrderStatus {
+    NEW, ACCEPTED, READY, DISPATCHED, DELIVERED
+  }
+  
+}

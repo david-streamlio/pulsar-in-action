@@ -1,0 +1,16 @@
+@namespace("com.gottaeat.domain.payment")
+
+protocol PaymentsProtocol {
+
+  enum CardType {
+    MASTERCARD, AMEX, VISA, DISCOVER
+  }
+
+  record CreditCard {
+    CardType card_type; 
+    string account_number; 
+    string billing_zip; 
+    string ccv;
+  }
+  
+}
