@@ -2,7 +2,10 @@ package com.gottaeat.services.ordervalidation;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.apache.pulsar.common.functions.ConsumerConfig;
 import org.apache.pulsar.common.functions.FunctionConfig;
 import org.apache.pulsar.functions.LocalRunner;
 import org.apache.pulsar.functions.api.Context;
@@ -10,22 +13,31 @@ import org.apache.pulsar.functions.api.Function;
 
 import com.gottaeat.domain.order.FoodOrder;
 
-public class OrderValidationService implements Function<FoodOrder, Boolean> {
+public class OrderValidationService implements Function<FoodOrder, FoodOrder> {
 
 	@Override
-	public Boolean process(FoodOrder order, Context ctx) throws Exception {
+	public FoodOrder process(FoodOrder order, Context ctx) throws Exception {
 		System.out.println(order.toString());
-		return Boolean.TRUE;
+		return order;
 	}
 	
 	public static void main(String[] args) throws Exception {
 		
-	    FunctionConfig functionConfig = new FunctionConfig();
-	    functionConfig.setName("validation");
-	    functionConfig.setInputs(Collections.singleton("persistent://orders/inbound/food-orders"));
-	    functionConfig.setClassName(OrderValidationService.class.getName());
-	    functionConfig.setRuntime(FunctionConfig.Runtime.JAVA);
-	    functionConfig.setOutput("persistent://orders/inbound/valid-food-orders");
+		Map<String, ConsumerConfig> inputSpecs = new HashMap<String, ConsumerConfig>  ();
+	    ConsumerConfig conf = new ConsumerConfig();
+	    conf.setSchemaType("avro");
+	    inputSpecs.put("persistent://orders/inbound/food-orders", conf);
+		
+	    FunctionConfig functionConfig = 
+	    	FunctionConfig.builder()
+	    	.className(OrderValidationService.class.getName())
+	    	.inputs(Collections.singleton("persistent://orders/inbound/food-orders"))
+	    	.inputSpecs(inputSpecs)
+	    	.name("order-validation")
+	    	.output("persistent://orders/inbound/valid-food-orders")
+	    	.outputSchemaType("avro")
+	    	.runtime(FunctionConfig.Runtime.JAVA)
+	    	.build();
 	    
 	    // Assumes you started docker container with --volume=${HOME}/exchange:/pulsar/manning/dropbox 
 	    String credentials_path = System.getProperty("user.home") + File.separator 

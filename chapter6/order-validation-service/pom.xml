@@ -63,6 +63,12 @@
    			<groupId>org.apache.pulsar</groupId>
    			<artifactId>pulsar-functions-local-runner-original</artifactId>
    			<version>${pulsar.version}</version>
+   			<exclusions>
+   				<exclusion>
+   					<groupId>io.grpc</groupId>
+   					<artifactId>grpc-all</artifactId>
+   				</exclusion>
+   			</exclusions>
 		</dependency>
 		
 		<dependency>

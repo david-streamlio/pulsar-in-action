@@ -59,19 +59,18 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 		
 		MENUS.add(menu);
 		
-		
 	}
 	
 	
-	public FoodOrder generate() {
+	public FoodOrder generate() { 
 		
 		int resturantId = rnd.nextInt(MENUS.size());
 		Pair<List<OrderDetail>, Float> orderDetails = getRandomOrderDetails(resturantId, rnd.nextInt(3) + 1);
 		
 		return FoodOrder.newBuilder()
-						.setCustomerId(rnd.nextLong())
+						.setCustomerId(rnd.nextInt(1000))
 						.setDeliveryLocation(getRandomAddress())
-						.setTimePlaced(LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE))
+						.setTimePlaced(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME))
 						.setOrderId(ORDER_ID++)
 						.setOrderStatus(OrderStatus.NEW)
 						.setDetails(orderDetails.getLeft())

@@ -2,6 +2,7 @@ package com.gottaeat.services.customer.simulator;
 
 import java.io.File;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.pulsar.common.io.SourceConfig;
 import org.apache.pulsar.functions.LocalRunner;
@@ -18,24 +19,25 @@ public class CustomerSimulatorSource implements Source<FoodOrder> {
 	@Override
 	public void close() throws Exception {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void open(Map<String, Object> map, SourceContext ctx) throws Exception {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public Record<FoodOrder> read() throws Exception {
 		Thread.sleep(500);
-		return new CustomerRecord<FoodOrder>(generator.generate()) ;
+		FoodOrder food = generator.generate();
+		System.out.println("Sending " + food);
+		return new CustomerRecord<FoodOrder>(food);
 	}
 	
 	static private class CustomerRecord<V> implements Record<FoodOrder> {
 
 		private FoodOrder foodOrder;
+		private Long eventTime = System.currentTimeMillis();
 		
 		public CustomerRecord(FoodOrder food) {
 			this.foodOrder = food;
@@ -46,14 +48,21 @@ public class CustomerSimulatorSource implements Source<FoodOrder> {
 			return foodOrder;
 		}
 		
+		public Optional<Long> getEventTime() {
+			return Optional.of(eventTime);
+		}
+		
 	}
 	
 	public static void main(String[] args) throws Exception {
 		
-	    SourceConfig sourceConfig = new SourceConfig();
-	    sourceConfig.setClassName(CustomerSimulatorSource.class.getName());
-	    sourceConfig.setName("mobile-app");
-	    sourceConfig.setTopicName("persistent://orders/inbound/food-orders");
+		SourceConfig sourceConfig = 
+			SourceConfig.builder()
+				.className(CustomerSimulatorSource.class.getName())
+				.name("mobile-app-simulator")
+				.topicName("persistent://orders/inbound/food-orders")
+				.schemaType("avro")
+				.build();
 	    
 	    // Assumes you started docker container with --volume=${HOME}/exchange:/pulsar/manning/dropbox 
 	    String credentials_path = System.getProperty("user.home") + File.separator 
@@ -66,6 +75,7 @@ public class CustomerSimulatorSource implements Source<FoodOrder> {
 	    		.clientAuthParams("tlsCertFile:" + credentials_path + "admin.cert.pem,tlsKeyFile:"
 	    				+ credentials_path + "admin-pk8.pem")
 	    		.tlsTrustCertFilePath(credentials_path + "ca.cert.pem")
+	    		.useTls(true)
 	    		.sourceConfig(sourceConfig)
 	    		.build();
 	    

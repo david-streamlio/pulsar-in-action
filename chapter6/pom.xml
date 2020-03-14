@@ -7,7 +7,6 @@
   <modules>
   	<module>customer-mobile-app-simulator</module>
   	<module>domain-schema</module>
-  	
   	<module>order-validation-service</module>
   </modules>
 </project>
