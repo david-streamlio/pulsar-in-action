@@ -23,10 +23,9 @@ public class OrderValidationService implements Function<FoodOrder, FoodOrder> {
 	
 	public static void main(String[] args) throws Exception {
 		
-		Map<String, ConsumerConfig> inputSpecs = new HashMap<String, ConsumerConfig>  ();
-	    ConsumerConfig conf = new ConsumerConfig();
-	    conf.setSchemaType("avro");
-	    inputSpecs.put("persistent://orders/inbound/food-orders", conf);
+		Map<String, ConsumerConfig> inputSpecs = new HashMap<String, ConsumerConfig> ();
+	    inputSpecs.put("persistent://orders/inbound/food-orders", 
+	    		ConsumerConfig.builder().schemaType("avro").build());
 		
 	    FunctionConfig functionConfig = 
 	    	FunctionConfig.builder()

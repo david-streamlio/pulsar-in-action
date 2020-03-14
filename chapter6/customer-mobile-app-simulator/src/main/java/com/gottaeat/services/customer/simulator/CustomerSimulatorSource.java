@@ -29,9 +29,7 @@ public class CustomerSimulatorSource implements Source<FoodOrder> {
 	@Override
 	public Record<FoodOrder> read() throws Exception {
 		Thread.sleep(500);
-		FoodOrder food = generator.generate();
-		System.out.println("Sending " + food);
-		return new CustomerRecord<FoodOrder>(food);
+		return new CustomerRecord<FoodOrder>(generator.generate());
 	}
 	
 	static private class CustomerRecord<V> implements Record<FoodOrder> {
