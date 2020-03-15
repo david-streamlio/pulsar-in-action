@@ -6,6 +6,7 @@ protocol ResturantsProtocol {
     long item_id;
     string item_name;
     string item_description;
+    array<string> customizations = [""];
     float price;
   }
   

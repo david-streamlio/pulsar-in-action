@@ -6,6 +6,7 @@
     <version>0.0.1</version>
   </parent>
   <artifactId>domain-schema</artifactId>
+  <version>0.0.2</version>
 
   <properties>
      <pulsar.version>2.5.0</pulsar.version>
@@ -57,4 +58,5 @@
   	</dependency>
   	
   </dependencies>
+  
 </project>

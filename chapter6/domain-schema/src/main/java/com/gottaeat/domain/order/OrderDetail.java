@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class OrderDetail extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8041026412209840598L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OrderDetail\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"total\",\"type\":\"float\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"float\"}]}}]}");
+  private static final long serialVersionUID = 4801691053003993720L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OrderDetail\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"total\",\"type\":\"float\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();

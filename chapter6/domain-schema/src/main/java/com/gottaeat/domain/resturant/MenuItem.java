@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1737595460659166444L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"float\"}]}");
+  private static final long serialVersionUID = 2338288343025881441L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -74,6 +74,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
   @Deprecated public long item_id;
   @Deprecated public java.lang.CharSequence item_name;
   @Deprecated public java.lang.CharSequence item_description;
+  @Deprecated public java.util.List<java.lang.CharSequence> customizations;
   @Deprecated public float price;
 
   /**
@@ -88,12 +89,14 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
    * @param item_id The new value for item_id
    * @param item_name The new value for item_name
    * @param item_description The new value for item_description
+   * @param customizations The new value for customizations
    * @param price The new value for price
    */
-  public MenuItem(java.lang.Long item_id, java.lang.CharSequence item_name, java.lang.CharSequence item_description, java.lang.Float price) {
+  public MenuItem(java.lang.Long item_id, java.lang.CharSequence item_name, java.lang.CharSequence item_description, java.util.List<java.lang.CharSequence> customizations, java.lang.Float price) {
     this.item_id = item_id;
     this.item_name = item_name;
     this.item_description = item_description;
+    this.customizations = customizations;
     this.price = price;
   }
 
@@ -105,7 +108,8 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: return item_id;
     case 1: return item_name;
     case 2: return item_description;
-    case 3: return price;
+    case 3: return customizations;
+    case 4: return price;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -117,7 +121,8 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: item_id = (java.lang.Long)value$; break;
     case 1: item_name = (java.lang.CharSequence)value$; break;
     case 2: item_description = (java.lang.CharSequence)value$; break;
-    case 3: price = (java.lang.Float)value$; break;
+    case 3: customizations = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 4: price = (java.lang.Float)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -171,6 +176,23 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
    */
   public void setItemDescription(java.lang.CharSequence value) {
     this.item_description = value;
+  }
+
+  /**
+   * Gets the value of the 'customizations' field.
+   * @return The value of the 'customizations' field.
+   */
+  public java.util.List<java.lang.CharSequence> getCustomizations() {
+    return customizations;
+  }
+
+
+  /**
+   * Sets the value of the 'customizations' field.
+   * @param value the value to set.
+   */
+  public void setCustomizations(java.util.List<java.lang.CharSequence> value) {
+    this.customizations = value;
   }
 
   /**
@@ -233,6 +255,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     private long item_id;
     private java.lang.CharSequence item_name;
     private java.lang.CharSequence item_description;
+    private java.util.List<java.lang.CharSequence> customizations;
     private float price;
 
     /** Creates a new Builder */
@@ -258,9 +281,13 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
         this.item_description = data().deepCopy(fields()[2].schema(), other.item_description);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.price)) {
-        this.price = data().deepCopy(fields()[3].schema(), other.price);
+      if (isValidValue(fields()[3], other.customizations)) {
+        this.customizations = data().deepCopy(fields()[3].schema(), other.customizations);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.price)) {
+        this.price = data().deepCopy(fields()[4].schema(), other.price);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
     }
 
@@ -282,9 +309,13 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
         this.item_description = data().deepCopy(fields()[2].schema(), other.item_description);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.price)) {
-        this.price = data().deepCopy(fields()[3].schema(), other.price);
+      if (isValidValue(fields()[3], other.customizations)) {
+        this.customizations = data().deepCopy(fields()[3].schema(), other.customizations);
         fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.price)) {
+        this.price = data().deepCopy(fields()[4].schema(), other.price);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -408,6 +439,46 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
+      * Gets the value of the 'customizations' field.
+      * @return The value.
+      */
+    public java.util.List<java.lang.CharSequence> getCustomizations() {
+      return customizations;
+    }
+
+
+    /**
+      * Sets the value of the 'customizations' field.
+      * @param value The value of 'customizations'.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.resturant.MenuItem.Builder setCustomizations(java.util.List<java.lang.CharSequence> value) {
+      validate(fields()[3], value);
+      this.customizations = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'customizations' field has been set.
+      * @return True if the 'customizations' field has been set, false otherwise.
+      */
+    public boolean hasCustomizations() {
+      return fieldSetFlags()[3];
+    }
+
+
+    /**
+      * Clears the value of the 'customizations' field.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.resturant.MenuItem.Builder clearCustomizations() {
+      customizations = null;
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
       * Gets the value of the 'price' field.
       * @return The value.
       */
@@ -422,9 +493,9 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.gottaeat.domain.resturant.MenuItem.Builder setPrice(float value) {
-      validate(fields()[3], value);
+      validate(fields()[4], value);
       this.price = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -433,7 +504,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
       * @return True if the 'price' field has been set, false otherwise.
       */
     public boolean hasPrice() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
 
 
@@ -442,7 +513,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.gottaeat.domain.resturant.MenuItem.Builder clearPrice() {
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -454,7 +525,8 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
         record.item_id = fieldSetFlags()[0] ? this.item_id : (java.lang.Long) defaultValue(fields()[0]);
         record.item_name = fieldSetFlags()[1] ? this.item_name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.item_description = fieldSetFlags()[2] ? this.item_description : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.price = fieldSetFlags()[3] ? this.price : (java.lang.Float) defaultValue(fields()[3]);
+        record.customizations = fieldSetFlags()[3] ? this.customizations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[3]);
+        record.price = fieldSetFlags()[4] ? this.price : (java.lang.Float) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -493,6 +565,19 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
 
     out.writeString(this.item_description);
 
+    long size0 = this.customizations.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.CharSequence e0: this.customizations) {
+      actualSize0++;
+      out.startItem();
+      out.writeString(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
     out.writeFloat(this.price);
 
   }
@@ -508,10 +593,25 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
 
       this.item_description = in.readString(this.item_description instanceof Utf8 ? (Utf8)this.item_description : null);
 
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.CharSequence> a0 = this.customizations;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<java.lang.CharSequence>((int)size0, SCHEMA$.getField("customizations").schema());
+        this.customizations = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.CharSequence> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.CharSequence>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          java.lang.CharSequence e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readString(e0 instanceof Utf8 ? (Utf8)e0 : null);
+          a0.add(e0);
+        }
+      }
+
       this.price = in.readFloat();
 
     } else {
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.item_id = in.readLong();
@@ -526,6 +626,23 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
           break;
 
         case 3:
+          long size0 = in.readArrayStart();
+          java.util.List<java.lang.CharSequence> a0 = this.customizations;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<java.lang.CharSequence>((int)size0, SCHEMA$.getField("customizations").schema());
+            this.customizations = a0;
+          } else a0.clear();
+          SpecificData.Array<java.lang.CharSequence> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.CharSequence>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              java.lang.CharSequence e0 = (ga0 != null ? ga0.peek() : null);
+              e0 = in.readString(e0 instanceof Utf8 ? (Utf8)e0 : null);
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 4:
           this.price = in.readFloat();
           break;
 

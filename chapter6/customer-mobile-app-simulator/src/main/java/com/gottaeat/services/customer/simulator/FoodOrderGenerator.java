@@ -3,6 +3,7 @@ package com.gottaeat.services.customer.simulator;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -25,6 +26,8 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 	private static List<Address> ADDRESSES = new ArrayList<Address> ();
 	private static List<CreditCard> CREDIT_CARDS = new ArrayList<CreditCard> ();
 	private static List<List<MenuItem>> MENUS = new ArrayList<List<MenuItem>> ();
+	private static List<List<String>> CUSTOMIZATIONS = new ArrayList<List<String>>();
+	private static List<String> DRINKS = new ArrayList<String> ();
 	
 	static {
 		ADDRESSES.add(Address.newBuilder().setCity("Chicago").setState("IL").setStreet("123 Main St").setZip("66011").build());
@@ -42,8 +45,16 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 		menu.add(MenuItem.newBuilder().setItemDescription("Beef").setItemId(1).setItemName("Burrito").setPrice(7.99f).build());
 		menu.add(MenuItem.newBuilder().setItemDescription("Carne Asada").setItemId(2).setItemName("Taco").setPrice(1.99f).build());
 		menu.add(MenuItem.newBuilder().setItemDescription("Chicken").setItemId(3).setItemName("Fajita").setPrice(6.99f).build());
+		menu.add(MenuItem.newBuilder().setItemDescription("Small").setItemId(10).setItemName("Fountain Drink").setPrice(1.00f).build());
+		menu.add(MenuItem.newBuilder().setItemDescription("Large").setItemId(11).setItemName("Fountain Drink").setPrice(2.00f).build());
+		
 		
 		MENUS.add(menu);
+		List<String> customizations = new ArrayList<String> ();
+		customizations.add("Guacamole");
+		customizations.add("Sour Cream");
+		customizations.add("Extra Cheese");
+		CUSTOMIZATIONS.add(customizations);
 		
 		menu = new ArrayList<MenuItem> ();
 		menu.add(MenuItem.newBuilder().setItemDescription("Single").setItemId(1).setItemName("Cheeseburger").setPrice(2.05f).build());
@@ -54,11 +65,21 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 		menu.add(MenuItem.newBuilder().setItemDescription("20 Piece").setItemId(6).setItemName("Nuggets").setPrice(3.95f).build());
 		menu.add(MenuItem.newBuilder().setItemDescription("Small").setItemId(7).setItemName("French Fries").setPrice(1.00f).build());
 		menu.add(MenuItem.newBuilder().setItemDescription("Large").setItemId(8).setItemName("French Fries").setPrice(2.00f).build());
-		menu.add(MenuItem.newBuilder().setItemDescription("Small").setItemId(7).setItemName("Fountain Drink").setPrice(1.00f).build());
-		menu.add(MenuItem.newBuilder().setItemDescription("Large").setItemId(8).setItemName("Fountain Drink").setPrice(2.00f).build());
+		menu.add(MenuItem.newBuilder().setItemDescription("Small").setItemId(10).setItemName("Fountain Drink").setPrice(1.00f).build());
+		menu.add(MenuItem.newBuilder().setItemDescription("Large").setItemId(11).setItemName("Fountain Drink").setPrice(2.00f).build());
 		
 		MENUS.add(menu);
 		
+		customizations = new ArrayList<String> ();
+		customizations.add("No onions");
+		customizations.add("Extra Mayo");
+		customizations.add("No Pickles");
+		CUSTOMIZATIONS.add(customizations);
+		
+		DRINKS.add("Coca-Cola");
+		DRINKS.add("Diet Coke");
+		DRINKS.add("Sprite");
+		DRINKS.add("Lemonade");
 	}
 	
 	
@@ -96,6 +117,8 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 		for (int idx = 0; idx < numItems; idx++) {
 			
 			MenuItem item = menu.get(rnd.nextInt(menu.size()));
+			addCustomizations(item, CUSTOMIZATIONS.get(resturantId));
+			
 			int quantity = rnd.nextInt(10)+1;
 			
 			OrderDetail od = OrderDetail.newBuilder()
@@ -107,6 +130,15 @@ public class FoodOrderGenerator implements DataGenerator<FoodOrder> {
 			total = total + (item.getPrice() * quantity);
 		}
 		return Pair.of(details, total);
+	}
+
+	private void addCustomizations(MenuItem item, List<String> list) {
+		if (item.getItemId() >= 10) { // All drinks need a type
+			item.setCustomizations(Collections.singletonList(DRINKS.get(rnd.nextInt(DRINKS.size()))));
+		} else if (rnd.nextBoolean()) { // Randomly add others
+			item.setCustomizations(Collections.singletonList(list.get(rnd.nextInt(list.size()))));
+		}
+		
 	}
 
 }
