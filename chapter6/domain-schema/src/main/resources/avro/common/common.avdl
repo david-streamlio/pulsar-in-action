@@ -9,4 +9,14 @@ protocol CommonsProtocol {
     string zip;
   }
   
+  record LatLon {
+    double latitude;
+    double longitude;
+  }
+  
+  record GeoEncodedAddress {
+  	Address addr;
+  	LatLon geo;
+  }
+  
 }
