@@ -6,25 +6,28 @@ protocol OrderProtocol {
   import idl "../resturant/resturant.avdl";
   
   record FoodOrder {
-    long order_id;
-    long customer_id;
-    long resturant_id;
-    string time_placed;
-    OrderStatus order_status;
-    array<OrderDetail> details;
+  	FoodOrderMeta meta;
+    array<com.gottaeat.domain.resturant.FoodOrderDetail> food;
     com.gottaeat.domain.common.Address delivery_location;
-    com.gottaeat.domain.payment.CreditCard payment_method;
-    float total = 0.0;
+    com.gottaeat.domain.payment.Payment payment;
   }
   
-  record OrderDetail {
-     int quantity;
-     float total;
-     com.gottaeat.domain.resturant.MenuItem food_item;
+  record FoodOrderMeta {
+  	long order_id;
+    long customer_id;
+    string time_placed;
+    OrderStatus order_status;
   }
   
   enum OrderStatus {
-    NEW, ACCEPTED, READY, DISPATCHED, DELIVERED
+    NEW, VALIDATED, ACCEPTED, READY, DISPATCHED, DELIVERED
+  }
+  
+  record ValidatedFoodOrder {
+  	FoodOrderMeta meta;
+  	com.gottaeat.domain.resturant.SolicitationResponse food;
+  	com.gottaeat.domain.common.Address delivery_location;
+  	com.gottaeat.domain.payment.AuthorizedPayment payment;
   }
   
 }

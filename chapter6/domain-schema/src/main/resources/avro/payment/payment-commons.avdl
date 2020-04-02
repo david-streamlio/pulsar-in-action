@@ -13,4 +13,49 @@ protocol PaymentsProtocol {
     string ccv;
   }
   
+  record DebitCard {
+  	CardType card_type; 
+  	string account_number; 
+    string billing_zip; 
+    string pin;
+  }
+ 
+  record ElectronicCheck {
+  	string routingNumber;
+  	string accountNumber;
+  }
+  
+  record ApplePay {
+  	string accountNumber;
+  }
+  
+  record PayPal {
+  	string accountNumber;
+  }
+  
+  record PaymentMethod {
+ 	union { CreditCard, DebitCard, ElectronicCheck, ApplePay, PayPal } type;
+  }
+  
+  record PaymentAmount {
+  	float food_total;
+  	float tax;
+  	float total;
+  }
+  
+  record Payment {
+  	PaymentMethod method_of_payment;
+  	PaymentAmount amount;
+  }
+  
+  record AuthorizedPayment {
+  	Payment payment;
+  	string approvalCode; 
+  	PaymentStatus status;
+  }
+  
+  enum PaymentStatus {
+  	AUTHORIZED, CAPTURED, SETTLED, REJECTED
+  }
+  
 }

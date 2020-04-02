@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2338288343025881441L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"}]}");
+  private static final long serialVersionUID = -6779108159857626441L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"},{\"name\":\"taxable\",\"type\":\"boolean\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -76,6 +76,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
   @Deprecated public java.lang.CharSequence item_description;
   @Deprecated public java.util.List<java.lang.CharSequence> customizations;
   @Deprecated public float price;
+  @Deprecated public boolean taxable;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -91,13 +92,15 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
    * @param item_description The new value for item_description
    * @param customizations The new value for customizations
    * @param price The new value for price
+   * @param taxable The new value for taxable
    */
-  public MenuItem(java.lang.Long item_id, java.lang.CharSequence item_name, java.lang.CharSequence item_description, java.util.List<java.lang.CharSequence> customizations, java.lang.Float price) {
+  public MenuItem(java.lang.Long item_id, java.lang.CharSequence item_name, java.lang.CharSequence item_description, java.util.List<java.lang.CharSequence> customizations, java.lang.Float price, java.lang.Boolean taxable) {
     this.item_id = item_id;
     this.item_name = item_name;
     this.item_description = item_description;
     this.customizations = customizations;
     this.price = price;
+    this.taxable = taxable;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -110,6 +113,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     case 2: return item_description;
     case 3: return customizations;
     case 4: return price;
+    case 5: return taxable;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -123,6 +127,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     case 2: item_description = (java.lang.CharSequence)value$; break;
     case 3: customizations = (java.util.List<java.lang.CharSequence>)value$; break;
     case 4: price = (java.lang.Float)value$; break;
+    case 5: taxable = (java.lang.Boolean)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -213,6 +218,23 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   /**
+   * Gets the value of the 'taxable' field.
+   * @return The value of the 'taxable' field.
+   */
+  public boolean getTaxable() {
+    return taxable;
+  }
+
+
+  /**
+   * Sets the value of the 'taxable' field.
+   * @param value the value to set.
+   */
+  public void setTaxable(boolean value) {
+    this.taxable = value;
+  }
+
+  /**
    * Creates a new MenuItem RecordBuilder.
    * @return A new MenuItem RecordBuilder
    */
@@ -257,6 +279,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
     private java.lang.CharSequence item_description;
     private java.util.List<java.lang.CharSequence> customizations;
     private float price;
+    private boolean taxable;
 
     /** Creates a new Builder */
     private Builder() {
@@ -289,6 +312,10 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
         this.price = data().deepCopy(fields()[4].schema(), other.price);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
+      if (isValidValue(fields()[5], other.taxable)) {
+        this.taxable = data().deepCopy(fields()[5].schema(), other.taxable);
+        fieldSetFlags()[5] = other.fieldSetFlags()[5];
+      }
     }
 
     /**
@@ -316,6 +343,10 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
       if (isValidValue(fields()[4], other.price)) {
         this.price = data().deepCopy(fields()[4].schema(), other.price);
         fieldSetFlags()[4] = true;
+      }
+      if (isValidValue(fields()[5], other.taxable)) {
+        this.taxable = data().deepCopy(fields()[5].schema(), other.taxable);
+        fieldSetFlags()[5] = true;
       }
     }
 
@@ -517,6 +548,45 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
       return this;
     }
 
+    /**
+      * Gets the value of the 'taxable' field.
+      * @return The value.
+      */
+    public boolean getTaxable() {
+      return taxable;
+    }
+
+
+    /**
+      * Sets the value of the 'taxable' field.
+      * @param value The value of 'taxable'.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.resturant.MenuItem.Builder setTaxable(boolean value) {
+      validate(fields()[5], value);
+      this.taxable = value;
+      fieldSetFlags()[5] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'taxable' field has been set.
+      * @return True if the 'taxable' field has been set, false otherwise.
+      */
+    public boolean hasTaxable() {
+      return fieldSetFlags()[5];
+    }
+
+
+    /**
+      * Clears the value of the 'taxable' field.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.resturant.MenuItem.Builder clearTaxable() {
+      fieldSetFlags()[5] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public MenuItem build() {
@@ -527,6 +597,7 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
         record.item_description = fieldSetFlags()[2] ? this.item_description : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.customizations = fieldSetFlags()[3] ? this.customizations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[3]);
         record.price = fieldSetFlags()[4] ? this.price : (java.lang.Float) defaultValue(fields()[4]);
+        record.taxable = fieldSetFlags()[5] ? this.taxable : (java.lang.Boolean) defaultValue(fields()[5]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -580,6 +651,8 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
 
     out.writeFloat(this.price);
 
+    out.writeBoolean(this.taxable);
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -610,8 +683,10 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
 
       this.price = in.readFloat();
 
+      this.taxable = in.readBoolean();
+
     } else {
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 6; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.item_id = in.readLong();
@@ -644,6 +719,10 @@ public class MenuItem extends org.apache.avro.specific.SpecificRecordBase implem
 
         case 4:
           this.price = in.readFloat();
+          break;
+
+        case 5:
+          this.taxable = in.readBoolean();
           break;
 
         default:

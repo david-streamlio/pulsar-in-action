@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5113905109740338211L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FoodOrder\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"order_id\",\"type\":\"long\"},{\"name\":\"customer_id\",\"type\":\"long\"},{\"name\":\"resturant_id\",\"type\":\"long\"},{\"name\":\"time_placed\",\"type\":\"string\"},{\"name\":\"order_status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"NEW\",\"ACCEPTED\",\"READY\",\"DISPATCHED\",\"DELIVERED\"]}},{\"name\":\"details\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"OrderDetail\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"total\",\"type\":\"float\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"}]}}]}}},{\"name\":\"delivery_location\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"}]}},{\"name\":\"payment_method\",\"type\":{\"type\":\"record\",\"name\":\"CreditCard\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"ccv\",\"type\":\"string\"}]}},{\"name\":\"total\",\"type\":\"float\",\"default\":0.0}]}");
+  private static final long serialVersionUID = 5987520891977689413L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FoodOrder\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"meta\",\"type\":{\"type\":\"record\",\"name\":\"FoodOrderMeta\",\"fields\":[{\"name\":\"order_id\",\"type\":\"long\"},{\"name\":\"customer_id\",\"type\":\"long\"},{\"name\":\"time_placed\",\"type\":\"string\"},{\"name\":\"order_status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"NEW\",\"VALIDATED\",\"ACCEPTED\",\"READY\",\"DISPATCHED\",\"DELIVERED\"]}}]}},{\"name\":\"food\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"FoodOrderDetail\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"},{\"name\":\"taxable\",\"type\":\"boolean\"}]}}]}}},{\"name\":\"delivery_location\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"},{\"name\":\"geo\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LatLon\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\"},{\"name\":\"longitude\",\"type\":\"double\"}]}]}]}},{\"name\":\"payment\",\"type\":{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"method_of_payment\",\"type\":{\"type\":\"record\",\"name\":\"PaymentMethod\",\"fields\":[{\"name\":\"type\",\"type\":[{\"type\":\"record\",\"name\":\"CreditCard\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"ccv\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"DebitCard\",\"fields\":[{\"name\":\"card_type\",\"type\":\"CardType\"},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"pin\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ElectronicCheck\",\"fields\":[{\"name\":\"routingNumber\",\"type\":\"string\"},{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ApplePay\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"PayPal\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]}]}]}},{\"name\":\"amount\",\"type\":{\"type\":\"record\",\"name\":\"PaymentAmount\",\"fields\":[{\"name\":\"food_total\",\"type\":\"float\"},{\"name\":\"tax\",\"type\":\"float\"},{\"name\":\"total\",\"type\":\"float\"}]}}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -71,15 +71,10 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
     return DECODER.decode(b);
   }
 
-  @Deprecated public long order_id;
-  @Deprecated public long customer_id;
-  @Deprecated public long resturant_id;
-  @Deprecated public java.lang.CharSequence time_placed;
-  @Deprecated public com.gottaeat.domain.order.OrderStatus order_status;
-  @Deprecated public java.util.List<com.gottaeat.domain.order.OrderDetail> details;
+  @Deprecated public com.gottaeat.domain.order.FoodOrderMeta meta;
+  @Deprecated public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food;
   @Deprecated public com.gottaeat.domain.common.Address delivery_location;
-  @Deprecated public com.gottaeat.domain.payment.CreditCard payment_method;
-  @Deprecated public float total;
+  @Deprecated public com.gottaeat.domain.payment.Payment payment;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -90,26 +85,16 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * All-args constructor.
-   * @param order_id The new value for order_id
-   * @param customer_id The new value for customer_id
-   * @param resturant_id The new value for resturant_id
-   * @param time_placed The new value for time_placed
-   * @param order_status The new value for order_status
-   * @param details The new value for details
+   * @param meta The new value for meta
+   * @param food The new value for food
    * @param delivery_location The new value for delivery_location
-   * @param payment_method The new value for payment_method
-   * @param total The new value for total
+   * @param payment The new value for payment
    */
-  public FoodOrder(java.lang.Long order_id, java.lang.Long customer_id, java.lang.Long resturant_id, java.lang.CharSequence time_placed, com.gottaeat.domain.order.OrderStatus order_status, java.util.List<com.gottaeat.domain.order.OrderDetail> details, com.gottaeat.domain.common.Address delivery_location, com.gottaeat.domain.payment.CreditCard payment_method, java.lang.Float total) {
-    this.order_id = order_id;
-    this.customer_id = customer_id;
-    this.resturant_id = resturant_id;
-    this.time_placed = time_placed;
-    this.order_status = order_status;
-    this.details = details;
+  public FoodOrder(com.gottaeat.domain.order.FoodOrderMeta meta, java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food, com.gottaeat.domain.common.Address delivery_location, com.gottaeat.domain.payment.Payment payment) {
+    this.meta = meta;
+    this.food = food;
     this.delivery_location = delivery_location;
-    this.payment_method = payment_method;
-    this.total = total;
+    this.payment = payment;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -117,15 +102,10 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return order_id;
-    case 1: return customer_id;
-    case 2: return resturant_id;
-    case 3: return time_placed;
-    case 4: return order_status;
-    case 5: return details;
-    case 6: return delivery_location;
-    case 7: return payment_method;
-    case 8: return total;
+    case 0: return meta;
+    case 1: return food;
+    case 2: return delivery_location;
+    case 3: return payment;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -134,119 +114,46 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: order_id = (java.lang.Long)value$; break;
-    case 1: customer_id = (java.lang.Long)value$; break;
-    case 2: resturant_id = (java.lang.Long)value$; break;
-    case 3: time_placed = (java.lang.CharSequence)value$; break;
-    case 4: order_status = (com.gottaeat.domain.order.OrderStatus)value$; break;
-    case 5: details = (java.util.List<com.gottaeat.domain.order.OrderDetail>)value$; break;
-    case 6: delivery_location = (com.gottaeat.domain.common.Address)value$; break;
-    case 7: payment_method = (com.gottaeat.domain.payment.CreditCard)value$; break;
-    case 8: total = (java.lang.Float)value$; break;
+    case 0: meta = (com.gottaeat.domain.order.FoodOrderMeta)value$; break;
+    case 1: food = (java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail>)value$; break;
+    case 2: delivery_location = (com.gottaeat.domain.common.Address)value$; break;
+    case 3: payment = (com.gottaeat.domain.payment.Payment)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'order_id' field.
-   * @return The value of the 'order_id' field.
+   * Gets the value of the 'meta' field.
+   * @return The value of the 'meta' field.
    */
-  public long getOrderId() {
-    return order_id;
+  public com.gottaeat.domain.order.FoodOrderMeta getMeta() {
+    return meta;
   }
 
 
   /**
-   * Sets the value of the 'order_id' field.
+   * Sets the value of the 'meta' field.
    * @param value the value to set.
    */
-  public void setOrderId(long value) {
-    this.order_id = value;
+  public void setMeta(com.gottaeat.domain.order.FoodOrderMeta value) {
+    this.meta = value;
   }
 
   /**
-   * Gets the value of the 'customer_id' field.
-   * @return The value of the 'customer_id' field.
+   * Gets the value of the 'food' field.
+   * @return The value of the 'food' field.
    */
-  public long getCustomerId() {
-    return customer_id;
+  public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> getFood() {
+    return food;
   }
 
 
   /**
-   * Sets the value of the 'customer_id' field.
+   * Sets the value of the 'food' field.
    * @param value the value to set.
    */
-  public void setCustomerId(long value) {
-    this.customer_id = value;
-  }
-
-  /**
-   * Gets the value of the 'resturant_id' field.
-   * @return The value of the 'resturant_id' field.
-   */
-  public long getResturantId() {
-    return resturant_id;
-  }
-
-
-  /**
-   * Sets the value of the 'resturant_id' field.
-   * @param value the value to set.
-   */
-  public void setResturantId(long value) {
-    this.resturant_id = value;
-  }
-
-  /**
-   * Gets the value of the 'time_placed' field.
-   * @return The value of the 'time_placed' field.
-   */
-  public java.lang.CharSequence getTimePlaced() {
-    return time_placed;
-  }
-
-
-  /**
-   * Sets the value of the 'time_placed' field.
-   * @param value the value to set.
-   */
-  public void setTimePlaced(java.lang.CharSequence value) {
-    this.time_placed = value;
-  }
-
-  /**
-   * Gets the value of the 'order_status' field.
-   * @return The value of the 'order_status' field.
-   */
-  public com.gottaeat.domain.order.OrderStatus getOrderStatus() {
-    return order_status;
-  }
-
-
-  /**
-   * Sets the value of the 'order_status' field.
-   * @param value the value to set.
-   */
-  public void setOrderStatus(com.gottaeat.domain.order.OrderStatus value) {
-    this.order_status = value;
-  }
-
-  /**
-   * Gets the value of the 'details' field.
-   * @return The value of the 'details' field.
-   */
-  public java.util.List<com.gottaeat.domain.order.OrderDetail> getDetails() {
-    return details;
-  }
-
-
-  /**
-   * Sets the value of the 'details' field.
-   * @param value the value to set.
-   */
-  public void setDetails(java.util.List<com.gottaeat.domain.order.OrderDetail> value) {
-    this.details = value;
+  public void setFood(java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> value) {
+    this.food = value;
   }
 
   /**
@@ -267,37 +174,20 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Gets the value of the 'payment_method' field.
-   * @return The value of the 'payment_method' field.
+   * Gets the value of the 'payment' field.
+   * @return The value of the 'payment' field.
    */
-  public com.gottaeat.domain.payment.CreditCard getPaymentMethod() {
-    return payment_method;
+  public com.gottaeat.domain.payment.Payment getPayment() {
+    return payment;
   }
 
 
   /**
-   * Sets the value of the 'payment_method' field.
+   * Sets the value of the 'payment' field.
    * @param value the value to set.
    */
-  public void setPaymentMethod(com.gottaeat.domain.payment.CreditCard value) {
-    this.payment_method = value;
-  }
-
-  /**
-   * Gets the value of the 'total' field.
-   * @return The value of the 'total' field.
-   */
-  public float getTotal() {
-    return total;
-  }
-
-
-  /**
-   * Sets the value of the 'total' field.
-   * @param value the value to set.
-   */
-  public void setTotal(float value) {
-    this.total = value;
+  public void setPayment(com.gottaeat.domain.payment.Payment value) {
+    this.payment = value;
   }
 
   /**
@@ -340,17 +230,13 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FoodOrder>
     implements org.apache.avro.data.RecordBuilder<FoodOrder> {
 
-    private long order_id;
-    private long customer_id;
-    private long resturant_id;
-    private java.lang.CharSequence time_placed;
-    private com.gottaeat.domain.order.OrderStatus order_status;
-    private java.util.List<com.gottaeat.domain.order.OrderDetail> details;
+    private com.gottaeat.domain.order.FoodOrderMeta meta;
+    private com.gottaeat.domain.order.FoodOrderMeta.Builder metaBuilder;
+    private java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food;
     private com.gottaeat.domain.common.Address delivery_location;
     private com.gottaeat.domain.common.Address.Builder delivery_locationBuilder;
-    private com.gottaeat.domain.payment.CreditCard payment_method;
-    private com.gottaeat.domain.payment.CreditCard.Builder payment_methodBuilder;
-    private float total;
+    private com.gottaeat.domain.payment.Payment payment;
+    private com.gottaeat.domain.payment.Payment.Builder paymentBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -363,47 +249,30 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      */
     private Builder(com.gottaeat.domain.order.FoodOrder.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.order_id)) {
-        this.order_id = data().deepCopy(fields()[0].schema(), other.order_id);
+      if (isValidValue(fields()[0], other.meta)) {
+        this.meta = data().deepCopy(fields()[0].schema(), other.meta);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.customer_id)) {
-        this.customer_id = data().deepCopy(fields()[1].schema(), other.customer_id);
+      if (other.hasMetaBuilder()) {
+        this.metaBuilder = com.gottaeat.domain.order.FoodOrderMeta.newBuilder(other.getMetaBuilder());
+      }
+      if (isValidValue(fields()[1], other.food)) {
+        this.food = data().deepCopy(fields()[1].schema(), other.food);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.resturant_id)) {
-        this.resturant_id = data().deepCopy(fields()[2].schema(), other.resturant_id);
+      if (isValidValue(fields()[2], other.delivery_location)) {
+        this.delivery_location = data().deepCopy(fields()[2].schema(), other.delivery_location);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
-      }
-      if (isValidValue(fields()[3], other.time_placed)) {
-        this.time_placed = data().deepCopy(fields()[3].schema(), other.time_placed);
-        fieldSetFlags()[3] = other.fieldSetFlags()[3];
-      }
-      if (isValidValue(fields()[4], other.order_status)) {
-        this.order_status = data().deepCopy(fields()[4].schema(), other.order_status);
-        fieldSetFlags()[4] = other.fieldSetFlags()[4];
-      }
-      if (isValidValue(fields()[5], other.details)) {
-        this.details = data().deepCopy(fields()[5].schema(), other.details);
-        fieldSetFlags()[5] = other.fieldSetFlags()[5];
-      }
-      if (isValidValue(fields()[6], other.delivery_location)) {
-        this.delivery_location = data().deepCopy(fields()[6].schema(), other.delivery_location);
-        fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
       if (other.hasDeliveryLocationBuilder()) {
         this.delivery_locationBuilder = com.gottaeat.domain.common.Address.newBuilder(other.getDeliveryLocationBuilder());
       }
-      if (isValidValue(fields()[7], other.payment_method)) {
-        this.payment_method = data().deepCopy(fields()[7].schema(), other.payment_method);
-        fieldSetFlags()[7] = other.fieldSetFlags()[7];
+      if (isValidValue(fields()[3], other.payment)) {
+        this.payment = data().deepCopy(fields()[3].schema(), other.payment);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
-      if (other.hasPaymentMethodBuilder()) {
-        this.payment_methodBuilder = com.gottaeat.domain.payment.CreditCard.newBuilder(other.getPaymentMethodBuilder());
-      }
-      if (isValidValue(fields()[8], other.total)) {
-        this.total = data().deepCopy(fields()[8].schema(), other.total);
-        fieldSetFlags()[8] = other.fieldSetFlags()[8];
+      if (other.hasPaymentBuilder()) {
+        this.paymentBuilder = com.gottaeat.domain.payment.Payment.newBuilder(other.getPaymentBuilder());
       }
     }
 
@@ -413,280 +282,139 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      */
     private Builder(com.gottaeat.domain.order.FoodOrder other) {
       super(SCHEMA$);
-      if (isValidValue(fields()[0], other.order_id)) {
-        this.order_id = data().deepCopy(fields()[0].schema(), other.order_id);
+      if (isValidValue(fields()[0], other.meta)) {
+        this.meta = data().deepCopy(fields()[0].schema(), other.meta);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.customer_id)) {
-        this.customer_id = data().deepCopy(fields()[1].schema(), other.customer_id);
+      this.metaBuilder = null;
+      if (isValidValue(fields()[1], other.food)) {
+        this.food = data().deepCopy(fields()[1].schema(), other.food);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.resturant_id)) {
-        this.resturant_id = data().deepCopy(fields()[2].schema(), other.resturant_id);
+      if (isValidValue(fields()[2], other.delivery_location)) {
+        this.delivery_location = data().deepCopy(fields()[2].schema(), other.delivery_location);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.time_placed)) {
-        this.time_placed = data().deepCopy(fields()[3].schema(), other.time_placed);
+      this.delivery_locationBuilder = null;
+      if (isValidValue(fields()[3], other.payment)) {
+        this.payment = data().deepCopy(fields()[3].schema(), other.payment);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.order_status)) {
-        this.order_status = data().deepCopy(fields()[4].schema(), other.order_status);
-        fieldSetFlags()[4] = true;
-      }
-      if (isValidValue(fields()[5], other.details)) {
-        this.details = data().deepCopy(fields()[5].schema(), other.details);
-        fieldSetFlags()[5] = true;
-      }
-      if (isValidValue(fields()[6], other.delivery_location)) {
-        this.delivery_location = data().deepCopy(fields()[6].schema(), other.delivery_location);
-        fieldSetFlags()[6] = true;
-      }
-      this.delivery_locationBuilder = null;
-      if (isValidValue(fields()[7], other.payment_method)) {
-        this.payment_method = data().deepCopy(fields()[7].schema(), other.payment_method);
-        fieldSetFlags()[7] = true;
-      }
-      this.payment_methodBuilder = null;
-      if (isValidValue(fields()[8], other.total)) {
-        this.total = data().deepCopy(fields()[8].schema(), other.total);
-        fieldSetFlags()[8] = true;
-      }
+      this.paymentBuilder = null;
     }
 
     /**
-      * Gets the value of the 'order_id' field.
+      * Gets the value of the 'meta' field.
       * @return The value.
       */
-    public long getOrderId() {
-      return order_id;
+    public com.gottaeat.domain.order.FoodOrderMeta getMeta() {
+      return meta;
     }
 
 
     /**
-      * Sets the value of the 'order_id' field.
-      * @param value The value of 'order_id'.
+      * Sets the value of the 'meta' field.
+      * @param value The value of 'meta'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setOrderId(long value) {
+    public com.gottaeat.domain.order.FoodOrder.Builder setMeta(com.gottaeat.domain.order.FoodOrderMeta value) {
       validate(fields()[0], value);
-      this.order_id = value;
+      this.metaBuilder = null;
+      this.meta = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'order_id' field has been set.
-      * @return True if the 'order_id' field has been set, false otherwise.
+      * Checks whether the 'meta' field has been set.
+      * @return True if the 'meta' field has been set, false otherwise.
       */
-    public boolean hasOrderId() {
+    public boolean hasMeta() {
       return fieldSetFlags()[0];
     }
 
+    /**
+     * Gets the Builder instance for the 'meta' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.order.FoodOrderMeta.Builder getMetaBuilder() {
+      if (metaBuilder == null) {
+        if (hasMeta()) {
+          setMetaBuilder(com.gottaeat.domain.order.FoodOrderMeta.newBuilder(meta));
+        } else {
+          setMetaBuilder(com.gottaeat.domain.order.FoodOrderMeta.newBuilder());
+        }
+      }
+      return metaBuilder;
+    }
 
     /**
-      * Clears the value of the 'order_id' field.
+     * Sets the Builder instance for the 'meta' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.order.FoodOrder.Builder setMetaBuilder(com.gottaeat.domain.order.FoodOrderMeta.Builder value) {
+      clearMeta();
+      metaBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'meta' field has an active Builder instance
+     * @return True if the 'meta' field has an active Builder instance
+     */
+    public boolean hasMetaBuilder() {
+      return metaBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'meta' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearOrderId() {
+    public com.gottaeat.domain.order.FoodOrder.Builder clearMeta() {
+      meta = null;
+      metaBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'customer_id' field.
+      * Gets the value of the 'food' field.
       * @return The value.
       */
-    public long getCustomerId() {
-      return customer_id;
+    public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> getFood() {
+      return food;
     }
 
 
     /**
-      * Sets the value of the 'customer_id' field.
-      * @param value The value of 'customer_id'.
+      * Sets the value of the 'food' field.
+      * @param value The value of 'food'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setCustomerId(long value) {
+    public com.gottaeat.domain.order.FoodOrder.Builder setFood(java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> value) {
       validate(fields()[1], value);
-      this.customer_id = value;
+      this.food = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'customer_id' field has been set.
-      * @return True if the 'customer_id' field has been set, false otherwise.
+      * Checks whether the 'food' field has been set.
+      * @return True if the 'food' field has been set, false otherwise.
       */
-    public boolean hasCustomerId() {
+    public boolean hasFood() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'customer_id' field.
+      * Clears the value of the 'food' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearCustomerId() {
+    public com.gottaeat.domain.order.FoodOrder.Builder clearFood() {
+      food = null;
       fieldSetFlags()[1] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'resturant_id' field.
-      * @return The value.
-      */
-    public long getResturantId() {
-      return resturant_id;
-    }
-
-
-    /**
-      * Sets the value of the 'resturant_id' field.
-      * @param value The value of 'resturant_id'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setResturantId(long value) {
-      validate(fields()[2], value);
-      this.resturant_id = value;
-      fieldSetFlags()[2] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'resturant_id' field has been set.
-      * @return True if the 'resturant_id' field has been set, false otherwise.
-      */
-    public boolean hasResturantId() {
-      return fieldSetFlags()[2];
-    }
-
-
-    /**
-      * Clears the value of the 'resturant_id' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearResturantId() {
-      fieldSetFlags()[2] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'time_placed' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getTimePlaced() {
-      return time_placed;
-    }
-
-
-    /**
-      * Sets the value of the 'time_placed' field.
-      * @param value The value of 'time_placed'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setTimePlaced(java.lang.CharSequence value) {
-      validate(fields()[3], value);
-      this.time_placed = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'time_placed' field has been set.
-      * @return True if the 'time_placed' field has been set, false otherwise.
-      */
-    public boolean hasTimePlaced() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'time_placed' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearTimePlaced() {
-      time_placed = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'order_status' field.
-      * @return The value.
-      */
-    public com.gottaeat.domain.order.OrderStatus getOrderStatus() {
-      return order_status;
-    }
-
-
-    /**
-      * Sets the value of the 'order_status' field.
-      * @param value The value of 'order_status'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setOrderStatus(com.gottaeat.domain.order.OrderStatus value) {
-      validate(fields()[4], value);
-      this.order_status = value;
-      fieldSetFlags()[4] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'order_status' field has been set.
-      * @return True if the 'order_status' field has been set, false otherwise.
-      */
-    public boolean hasOrderStatus() {
-      return fieldSetFlags()[4];
-    }
-
-
-    /**
-      * Clears the value of the 'order_status' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearOrderStatus() {
-      order_status = null;
-      fieldSetFlags()[4] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'details' field.
-      * @return The value.
-      */
-    public java.util.List<com.gottaeat.domain.order.OrderDetail> getDetails() {
-      return details;
-    }
-
-
-    /**
-      * Sets the value of the 'details' field.
-      * @param value The value of 'details'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setDetails(java.util.List<com.gottaeat.domain.order.OrderDetail> value) {
-      validate(fields()[5], value);
-      this.details = value;
-      fieldSetFlags()[5] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'details' field has been set.
-      * @return True if the 'details' field has been set, false otherwise.
-      */
-    public boolean hasDetails() {
-      return fieldSetFlags()[5];
-    }
-
-
-    /**
-      * Clears the value of the 'details' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearDetails() {
-      details = null;
-      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -705,10 +433,10 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @return This builder.
       */
     public com.gottaeat.domain.order.FoodOrder.Builder setDeliveryLocation(com.gottaeat.domain.common.Address value) {
-      validate(fields()[6], value);
+      validate(fields()[2], value);
       this.delivery_locationBuilder = null;
       this.delivery_location = value;
-      fieldSetFlags()[6] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -717,7 +445,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @return True if the 'delivery_location' field has been set, false otherwise.
       */
     public boolean hasDeliveryLocation() {
-      return fieldSetFlags()[6];
+      return fieldSetFlags()[2];
     }
 
     /**
@@ -761,121 +489,82 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
     public com.gottaeat.domain.order.FoodOrder.Builder clearDeliveryLocation() {
       delivery_location = null;
       delivery_locationBuilder = null;
-      fieldSetFlags()[6] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'payment_method' field.
+      * Gets the value of the 'payment' field.
       * @return The value.
       */
-    public com.gottaeat.domain.payment.CreditCard getPaymentMethod() {
-      return payment_method;
+    public com.gottaeat.domain.payment.Payment getPayment() {
+      return payment;
     }
 
 
     /**
-      * Sets the value of the 'payment_method' field.
-      * @param value The value of 'payment_method'.
+      * Sets the value of the 'payment' field.
+      * @param value The value of 'payment'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setPaymentMethod(com.gottaeat.domain.payment.CreditCard value) {
-      validate(fields()[7], value);
-      this.payment_methodBuilder = null;
-      this.payment_method = value;
-      fieldSetFlags()[7] = true;
+    public com.gottaeat.domain.order.FoodOrder.Builder setPayment(com.gottaeat.domain.payment.Payment value) {
+      validate(fields()[3], value);
+      this.paymentBuilder = null;
+      this.payment = value;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'payment_method' field has been set.
-      * @return True if the 'payment_method' field has been set, false otherwise.
+      * Checks whether the 'payment' field has been set.
+      * @return True if the 'payment' field has been set, false otherwise.
       */
-    public boolean hasPaymentMethod() {
-      return fieldSetFlags()[7];
+    public boolean hasPayment() {
+      return fieldSetFlags()[3];
     }
 
     /**
-     * Gets the Builder instance for the 'payment_method' field and creates one if it doesn't exist yet.
+     * Gets the Builder instance for the 'payment' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.gottaeat.domain.payment.CreditCard.Builder getPaymentMethodBuilder() {
-      if (payment_methodBuilder == null) {
-        if (hasPaymentMethod()) {
-          setPaymentMethodBuilder(com.gottaeat.domain.payment.CreditCard.newBuilder(payment_method));
+    public com.gottaeat.domain.payment.Payment.Builder getPaymentBuilder() {
+      if (paymentBuilder == null) {
+        if (hasPayment()) {
+          setPaymentBuilder(com.gottaeat.domain.payment.Payment.newBuilder(payment));
         } else {
-          setPaymentMethodBuilder(com.gottaeat.domain.payment.CreditCard.newBuilder());
+          setPaymentBuilder(com.gottaeat.domain.payment.Payment.newBuilder());
         }
       }
-      return payment_methodBuilder;
+      return paymentBuilder;
     }
 
     /**
-     * Sets the Builder instance for the 'payment_method' field
+     * Sets the Builder instance for the 'payment' field
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setPaymentMethodBuilder(com.gottaeat.domain.payment.CreditCard.Builder value) {
-      clearPaymentMethod();
-      payment_methodBuilder = value;
+    public com.gottaeat.domain.order.FoodOrder.Builder setPaymentBuilder(com.gottaeat.domain.payment.Payment.Builder value) {
+      clearPayment();
+      paymentBuilder = value;
       return this;
     }
 
     /**
-     * Checks whether the 'payment_method' field has an active Builder instance
-     * @return True if the 'payment_method' field has an active Builder instance
+     * Checks whether the 'payment' field has an active Builder instance
+     * @return True if the 'payment' field has an active Builder instance
      */
-    public boolean hasPaymentMethodBuilder() {
-      return payment_methodBuilder != null;
+    public boolean hasPaymentBuilder() {
+      return paymentBuilder != null;
     }
 
     /**
-      * Clears the value of the 'payment_method' field.
+      * Clears the value of the 'payment' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearPaymentMethod() {
-      payment_method = null;
-      payment_methodBuilder = null;
-      fieldSetFlags()[7] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'total' field.
-      * @return The value.
-      */
-    public float getTotal() {
-      return total;
-    }
-
-
-    /**
-      * Sets the value of the 'total' field.
-      * @param value The value of 'total'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setTotal(float value) {
-      validate(fields()[8], value);
-      this.total = value;
-      fieldSetFlags()[8] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'total' field has been set.
-      * @return True if the 'total' field has been set, false otherwise.
-      */
-    public boolean hasTotal() {
-      return fieldSetFlags()[8];
-    }
-
-
-    /**
-      * Clears the value of the 'total' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearTotal() {
-      fieldSetFlags()[8] = false;
+    public com.gottaeat.domain.order.FoodOrder.Builder clearPayment() {
+      payment = null;
+      paymentBuilder = null;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -884,12 +573,17 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
     public FoodOrder build() {
       try {
         FoodOrder record = new FoodOrder();
-        record.order_id = fieldSetFlags()[0] ? this.order_id : (java.lang.Long) defaultValue(fields()[0]);
-        record.customer_id = fieldSetFlags()[1] ? this.customer_id : (java.lang.Long) defaultValue(fields()[1]);
-        record.resturant_id = fieldSetFlags()[2] ? this.resturant_id : (java.lang.Long) defaultValue(fields()[2]);
-        record.time_placed = fieldSetFlags()[3] ? this.time_placed : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.order_status = fieldSetFlags()[4] ? this.order_status : (com.gottaeat.domain.order.OrderStatus) defaultValue(fields()[4]);
-        record.details = fieldSetFlags()[5] ? this.details : (java.util.List<com.gottaeat.domain.order.OrderDetail>) defaultValue(fields()[5]);
+        if (metaBuilder != null) {
+          try {
+            record.meta = this.metaBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("meta"));
+            throw e;
+          }
+        } else {
+          record.meta = fieldSetFlags()[0] ? this.meta : (com.gottaeat.domain.order.FoodOrderMeta) defaultValue(fields()[0]);
+        }
+        record.food = fieldSetFlags()[1] ? this.food : (java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail>) defaultValue(fields()[1]);
         if (delivery_locationBuilder != null) {
           try {
             record.delivery_location = this.delivery_locationBuilder.build();
@@ -898,19 +592,18 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
             throw e;
           }
         } else {
-          record.delivery_location = fieldSetFlags()[6] ? this.delivery_location : (com.gottaeat.domain.common.Address) defaultValue(fields()[6]);
+          record.delivery_location = fieldSetFlags()[2] ? this.delivery_location : (com.gottaeat.domain.common.Address) defaultValue(fields()[2]);
         }
-        if (payment_methodBuilder != null) {
+        if (paymentBuilder != null) {
           try {
-            record.payment_method = this.payment_methodBuilder.build();
+            record.payment = this.paymentBuilder.build();
           } catch (org.apache.avro.AvroMissingFieldException e) {
-            e.addParentField(record.getSchema().getField("payment_method"));
+            e.addParentField(record.getSchema().getField("payment"));
             throw e;
           }
         } else {
-          record.payment_method = fieldSetFlags()[7] ? this.payment_method : (com.gottaeat.domain.payment.CreditCard) defaultValue(fields()[7]);
+          record.payment = fieldSetFlags()[3] ? this.payment : (com.gottaeat.domain.payment.Payment) defaultValue(fields()[3]);
         }
-        record.total = fieldSetFlags()[8] ? this.total : (java.lang.Float) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -938,154 +631,6 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeLong(this.order_id);
-
-    out.writeLong(this.customer_id);
-
-    out.writeLong(this.resturant_id);
-
-    out.writeString(this.time_placed);
-
-    out.writeEnum(this.order_status.ordinal());
-
-    long size0 = this.details.size();
-    out.writeArrayStart();
-    out.setItemCount(size0);
-    long actualSize0 = 0;
-    for (com.gottaeat.domain.order.OrderDetail e0: this.details) {
-      actualSize0++;
-      out.startItem();
-      e0.customEncode(out);
-    }
-    out.writeArrayEnd();
-    if (actualSize0 != size0)
-      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
-
-    this.delivery_location.customEncode(out);
-
-    this.payment_method.customEncode(out);
-
-    out.writeFloat(this.total);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.order_id = in.readLong();
-
-      this.customer_id = in.readLong();
-
-      this.resturant_id = in.readLong();
-
-      this.time_placed = in.readString(this.time_placed instanceof Utf8 ? (Utf8)this.time_placed : null);
-
-      this.order_status = com.gottaeat.domain.order.OrderStatus.values()[in.readEnum()];
-
-      long size0 = in.readArrayStart();
-      java.util.List<com.gottaeat.domain.order.OrderDetail> a0 = this.details;
-      if (a0 == null) {
-        a0 = new SpecificData.Array<com.gottaeat.domain.order.OrderDetail>((int)size0, SCHEMA$.getField("details").schema());
-        this.details = a0;
-      } else a0.clear();
-      SpecificData.Array<com.gottaeat.domain.order.OrderDetail> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.gottaeat.domain.order.OrderDetail>)a0 : null);
-      for ( ; 0 < size0; size0 = in.arrayNext()) {
-        for ( ; size0 != 0; size0--) {
-          com.gottaeat.domain.order.OrderDetail e0 = (ga0 != null ? ga0.peek() : null);
-          if (e0 == null) {
-            e0 = new com.gottaeat.domain.order.OrderDetail();
-          }
-          e0.customDecode(in);
-          a0.add(e0);
-        }
-      }
-
-      if (this.delivery_location == null) {
-        this.delivery_location = new com.gottaeat.domain.common.Address();
-      }
-      this.delivery_location.customDecode(in);
-
-      if (this.payment_method == null) {
-        this.payment_method = new com.gottaeat.domain.payment.CreditCard();
-      }
-      this.payment_method.customDecode(in);
-
-      this.total = in.readFloat();
-
-    } else {
-      for (int i = 0; i < 9; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.order_id = in.readLong();
-          break;
-
-        case 1:
-          this.customer_id = in.readLong();
-          break;
-
-        case 2:
-          this.resturant_id = in.readLong();
-          break;
-
-        case 3:
-          this.time_placed = in.readString(this.time_placed instanceof Utf8 ? (Utf8)this.time_placed : null);
-          break;
-
-        case 4:
-          this.order_status = com.gottaeat.domain.order.OrderStatus.values()[in.readEnum()];
-          break;
-
-        case 5:
-          long size0 = in.readArrayStart();
-          java.util.List<com.gottaeat.domain.order.OrderDetail> a0 = this.details;
-          if (a0 == null) {
-            a0 = new SpecificData.Array<com.gottaeat.domain.order.OrderDetail>((int)size0, SCHEMA$.getField("details").schema());
-            this.details = a0;
-          } else a0.clear();
-          SpecificData.Array<com.gottaeat.domain.order.OrderDetail> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.gottaeat.domain.order.OrderDetail>)a0 : null);
-          for ( ; 0 < size0; size0 = in.arrayNext()) {
-            for ( ; size0 != 0; size0--) {
-              com.gottaeat.domain.order.OrderDetail e0 = (ga0 != null ? ga0.peek() : null);
-              if (e0 == null) {
-                e0 = new com.gottaeat.domain.order.OrderDetail();
-              }
-              e0.customDecode(in);
-              a0.add(e0);
-            }
-          }
-          break;
-
-        case 6:
-          if (this.delivery_location == null) {
-            this.delivery_location = new com.gottaeat.domain.common.Address();
-          }
-          this.delivery_location.customDecode(in);
-          break;
-
-        case 7:
-          if (this.payment_method == null) {
-            this.payment_method = new com.gottaeat.domain.payment.CreditCard();
-          }
-          this.payment_method.customDecode(in);
-          break;
-
-        case 8:
-          this.total = in.readFloat();
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
 
 

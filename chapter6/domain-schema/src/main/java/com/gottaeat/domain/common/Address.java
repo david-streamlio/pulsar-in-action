@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Address extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -9006744287687353987L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = 2130370544765060648L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"},{\"name\":\"geo\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LatLon\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\"},{\"name\":\"longitude\",\"type\":\"double\"}]}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -75,6 +75,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
   @Deprecated public java.lang.CharSequence city;
   @Deprecated public java.lang.CharSequence state;
   @Deprecated public java.lang.CharSequence zip;
+  @Deprecated public com.gottaeat.domain.common.LatLon geo;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -89,12 +90,14 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param city The new value for city
    * @param state The new value for state
    * @param zip The new value for zip
+   * @param geo The new value for geo
    */
-  public Address(java.lang.CharSequence street, java.lang.CharSequence city, java.lang.CharSequence state, java.lang.CharSequence zip) {
+  public Address(java.lang.CharSequence street, java.lang.CharSequence city, java.lang.CharSequence state, java.lang.CharSequence zip, com.gottaeat.domain.common.LatLon geo) {
     this.street = street;
     this.city = city;
     this.state = state;
     this.zip = zip;
+    this.geo = geo;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -106,6 +109,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
     case 1: return city;
     case 2: return state;
     case 3: return zip;
+    case 4: return geo;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -118,6 +122,7 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
     case 1: city = (java.lang.CharSequence)value$; break;
     case 2: state = (java.lang.CharSequence)value$; break;
     case 3: zip = (java.lang.CharSequence)value$; break;
+    case 4: geo = (com.gottaeat.domain.common.LatLon)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -191,6 +196,23 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   /**
+   * Gets the value of the 'geo' field.
+   * @return The value of the 'geo' field.
+   */
+  public com.gottaeat.domain.common.LatLon getGeo() {
+    return geo;
+  }
+
+
+  /**
+   * Sets the value of the 'geo' field.
+   * @param value the value to set.
+   */
+  public void setGeo(com.gottaeat.domain.common.LatLon value) {
+    this.geo = value;
+  }
+
+  /**
    * Creates a new Address RecordBuilder.
    * @return A new Address RecordBuilder
    */
@@ -234,6 +256,8 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
     private java.lang.CharSequence city;
     private java.lang.CharSequence state;
     private java.lang.CharSequence zip;
+    private com.gottaeat.domain.common.LatLon geo;
+    private com.gottaeat.domain.common.LatLon.Builder geoBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -262,6 +286,13 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
         this.zip = data().deepCopy(fields()[3].schema(), other.zip);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
+      if (isValidValue(fields()[4], other.geo)) {
+        this.geo = data().deepCopy(fields()[4].schema(), other.geo);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
+      }
+      if (other.hasGeoBuilder()) {
+        this.geoBuilder = com.gottaeat.domain.common.LatLon.newBuilder(other.getGeoBuilder());
+      }
     }
 
     /**
@@ -286,6 +317,11 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
         this.zip = data().deepCopy(fields()[3].schema(), other.zip);
         fieldSetFlags()[3] = true;
       }
+      if (isValidValue(fields()[4], other.geo)) {
+        this.geo = data().deepCopy(fields()[4].schema(), other.geo);
+        fieldSetFlags()[4] = true;
+      }
+      this.geoBuilder = null;
     }
 
     /**
@@ -448,6 +484,81 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
       return this;
     }
 
+    /**
+      * Gets the value of the 'geo' field.
+      * @return The value.
+      */
+    public com.gottaeat.domain.common.LatLon getGeo() {
+      return geo;
+    }
+
+
+    /**
+      * Sets the value of the 'geo' field.
+      * @param value The value of 'geo'.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.common.Address.Builder setGeo(com.gottaeat.domain.common.LatLon value) {
+      validate(fields()[4], value);
+      this.geoBuilder = null;
+      this.geo = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'geo' field has been set.
+      * @return True if the 'geo' field has been set, false otherwise.
+      */
+    public boolean hasGeo() {
+      return fieldSetFlags()[4];
+    }
+
+    /**
+     * Gets the Builder instance for the 'geo' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.common.LatLon.Builder getGeoBuilder() {
+      if (geoBuilder == null) {
+        if (hasGeo()) {
+          setGeoBuilder(com.gottaeat.domain.common.LatLon.newBuilder(geo));
+        } else {
+          setGeoBuilder(com.gottaeat.domain.common.LatLon.newBuilder());
+        }
+      }
+      return geoBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'geo' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.common.Address.Builder setGeoBuilder(com.gottaeat.domain.common.LatLon.Builder value) {
+      clearGeo();
+      geoBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'geo' field has an active Builder instance
+     * @return True if the 'geo' field has an active Builder instance
+     */
+    public boolean hasGeoBuilder() {
+      return geoBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'geo' field.
+      * @return This builder.
+      */
+    public com.gottaeat.domain.common.Address.Builder clearGeo() {
+      geo = null;
+      geoBuilder = null;
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Address build() {
@@ -457,6 +568,16 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
         record.city = fieldSetFlags()[1] ? this.city : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.state = fieldSetFlags()[2] ? this.state : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.zip = fieldSetFlags()[3] ? this.zip : (java.lang.CharSequence) defaultValue(fields()[3]);
+        if (geoBuilder != null) {
+          try {
+            record.geo = this.geoBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("geo"));
+            throw e;
+          }
+        } else {
+          record.geo = fieldSetFlags()[4] ? this.geo : (com.gottaeat.domain.common.LatLon) defaultValue(fields()[4]);
+        }
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -497,6 +618,14 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
     out.writeString(this.zip);
 
+    if (this.geo == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      this.geo.customEncode(out);
+    }
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -512,8 +641,18 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
       this.zip = in.readString(this.zip instanceof Utf8 ? (Utf8)this.zip : null);
 
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.geo = null;
+      } else {
+        if (this.geo == null) {
+          this.geo = new com.gottaeat.domain.common.LatLon();
+        }
+        this.geo.customDecode(in);
+      }
+
     } else {
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.street = in.readString(this.street instanceof Utf8 ? (Utf8)this.street : null);
@@ -529,6 +668,18 @@ public class Address extends org.apache.avro.specific.SpecificRecordBase impleme
 
         case 3:
           this.zip = in.readString(this.zip instanceof Utf8 ? (Utf8)this.zip : null);
+          break;
+
+        case 4:
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.geo = null;
+          } else {
+            if (this.geo == null) {
+              this.geo = new com.gottaeat.domain.common.LatLon();
+            }
+            this.geo.customDecode(in);
+          }
           break;
 
         default:

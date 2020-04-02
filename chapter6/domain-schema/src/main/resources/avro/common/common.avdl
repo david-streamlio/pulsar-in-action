@@ -2,21 +2,17 @@
 
 protocol CommonsProtocol {
 
+  record LatLon {
+    double latitude;
+    double longitude;
+  }
+
   record Address {
     string street; 
     string city; 
     string state; 
     string zip;
-  }
-  
-  record LatLon {
-    double latitude;
-    double longitude;
-  }
-  
-  record GeoEncodedAddress {
-  	Address addr;
-  	LatLon geo;
+    union { null, LatLon } geo;
   }
   
 }

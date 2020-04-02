@@ -1,19 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.gottaeat</groupId>
-		<artifactId>GottaEat-Services</artifactId>
-		<version>0.0.1</version>
-	</parent>
-	<artifactId>order-validation-service</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.manning.pulsar</groupId>
+    <artifactId>chapter7</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>dataflow-patterns</artifactId>
 
-	<properties>
-		<pulsar.version>2.5.0</pulsar.version>
-	</properties>
-
-	<build>
+  <properties>
+	 <pulsar.version>2.5.0</pulsar.version>
+  </properties>
+  
+  <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.nifi</groupId>
@@ -45,7 +43,7 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.pulsar</groupId>
@@ -74,13 +72,8 @@
 		<dependency>
 			<groupId>com.gottaeat</groupId>
     		<artifactId>domain-schema</artifactId>
-    		<version>0.0.3</version>
+    		<version>0.0.2</version>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.10.1</version>
-		</dependency>
+		
 	</dependencies>
-
 </project>

@@ -2,12 +2,31 @@
 
 protocol ResturantsProtocol {
 
+  import idl "../common/common.avdl";
+
   record MenuItem {
     long item_id;
     string item_name;
     string item_description;
     array<string> customizations = [""];
     float price;
+    boolean taxable;
+  }
+  
+  record Resturant {
+  	com.gottaeat.domain.common.Address location;
+  }
+  
+  record FoodOrderDetail {
+     int quantity;
+     MenuItem food_item;
+  }
+  
+  record SolicitationResponse {
+  	array<FoodOrderDetail> food;
+  	Resturant resturant;
+  	timestamp_ms eta;
+  	string notificationTopic;
   }
   
 }
