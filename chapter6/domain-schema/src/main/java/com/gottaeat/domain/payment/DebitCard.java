@@ -13,24 +13,24 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class CreditCard extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4332681379723355601L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CreditCard\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"ccv\",\"type\":\"string\"},{\"name\":\"expMonth\",\"type\":\"string\"},{\"name\":\"expYear\",\"type\":\"string\"}]}");
+public class DebitCard extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -8014312236332924126L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DebitCard\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"pin\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<CreditCard> ENCODER =
-      new BinaryMessageEncoder<CreditCard>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<DebitCard> ENCODER =
+      new BinaryMessageEncoder<DebitCard>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<CreditCard> DECODER =
-      new BinaryMessageDecoder<CreditCard>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<DebitCard> DECODER =
+      new BinaryMessageDecoder<DebitCard>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<CreditCard> getEncoder() {
+  public static BinaryMessageEncoder<DebitCard> getEncoder() {
     return ENCODER;
   }
 
@@ -38,7 +38,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<CreditCard> getDecoder() {
+  public static BinaryMessageDecoder<DebitCard> getDecoder() {
     return DECODER;
   }
 
@@ -47,12 +47,12 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<CreditCard> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<CreditCard>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<DebitCard> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<DebitCard>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this CreditCard to a ByteBuffer.
+   * Serializes this DebitCard to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -61,12 +61,12 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /**
-   * Deserializes a CreditCard from a ByteBuffer.
+   * Deserializes a DebitCard from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a CreditCard instance decoded from the given buffer
+   * @return a DebitCard instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static CreditCard fromByteBuffer(
+  public static DebitCard fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -74,33 +74,27 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
   @Deprecated public com.gottaeat.domain.payment.CardType card_type;
   @Deprecated public java.lang.CharSequence account_number;
   @Deprecated public java.lang.CharSequence billing_zip;
-  @Deprecated public java.lang.CharSequence ccv;
-  @Deprecated public java.lang.CharSequence expMonth;
-  @Deprecated public java.lang.CharSequence expYear;
+  @Deprecated public java.lang.CharSequence pin;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public CreditCard() {}
+  public DebitCard() {}
 
   /**
    * All-args constructor.
    * @param card_type The new value for card_type
    * @param account_number The new value for account_number
    * @param billing_zip The new value for billing_zip
-   * @param ccv The new value for ccv
-   * @param expMonth The new value for expMonth
-   * @param expYear The new value for expYear
+   * @param pin The new value for pin
    */
-  public CreditCard(com.gottaeat.domain.payment.CardType card_type, java.lang.CharSequence account_number, java.lang.CharSequence billing_zip, java.lang.CharSequence ccv, java.lang.CharSequence expMonth, java.lang.CharSequence expYear) {
+  public DebitCard(com.gottaeat.domain.payment.CardType card_type, java.lang.CharSequence account_number, java.lang.CharSequence billing_zip, java.lang.CharSequence pin) {
     this.card_type = card_type;
     this.account_number = account_number;
     this.billing_zip = billing_zip;
-    this.ccv = ccv;
-    this.expMonth = expMonth;
-    this.expYear = expYear;
+    this.pin = pin;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -111,9 +105,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
     case 0: return card_type;
     case 1: return account_number;
     case 2: return billing_zip;
-    case 3: return ccv;
-    case 4: return expMonth;
-    case 5: return expYear;
+    case 3: return pin;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -125,9 +117,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
     case 0: card_type = (com.gottaeat.domain.payment.CardType)value$; break;
     case 1: account_number = (java.lang.CharSequence)value$; break;
     case 2: billing_zip = (java.lang.CharSequence)value$; break;
-    case 3: ccv = (java.lang.CharSequence)value$; break;
-    case 4: expMonth = (java.lang.CharSequence)value$; break;
-    case 5: expYear = (java.lang.CharSequence)value$; break;
+    case 3: pin = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -184,102 +174,66 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /**
-   * Gets the value of the 'ccv' field.
-   * @return The value of the 'ccv' field.
+   * Gets the value of the 'pin' field.
+   * @return The value of the 'pin' field.
    */
-  public java.lang.CharSequence getCcv() {
-    return ccv;
+  public java.lang.CharSequence getPin() {
+    return pin;
   }
 
 
   /**
-   * Sets the value of the 'ccv' field.
+   * Sets the value of the 'pin' field.
    * @param value the value to set.
    */
-  public void setCcv(java.lang.CharSequence value) {
-    this.ccv = value;
+  public void setPin(java.lang.CharSequence value) {
+    this.pin = value;
   }
 
   /**
-   * Gets the value of the 'expMonth' field.
-   * @return The value of the 'expMonth' field.
+   * Creates a new DebitCard RecordBuilder.
+   * @return A new DebitCard RecordBuilder
    */
-  public java.lang.CharSequence getExpMonth() {
-    return expMonth;
-  }
-
-
-  /**
-   * Sets the value of the 'expMonth' field.
-   * @param value the value to set.
-   */
-  public void setExpMonth(java.lang.CharSequence value) {
-    this.expMonth = value;
+  public static com.gottaeat.domain.payment.DebitCard.Builder newBuilder() {
+    return new com.gottaeat.domain.payment.DebitCard.Builder();
   }
 
   /**
-   * Gets the value of the 'expYear' field.
-   * @return The value of the 'expYear' field.
-   */
-  public java.lang.CharSequence getExpYear() {
-    return expYear;
-  }
-
-
-  /**
-   * Sets the value of the 'expYear' field.
-   * @param value the value to set.
-   */
-  public void setExpYear(java.lang.CharSequence value) {
-    this.expYear = value;
-  }
-
-  /**
-   * Creates a new CreditCard RecordBuilder.
-   * @return A new CreditCard RecordBuilder
-   */
-  public static com.gottaeat.domain.payment.CreditCard.Builder newBuilder() {
-    return new com.gottaeat.domain.payment.CreditCard.Builder();
-  }
-
-  /**
-   * Creates a new CreditCard RecordBuilder by copying an existing Builder.
+   * Creates a new DebitCard RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new CreditCard RecordBuilder
+   * @return A new DebitCard RecordBuilder
    */
-  public static com.gottaeat.domain.payment.CreditCard.Builder newBuilder(com.gottaeat.domain.payment.CreditCard.Builder other) {
+  public static com.gottaeat.domain.payment.DebitCard.Builder newBuilder(com.gottaeat.domain.payment.DebitCard.Builder other) {
     if (other == null) {
-      return new com.gottaeat.domain.payment.CreditCard.Builder();
+      return new com.gottaeat.domain.payment.DebitCard.Builder();
     } else {
-      return new com.gottaeat.domain.payment.CreditCard.Builder(other);
+      return new com.gottaeat.domain.payment.DebitCard.Builder(other);
     }
   }
 
   /**
-   * Creates a new CreditCard RecordBuilder by copying an existing CreditCard instance.
+   * Creates a new DebitCard RecordBuilder by copying an existing DebitCard instance.
    * @param other The existing instance to copy.
-   * @return A new CreditCard RecordBuilder
+   * @return A new DebitCard RecordBuilder
    */
-  public static com.gottaeat.domain.payment.CreditCard.Builder newBuilder(com.gottaeat.domain.payment.CreditCard other) {
+  public static com.gottaeat.domain.payment.DebitCard.Builder newBuilder(com.gottaeat.domain.payment.DebitCard other) {
     if (other == null) {
-      return new com.gottaeat.domain.payment.CreditCard.Builder();
+      return new com.gottaeat.domain.payment.DebitCard.Builder();
     } else {
-      return new com.gottaeat.domain.payment.CreditCard.Builder(other);
+      return new com.gottaeat.domain.payment.DebitCard.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for CreditCard instances.
+   * RecordBuilder for DebitCard instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CreditCard>
-    implements org.apache.avro.data.RecordBuilder<CreditCard> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<DebitCard>
+    implements org.apache.avro.data.RecordBuilder<DebitCard> {
 
     private com.gottaeat.domain.payment.CardType card_type;
     private java.lang.CharSequence account_number;
     private java.lang.CharSequence billing_zip;
-    private java.lang.CharSequence ccv;
-    private java.lang.CharSequence expMonth;
-    private java.lang.CharSequence expYear;
+    private java.lang.CharSequence pin;
 
     /** Creates a new Builder */
     private Builder() {
@@ -290,7 +244,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.gottaeat.domain.payment.CreditCard.Builder other) {
+    private Builder(com.gottaeat.domain.payment.DebitCard.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.card_type)) {
         this.card_type = data().deepCopy(fields()[0].schema(), other.card_type);
@@ -304,25 +258,17 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
         this.billing_zip = data().deepCopy(fields()[2].schema(), other.billing_zip);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.ccv)) {
-        this.ccv = data().deepCopy(fields()[3].schema(), other.ccv);
+      if (isValidValue(fields()[3], other.pin)) {
+        this.pin = data().deepCopy(fields()[3].schema(), other.pin);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
-      }
-      if (isValidValue(fields()[4], other.expMonth)) {
-        this.expMonth = data().deepCopy(fields()[4].schema(), other.expMonth);
-        fieldSetFlags()[4] = other.fieldSetFlags()[4];
-      }
-      if (isValidValue(fields()[5], other.expYear)) {
-        this.expYear = data().deepCopy(fields()[5].schema(), other.expYear);
-        fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
     }
 
     /**
-     * Creates a Builder by copying an existing CreditCard instance
+     * Creates a Builder by copying an existing DebitCard instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.gottaeat.domain.payment.CreditCard other) {
+    private Builder(com.gottaeat.domain.payment.DebitCard other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.card_type)) {
         this.card_type = data().deepCopy(fields()[0].schema(), other.card_type);
@@ -336,17 +282,9 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
         this.billing_zip = data().deepCopy(fields()[2].schema(), other.billing_zip);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.ccv)) {
-        this.ccv = data().deepCopy(fields()[3].schema(), other.ccv);
+      if (isValidValue(fields()[3], other.pin)) {
+        this.pin = data().deepCopy(fields()[3].schema(), other.pin);
         fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.expMonth)) {
-        this.expMonth = data().deepCopy(fields()[4].schema(), other.expMonth);
-        fieldSetFlags()[4] = true;
-      }
-      if (isValidValue(fields()[5], other.expYear)) {
-        this.expYear = data().deepCopy(fields()[5].schema(), other.expYear);
-        fieldSetFlags()[5] = true;
       }
     }
 
@@ -364,7 +302,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'card_type'.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder setCardType(com.gottaeat.domain.payment.CardType value) {
+    public com.gottaeat.domain.payment.DebitCard.Builder setCardType(com.gottaeat.domain.payment.CardType value) {
       validate(fields()[0], value);
       this.card_type = value;
       fieldSetFlags()[0] = true;
@@ -384,7 +322,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'card_type' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearCardType() {
+    public com.gottaeat.domain.payment.DebitCard.Builder clearCardType() {
       card_type = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -404,7 +342,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'account_number'.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder setAccountNumber(java.lang.CharSequence value) {
+    public com.gottaeat.domain.payment.DebitCard.Builder setAccountNumber(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.account_number = value;
       fieldSetFlags()[1] = true;
@@ -424,7 +362,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'account_number' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearAccountNumber() {
+    public com.gottaeat.domain.payment.DebitCard.Builder clearAccountNumber() {
       account_number = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -444,7 +382,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'billing_zip'.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder setBillingZip(java.lang.CharSequence value) {
+    public com.gottaeat.domain.payment.DebitCard.Builder setBillingZip(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.billing_zip = value;
       fieldSetFlags()[2] = true;
@@ -464,143 +402,61 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'billing_zip' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearBillingZip() {
+    public com.gottaeat.domain.payment.DebitCard.Builder clearBillingZip() {
       billing_zip = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'ccv' field.
+      * Gets the value of the 'pin' field.
       * @return The value.
       */
-    public java.lang.CharSequence getCcv() {
-      return ccv;
+    public java.lang.CharSequence getPin() {
+      return pin;
     }
 
 
     /**
-      * Sets the value of the 'ccv' field.
-      * @param value The value of 'ccv'.
+      * Sets the value of the 'pin' field.
+      * @param value The value of 'pin'.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder setCcv(java.lang.CharSequence value) {
+    public com.gottaeat.domain.payment.DebitCard.Builder setPin(java.lang.CharSequence value) {
       validate(fields()[3], value);
-      this.ccv = value;
+      this.pin = value;
       fieldSetFlags()[3] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'ccv' field has been set.
-      * @return True if the 'ccv' field has been set, false otherwise.
+      * Checks whether the 'pin' field has been set.
+      * @return True if the 'pin' field has been set, false otherwise.
       */
-    public boolean hasCcv() {
+    public boolean hasPin() {
       return fieldSetFlags()[3];
     }
 
 
     /**
-      * Clears the value of the 'ccv' field.
+      * Clears the value of the 'pin' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearCcv() {
-      ccv = null;
+    public com.gottaeat.domain.payment.DebitCard.Builder clearPin() {
+      pin = null;
       fieldSetFlags()[3] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'expMonth' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getExpMonth() {
-      return expMonth;
-    }
-
-
-    /**
-      * Sets the value of the 'expMonth' field.
-      * @param value The value of 'expMonth'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.payment.CreditCard.Builder setExpMonth(java.lang.CharSequence value) {
-      validate(fields()[4], value);
-      this.expMonth = value;
-      fieldSetFlags()[4] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'expMonth' field has been set.
-      * @return True if the 'expMonth' field has been set, false otherwise.
-      */
-    public boolean hasExpMonth() {
-      return fieldSetFlags()[4];
-    }
-
-
-    /**
-      * Clears the value of the 'expMonth' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearExpMonth() {
-      expMonth = null;
-      fieldSetFlags()[4] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'expYear' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getExpYear() {
-      return expYear;
-    }
-
-
-    /**
-      * Sets the value of the 'expYear' field.
-      * @param value The value of 'expYear'.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.payment.CreditCard.Builder setExpYear(java.lang.CharSequence value) {
-      validate(fields()[5], value);
-      this.expYear = value;
-      fieldSetFlags()[5] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'expYear' field has been set.
-      * @return True if the 'expYear' field has been set, false otherwise.
-      */
-    public boolean hasExpYear() {
-      return fieldSetFlags()[5];
-    }
-
-
-    /**
-      * Clears the value of the 'expYear' field.
-      * @return This builder.
-      */
-    public com.gottaeat.domain.payment.CreditCard.Builder clearExpYear() {
-      expYear = null;
-      fieldSetFlags()[5] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public CreditCard build() {
+    public DebitCard build() {
       try {
-        CreditCard record = new CreditCard();
+        DebitCard record = new DebitCard();
         record.card_type = fieldSetFlags()[0] ? this.card_type : (com.gottaeat.domain.payment.CardType) defaultValue(fields()[0]);
         record.account_number = fieldSetFlags()[1] ? this.account_number : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.billing_zip = fieldSetFlags()[2] ? this.billing_zip : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.ccv = fieldSetFlags()[3] ? this.ccv : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.expMonth = fieldSetFlags()[4] ? this.expMonth : (java.lang.CharSequence) defaultValue(fields()[4]);
-        record.expYear = fieldSetFlags()[5] ? this.expYear : (java.lang.CharSequence) defaultValue(fields()[5]);
+        record.pin = fieldSetFlags()[3] ? this.pin : (java.lang.CharSequence) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -611,8 +467,8 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<CreditCard>
-    WRITER$ = (org.apache.avro.io.DatumWriter<CreditCard>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<DebitCard>
+    WRITER$ = (org.apache.avro.io.DatumWriter<DebitCard>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -620,8 +476,8 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<CreditCard>
-    READER$ = (org.apache.avro.io.DatumReader<CreditCard>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<DebitCard>
+    READER$ = (org.apache.avro.io.DatumReader<DebitCard>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -639,11 +495,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
 
     out.writeString(this.billing_zip);
 
-    out.writeString(this.ccv);
-
-    out.writeString(this.expMonth);
-
-    out.writeString(this.expYear);
+    out.writeString(this.pin);
 
   }
 
@@ -658,14 +510,10 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
 
       this.billing_zip = in.readString(this.billing_zip instanceof Utf8 ? (Utf8)this.billing_zip : null);
 
-      this.ccv = in.readString(this.ccv instanceof Utf8 ? (Utf8)this.ccv : null);
-
-      this.expMonth = in.readString(this.expMonth instanceof Utf8 ? (Utf8)this.expMonth : null);
-
-      this.expYear = in.readString(this.expYear instanceof Utf8 ? (Utf8)this.expYear : null);
+      this.pin = in.readString(this.pin instanceof Utf8 ? (Utf8)this.pin : null);
 
     } else {
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.card_type = com.gottaeat.domain.payment.CardType.values()[in.readEnum()];
@@ -680,15 +528,7 @@ public class CreditCard extends org.apache.avro.specific.SpecificRecordBase impl
           break;
 
         case 3:
-          this.ccv = in.readString(this.ccv instanceof Utf8 ? (Utf8)this.ccv : null);
-          break;
-
-        case 4:
-          this.expMonth = in.readString(this.expMonth instanceof Utf8 ? (Utf8)this.expMonth : null);
-          break;
-
-        case 5:
-          this.expYear = in.readString(this.expYear instanceof Utf8 ? (Utf8)this.expYear : null);
+          this.pin = in.readString(this.pin instanceof Utf8 ? (Utf8)this.pin : null);
           break;
 
         default:

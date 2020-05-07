@@ -11,6 +11,8 @@ protocol PaymentsProtocol {
     string account_number; 
     string billing_zip; 
     string ccv;
+    string expMonth;
+    string expYear;
   }
   
   record DebitCard {

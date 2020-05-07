@@ -13,24 +13,27 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2565647080492329845L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FoodOrder\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"meta\",\"type\":{\"type\":\"record\",\"name\":\"FoodOrderMeta\",\"fields\":[{\"name\":\"order_id\",\"type\":\"long\"},{\"name\":\"customer_id\",\"type\":\"long\"},{\"name\":\"time_placed\",\"type\":\"string\"},{\"name\":\"order_status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"NEW\",\"VALIDATED\",\"ACCEPTED\",\"READY\",\"DISPATCHED\",\"DELIVERED\"]}}]}},{\"name\":\"food\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"FoodOrderDetail\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"},{\"name\":\"taxable\",\"type\":\"boolean\"}]}}]}}},{\"name\":\"delivery_location\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"},{\"name\":\"geo\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LatLon\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\"},{\"name\":\"longitude\",\"type\":\"double\"}]}]}]}},{\"name\":\"payment\",\"type\":{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"method_of_payment\",\"type\":{\"type\":\"record\",\"name\":\"PaymentMethod\",\"fields\":[{\"name\":\"type\",\"type\":[{\"type\":\"record\",\"name\":\"CreditCard\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"ccv\",\"type\":\"string\"},{\"name\":\"expMonth\",\"type\":\"string\"},{\"name\":\"expYear\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"DebitCard\",\"fields\":[{\"name\":\"card_type\",\"type\":\"CardType\"},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"pin\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ElectronicCheck\",\"fields\":[{\"name\":\"routingNumber\",\"type\":\"string\"},{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ApplePay\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"PayPal\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]}]}]}},{\"name\":\"amount\",\"type\":{\"type\":\"record\",\"name\":\"PaymentAmount\",\"fields\":[{\"name\":\"food_total\",\"type\":\"float\"},{\"name\":\"tax\",\"type\":\"float\"},{\"name\":\"total\",\"type\":\"float\"}]}}]}}]}");
+public class ValidatedFoodOrder extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 311197611063061063L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ValidatedFoodOrder\",\"namespace\":\"com.gottaeat.domain.order\",\"fields\":[{\"name\":\"meta\",\"type\":{\"type\":\"record\",\"name\":\"FoodOrderMeta\",\"fields\":[{\"name\":\"order_id\",\"type\":\"long\"},{\"name\":\"customer_id\",\"type\":\"long\"},{\"name\":\"time_placed\",\"type\":\"string\"},{\"name\":\"order_status\",\"type\":{\"type\":\"enum\",\"name\":\"OrderStatus\",\"symbols\":[\"NEW\",\"VALIDATED\",\"ACCEPTED\",\"READY\",\"DISPATCHED\",\"DELIVERED\"]}}]}},{\"name\":\"food\",\"type\":{\"type\":\"record\",\"name\":\"SolicitationResponse\",\"namespace\":\"com.gottaeat.domain.resturant\",\"fields\":[{\"name\":\"food\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"FoodOrderDetail\",\"fields\":[{\"name\":\"quantity\",\"type\":\"int\"},{\"name\":\"food_item\",\"type\":{\"type\":\"record\",\"name\":\"MenuItem\",\"fields\":[{\"name\":\"item_id\",\"type\":\"long\"},{\"name\":\"item_name\",\"type\":\"string\"},{\"name\":\"item_description\",\"type\":\"string\"},{\"name\":\"customizations\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[\"\"]},{\"name\":\"price\",\"type\":\"float\"},{\"name\":\"taxable\",\"type\":\"boolean\"}]}}]}}},{\"name\":\"resturant\",\"type\":{\"type\":\"record\",\"name\":\"Resturant\",\"fields\":[{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"Address\",\"namespace\":\"com.gottaeat.domain.common\",\"fields\":[{\"name\":\"street\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"zip\",\"type\":\"string\"},{\"name\":\"geo\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"LatLon\",\"fields\":[{\"name\":\"latitude\",\"type\":\"double\"},{\"name\":\"longitude\",\"type\":\"double\"}]}]}]}}]}},{\"name\":\"eta\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"notificationTopic\",\"type\":\"string\"}]}},{\"name\":\"delivery_location\",\"type\":\"com.gottaeat.domain.common.Address\"},{\"name\":\"payment\",\"type\":{\"type\":\"record\",\"name\":\"AuthorizedPayment\",\"namespace\":\"com.gottaeat.domain.payment\",\"fields\":[{\"name\":\"payment\",\"type\":{\"type\":\"record\",\"name\":\"Payment\",\"fields\":[{\"name\":\"method_of_payment\",\"type\":{\"type\":\"record\",\"name\":\"PaymentMethod\",\"fields\":[{\"name\":\"type\",\"type\":[{\"type\":\"record\",\"name\":\"CreditCard\",\"fields\":[{\"name\":\"card_type\",\"type\":{\"type\":\"enum\",\"name\":\"CardType\",\"symbols\":[\"MASTERCARD\",\"AMEX\",\"VISA\",\"DISCOVER\"]}},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"ccv\",\"type\":\"string\"},{\"name\":\"expMonth\",\"type\":\"string\"},{\"name\":\"expYear\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"DebitCard\",\"fields\":[{\"name\":\"card_type\",\"type\":\"CardType\"},{\"name\":\"account_number\",\"type\":\"string\"},{\"name\":\"billing_zip\",\"type\":\"string\"},{\"name\":\"pin\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ElectronicCheck\",\"fields\":[{\"name\":\"routingNumber\",\"type\":\"string\"},{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"ApplePay\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]},{\"type\":\"record\",\"name\":\"PayPal\",\"fields\":[{\"name\":\"accountNumber\",\"type\":\"string\"}]}]}]}},{\"name\":\"amount\",\"type\":{\"type\":\"record\",\"name\":\"PaymentAmount\",\"fields\":[{\"name\":\"food_total\",\"type\":\"float\"},{\"name\":\"tax\",\"type\":\"float\"},{\"name\":\"total\",\"type\":\"float\"}]}}]}},{\"name\":\"approvalCode\",\"type\":\"string\"},{\"name\":\"status\",\"type\":{\"type\":\"enum\",\"name\":\"PaymentStatus\",\"symbols\":[\"AUTHORIZED\",\"CAPTURED\",\"SETTLED\",\"REJECTED\"]}}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
+  }
 
-  private static final BinaryMessageEncoder<FoodOrder> ENCODER =
-      new BinaryMessageEncoder<FoodOrder>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<ValidatedFoodOrder> ENCODER =
+      new BinaryMessageEncoder<ValidatedFoodOrder>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<FoodOrder> DECODER =
-      new BinaryMessageDecoder<FoodOrder>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<ValidatedFoodOrder> DECODER =
+      new BinaryMessageDecoder<ValidatedFoodOrder>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<FoodOrder> getEncoder() {
+  public static BinaryMessageEncoder<ValidatedFoodOrder> getEncoder() {
     return ENCODER;
   }
 
@@ -38,7 +41,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<FoodOrder> getDecoder() {
+  public static BinaryMessageDecoder<ValidatedFoodOrder> getDecoder() {
     return DECODER;
   }
 
@@ -47,12 +50,12 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<FoodOrder> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<FoodOrder>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<ValidatedFoodOrder> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<ValidatedFoodOrder>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this FoodOrder to a ByteBuffer.
+   * Serializes this ValidatedFoodOrder to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -61,27 +64,27 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Deserializes a FoodOrder from a ByteBuffer.
+   * Deserializes a ValidatedFoodOrder from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a FoodOrder instance decoded from the given buffer
+   * @return a ValidatedFoodOrder instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static FoodOrder fromByteBuffer(
+  public static ValidatedFoodOrder fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   @Deprecated public com.gottaeat.domain.order.FoodOrderMeta meta;
-  @Deprecated public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food;
+  @Deprecated public com.gottaeat.domain.resturant.SolicitationResponse food;
   @Deprecated public com.gottaeat.domain.common.Address delivery_location;
-  @Deprecated public com.gottaeat.domain.payment.Payment payment;
+  @Deprecated public com.gottaeat.domain.payment.AuthorizedPayment payment;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public FoodOrder() {}
+  public ValidatedFoodOrder() {}
 
   /**
    * All-args constructor.
@@ -90,7 +93,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * @param delivery_location The new value for delivery_location
    * @param payment The new value for payment
    */
-  public FoodOrder(com.gottaeat.domain.order.FoodOrderMeta meta, java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food, com.gottaeat.domain.common.Address delivery_location, com.gottaeat.domain.payment.Payment payment) {
+  public ValidatedFoodOrder(com.gottaeat.domain.order.FoodOrderMeta meta, com.gottaeat.domain.resturant.SolicitationResponse food, com.gottaeat.domain.common.Address delivery_location, com.gottaeat.domain.payment.AuthorizedPayment payment) {
     this.meta = meta;
     this.food = food;
     this.delivery_location = delivery_location;
@@ -115,9 +118,9 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: meta = (com.gottaeat.domain.order.FoodOrderMeta)value$; break;
-    case 1: food = (java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail>)value$; break;
+    case 1: food = (com.gottaeat.domain.resturant.SolicitationResponse)value$; break;
     case 2: delivery_location = (com.gottaeat.domain.common.Address)value$; break;
-    case 3: payment = (com.gottaeat.domain.payment.Payment)value$; break;
+    case 3: payment = (com.gottaeat.domain.payment.AuthorizedPayment)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -143,7 +146,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'food' field.
    * @return The value of the 'food' field.
    */
-  public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> getFood() {
+  public com.gottaeat.domain.resturant.SolicitationResponse getFood() {
     return food;
   }
 
@@ -152,7 +155,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'food' field.
    * @param value the value to set.
    */
-  public void setFood(java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> value) {
+  public void setFood(com.gottaeat.domain.resturant.SolicitationResponse value) {
     this.food = value;
   }
 
@@ -177,7 +180,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'payment' field.
    * @return The value of the 'payment' field.
    */
-  public com.gottaeat.domain.payment.Payment getPayment() {
+  public com.gottaeat.domain.payment.AuthorizedPayment getPayment() {
     return payment;
   }
 
@@ -186,57 +189,58 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'payment' field.
    * @param value the value to set.
    */
-  public void setPayment(com.gottaeat.domain.payment.Payment value) {
+  public void setPayment(com.gottaeat.domain.payment.AuthorizedPayment value) {
     this.payment = value;
   }
 
   /**
-   * Creates a new FoodOrder RecordBuilder.
-   * @return A new FoodOrder RecordBuilder
+   * Creates a new ValidatedFoodOrder RecordBuilder.
+   * @return A new ValidatedFoodOrder RecordBuilder
    */
-  public static com.gottaeat.domain.order.FoodOrder.Builder newBuilder() {
-    return new com.gottaeat.domain.order.FoodOrder.Builder();
+  public static com.gottaeat.domain.order.ValidatedFoodOrder.Builder newBuilder() {
+    return new com.gottaeat.domain.order.ValidatedFoodOrder.Builder();
   }
 
   /**
-   * Creates a new FoodOrder RecordBuilder by copying an existing Builder.
+   * Creates a new ValidatedFoodOrder RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new FoodOrder RecordBuilder
+   * @return A new ValidatedFoodOrder RecordBuilder
    */
-  public static com.gottaeat.domain.order.FoodOrder.Builder newBuilder(com.gottaeat.domain.order.FoodOrder.Builder other) {
+  public static com.gottaeat.domain.order.ValidatedFoodOrder.Builder newBuilder(com.gottaeat.domain.order.ValidatedFoodOrder.Builder other) {
     if (other == null) {
-      return new com.gottaeat.domain.order.FoodOrder.Builder();
+      return new com.gottaeat.domain.order.ValidatedFoodOrder.Builder();
     } else {
-      return new com.gottaeat.domain.order.FoodOrder.Builder(other);
+      return new com.gottaeat.domain.order.ValidatedFoodOrder.Builder(other);
     }
   }
 
   /**
-   * Creates a new FoodOrder RecordBuilder by copying an existing FoodOrder instance.
+   * Creates a new ValidatedFoodOrder RecordBuilder by copying an existing ValidatedFoodOrder instance.
    * @param other The existing instance to copy.
-   * @return A new FoodOrder RecordBuilder
+   * @return A new ValidatedFoodOrder RecordBuilder
    */
-  public static com.gottaeat.domain.order.FoodOrder.Builder newBuilder(com.gottaeat.domain.order.FoodOrder other) {
+  public static com.gottaeat.domain.order.ValidatedFoodOrder.Builder newBuilder(com.gottaeat.domain.order.ValidatedFoodOrder other) {
     if (other == null) {
-      return new com.gottaeat.domain.order.FoodOrder.Builder();
+      return new com.gottaeat.domain.order.ValidatedFoodOrder.Builder();
     } else {
-      return new com.gottaeat.domain.order.FoodOrder.Builder(other);
+      return new com.gottaeat.domain.order.ValidatedFoodOrder.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for FoodOrder instances.
+   * RecordBuilder for ValidatedFoodOrder instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FoodOrder>
-    implements org.apache.avro.data.RecordBuilder<FoodOrder> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ValidatedFoodOrder>
+    implements org.apache.avro.data.RecordBuilder<ValidatedFoodOrder> {
 
     private com.gottaeat.domain.order.FoodOrderMeta meta;
     private com.gottaeat.domain.order.FoodOrderMeta.Builder metaBuilder;
-    private java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> food;
+    private com.gottaeat.domain.resturant.SolicitationResponse food;
+    private com.gottaeat.domain.resturant.SolicitationResponse.Builder foodBuilder;
     private com.gottaeat.domain.common.Address delivery_location;
     private com.gottaeat.domain.common.Address.Builder delivery_locationBuilder;
-    private com.gottaeat.domain.payment.Payment payment;
-    private com.gottaeat.domain.payment.Payment.Builder paymentBuilder;
+    private com.gottaeat.domain.payment.AuthorizedPayment payment;
+    private com.gottaeat.domain.payment.AuthorizedPayment.Builder paymentBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -247,7 +251,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.gottaeat.domain.order.FoodOrder.Builder other) {
+    private Builder(com.gottaeat.domain.order.ValidatedFoodOrder.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.meta)) {
         this.meta = data().deepCopy(fields()[0].schema(), other.meta);
@@ -259,6 +263,9 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       if (isValidValue(fields()[1], other.food)) {
         this.food = data().deepCopy(fields()[1].schema(), other.food);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+      if (other.hasFoodBuilder()) {
+        this.foodBuilder = com.gottaeat.domain.resturant.SolicitationResponse.newBuilder(other.getFoodBuilder());
       }
       if (isValidValue(fields()[2], other.delivery_location)) {
         this.delivery_location = data().deepCopy(fields()[2].schema(), other.delivery_location);
@@ -272,15 +279,15 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
       if (other.hasPaymentBuilder()) {
-        this.paymentBuilder = com.gottaeat.domain.payment.Payment.newBuilder(other.getPaymentBuilder());
+        this.paymentBuilder = com.gottaeat.domain.payment.AuthorizedPayment.newBuilder(other.getPaymentBuilder());
       }
     }
 
     /**
-     * Creates a Builder by copying an existing FoodOrder instance
+     * Creates a Builder by copying an existing ValidatedFoodOrder instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.gottaeat.domain.order.FoodOrder other) {
+    private Builder(com.gottaeat.domain.order.ValidatedFoodOrder other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.meta)) {
         this.meta = data().deepCopy(fields()[0].schema(), other.meta);
@@ -291,6 +298,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
         this.food = data().deepCopy(fields()[1].schema(), other.food);
         fieldSetFlags()[1] = true;
       }
+      this.foodBuilder = null;
       if (isValidValue(fields()[2], other.delivery_location)) {
         this.delivery_location = data().deepCopy(fields()[2].schema(), other.delivery_location);
         fieldSetFlags()[2] = true;
@@ -317,7 +325,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'meta'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setMeta(com.gottaeat.domain.order.FoodOrderMeta value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setMeta(com.gottaeat.domain.order.FoodOrderMeta value) {
       validate(fields()[0], value);
       this.metaBuilder = null;
       this.meta = value;
@@ -353,7 +361,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setMetaBuilder(com.gottaeat.domain.order.FoodOrderMeta.Builder value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setMetaBuilder(com.gottaeat.domain.order.FoodOrderMeta.Builder value) {
       clearMeta();
       metaBuilder = value;
       return this;
@@ -371,7 +379,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'meta' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearMeta() {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder clearMeta() {
       meta = null;
       metaBuilder = null;
       fieldSetFlags()[0] = false;
@@ -382,7 +390,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'food' field.
       * @return The value.
       */
-    public java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> getFood() {
+    public com.gottaeat.domain.resturant.SolicitationResponse getFood() {
       return food;
     }
 
@@ -392,8 +400,9 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'food'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setFood(java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail> value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setFood(com.gottaeat.domain.resturant.SolicitationResponse value) {
       validate(fields()[1], value);
+      this.foodBuilder = null;
       this.food = value;
       fieldSetFlags()[1] = true;
       return this;
@@ -407,13 +416,47 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       return fieldSetFlags()[1];
     }
 
+    /**
+     * Gets the Builder instance for the 'food' field and creates one if it doesn't exist yet.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.resturant.SolicitationResponse.Builder getFoodBuilder() {
+      if (foodBuilder == null) {
+        if (hasFood()) {
+          setFoodBuilder(com.gottaeat.domain.resturant.SolicitationResponse.newBuilder(food));
+        } else {
+          setFoodBuilder(com.gottaeat.domain.resturant.SolicitationResponse.newBuilder());
+        }
+      }
+      return foodBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'food' field
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setFoodBuilder(com.gottaeat.domain.resturant.SolicitationResponse.Builder value) {
+      clearFood();
+      foodBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'food' field has an active Builder instance
+     * @return True if the 'food' field has an active Builder instance
+     */
+    public boolean hasFoodBuilder() {
+      return foodBuilder != null;
+    }
 
     /**
       * Clears the value of the 'food' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearFood() {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder clearFood() {
       food = null;
+      foodBuilder = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -432,7 +475,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'delivery_location'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setDeliveryLocation(com.gottaeat.domain.common.Address value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setDeliveryLocation(com.gottaeat.domain.common.Address value) {
       validate(fields()[2], value);
       this.delivery_locationBuilder = null;
       this.delivery_location = value;
@@ -468,7 +511,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setDeliveryLocationBuilder(com.gottaeat.domain.common.Address.Builder value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setDeliveryLocationBuilder(com.gottaeat.domain.common.Address.Builder value) {
       clearDeliveryLocation();
       delivery_locationBuilder = value;
       return this;
@@ -486,7 +529,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'delivery_location' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearDeliveryLocation() {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder clearDeliveryLocation() {
       delivery_location = null;
       delivery_locationBuilder = null;
       fieldSetFlags()[2] = false;
@@ -497,7 +540,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'payment' field.
       * @return The value.
       */
-    public com.gottaeat.domain.payment.Payment getPayment() {
+    public com.gottaeat.domain.payment.AuthorizedPayment getPayment() {
       return payment;
     }
 
@@ -507,7 +550,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'payment'.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder setPayment(com.gottaeat.domain.payment.Payment value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setPayment(com.gottaeat.domain.payment.AuthorizedPayment value) {
       validate(fields()[3], value);
       this.paymentBuilder = null;
       this.payment = value;
@@ -527,12 +570,12 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      * Gets the Builder instance for the 'payment' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.gottaeat.domain.payment.Payment.Builder getPaymentBuilder() {
+    public com.gottaeat.domain.payment.AuthorizedPayment.Builder getPaymentBuilder() {
       if (paymentBuilder == null) {
         if (hasPayment()) {
-          setPaymentBuilder(com.gottaeat.domain.payment.Payment.newBuilder(payment));
+          setPaymentBuilder(com.gottaeat.domain.payment.AuthorizedPayment.newBuilder(payment));
         } else {
-          setPaymentBuilder(com.gottaeat.domain.payment.Payment.newBuilder());
+          setPaymentBuilder(com.gottaeat.domain.payment.AuthorizedPayment.newBuilder());
         }
       }
       return paymentBuilder;
@@ -543,7 +586,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public com.gottaeat.domain.order.FoodOrder.Builder setPaymentBuilder(com.gottaeat.domain.payment.Payment.Builder value) {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder setPaymentBuilder(com.gottaeat.domain.payment.AuthorizedPayment.Builder value) {
       clearPayment();
       paymentBuilder = value;
       return this;
@@ -561,7 +604,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'payment' field.
       * @return This builder.
       */
-    public com.gottaeat.domain.order.FoodOrder.Builder clearPayment() {
+    public com.gottaeat.domain.order.ValidatedFoodOrder.Builder clearPayment() {
       payment = null;
       paymentBuilder = null;
       fieldSetFlags()[3] = false;
@@ -570,9 +613,9 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
 
     @Override
     @SuppressWarnings("unchecked")
-    public FoodOrder build() {
+    public ValidatedFoodOrder build() {
       try {
-        FoodOrder record = new FoodOrder();
+        ValidatedFoodOrder record = new ValidatedFoodOrder();
         if (metaBuilder != null) {
           try {
             record.meta = this.metaBuilder.build();
@@ -583,7 +626,16 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
         } else {
           record.meta = fieldSetFlags()[0] ? this.meta : (com.gottaeat.domain.order.FoodOrderMeta) defaultValue(fields()[0]);
         }
-        record.food = fieldSetFlags()[1] ? this.food : (java.util.List<com.gottaeat.domain.resturant.FoodOrderDetail>) defaultValue(fields()[1]);
+        if (foodBuilder != null) {
+          try {
+            record.food = this.foodBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("food"));
+            throw e;
+          }
+        } else {
+          record.food = fieldSetFlags()[1] ? this.food : (com.gottaeat.domain.resturant.SolicitationResponse) defaultValue(fields()[1]);
+        }
         if (delivery_locationBuilder != null) {
           try {
             record.delivery_location = this.delivery_locationBuilder.build();
@@ -602,7 +654,7 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
             throw e;
           }
         } else {
-          record.payment = fieldSetFlags()[3] ? this.payment : (com.gottaeat.domain.payment.Payment) defaultValue(fields()[3]);
+          record.payment = fieldSetFlags()[3] ? this.payment : (com.gottaeat.domain.payment.AuthorizedPayment) defaultValue(fields()[3]);
         }
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
@@ -614,8 +666,8 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<FoodOrder>
-    WRITER$ = (org.apache.avro.io.DatumWriter<FoodOrder>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<ValidatedFoodOrder>
+    WRITER$ = (org.apache.avro.io.DatumWriter<ValidatedFoodOrder>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -623,8 +675,8 @@ public class FoodOrder extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<FoodOrder>
-    READER$ = (org.apache.avro.io.DatumReader<FoodOrder>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<ValidatedFoodOrder>
+    READER$ = (org.apache.avro.io.DatumReader<ValidatedFoodOrder>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
