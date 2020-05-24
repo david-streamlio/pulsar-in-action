@@ -5,7 +5,7 @@
   <version>0.0.1</version>
   
   <properties>
-     <pulsar.version>2.4.2</pulsar.version>
+     <pulsar.version>2.5.1</pulsar.version>
   </properties>
   
   <build>
@@ -47,12 +47,31 @@
   		<groupId>org.apache.pulsar</groupId>
   		<artifactId>pulsar-client</artifactId>
   		<version>${pulsar.version}</version>
+  		<exclusions>
+  			<exclusion>
+  				<groupId>com.google.guava</groupId>
+  				<artifactId>guava</artifactId>
+  			</exclusion>
+  		</exclusions>
 	</dependency>
 
 	<dependency>
 		<groupId>org.apache.pulsar</groupId>
 		<artifactId>pulsar-functions-api</artifactId>
 		<version>${pulsar.version}</version>
+	
+	</dependency>
+	
+	<dependency>
+   		<groupId>org.apache.pulsar</groupId>
+   		<artifactId>pulsar-functions-local-runner-original</artifactId>
+   		<version>${pulsar.version}</version>
+   		<exclusions>
+   			<exclusion>
+   				<groupId>io.grpc</groupId>
+   				<artifactId>grpc-all</artifactId>
+   			</exclusion>
+   		</exclusions>
 	</dependency>
 	
   </dependencies>

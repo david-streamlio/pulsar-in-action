@@ -12,5 +12,6 @@ public class WordCountFunction implements Function<String, Void> {
            .forEach(word -> context.incrCounter(word, 1));
         return null;
     }
+    
 }
 

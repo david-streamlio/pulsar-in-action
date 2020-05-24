@@ -25,37 +25,12 @@ COPY conf/client.conf $PULSAR_HOME/conf/client.conf
 #############################################################################
 ADD manning $PULSAR_HOME/manning
 
-RUN chmod a+x $PULSAR_HOME/manning/scripts/*.sh \
-              $PULSAR_HOME/manning/security/*.sh \
-              $PULSAR_HOME/manning/security/*/*.sh \
-              $PULSAR_HOME/manning/security/authentication/*/*.sh
+RUN chmod a+x $PULSAR_HOME/manning/scripts/*.sh 
 
-#############################################################################
-# Transport Encryption using TLS
-#############################################################################
-RUN ["/bin/bash", "-c", "/pulsar/manning/security/TLS-encryption/enable-tls.sh"]
-
-#############################################################################
-# Generate TLS client certificates for authentication
-#############################################################################
-RUN ["/bin/bash", "-c", "/pulsar/manning/security/authentication/tls/gen-client-certs.sh"]
-
-#############################################################################
-# Generate JWT tokens for authentication
-#############################################################################
-RUN ["/bin/bash", "-c", "/pulsar/manning/security/authentication/jwt/gen-tokens.sh"]
-
-#############################################################################
-# Generate RSA public/private key pair for message encryption
-#############################################################################
-RUN ["/bin/bash", "-c", "/pulsar/manning/security/message-encryption/gen-rsa-keys.sh"]
-
-##############################################################################
-# Store all of the generated Certificates, JWT Tokens, and Keys in Vault
-##############################################################################
-# RUN ["/bin/bash", "-c", "/pulsar/manning/security/vault/configure-vault.sh"]
 
 ##############################################################################
 # Start Pulsar in Standalone mode
 ##############################################################################
 CMD ["/pulsar/bin/pulsar", "standalone"]
+
+# ENTRYPOINT ["/pulsar/bin/pulsar", "standalone", "--stream-storage-port", "4181"]
