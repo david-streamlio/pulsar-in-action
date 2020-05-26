@@ -29,19 +29,21 @@ public class PulsarReaders {
 				 .startMessageId(MessageId.earliest)
 				 .create();
 
-		startProducer();
+		new Thread(() -> {startProducer();}).start();
 		startReader();
 		
 	}
 	
-	private static void startProducer() throws Exception {
-		
-		while (true) {
-			producer.newMessage()
-		    .value("my-message-".getBytes())     
-		    .send();
-			
-			Thread.sleep(1000);
+	private static void startProducer() {
+		try {
+			while (true) {
+				producer.newMessage()
+			    .value("my-message-".getBytes())
+			    .send();
+				Thread.sleep(1000);
+			}
+		} catch (Exception ex) {
+			System.out.println("Exception during produce: " + ex.getMessage());
 		}
 	}
 	
@@ -49,7 +51,7 @@ public class PulsarReaders {
 		MessageId lastRead = null;
 		do {
 			Message<byte[]> msg = reader.readNext();
-			System.out.printf("Message read: %s", new String(msg.getData()));
+			System.out.println(String.format("Message read: %s", new String(msg.getData())));
 			lastRead = msg.getMessageId();
 		} while (!reader.hasReachedEndOfTopic());
 	}

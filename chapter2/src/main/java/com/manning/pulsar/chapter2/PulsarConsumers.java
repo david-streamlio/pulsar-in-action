@@ -36,13 +36,12 @@ public class PulsarConsumers {
 						.build())
 				.subscribe();
 		
-		startConsumer();
+		new Thread(() -> { startConsumer(); }).start();
 		startProducer();
 		
 	}
 	
 	private static void startProducer() throws Exception {
-		
 		while (true) {
 			producer.newMessage()
 		    .value("my-message-".getBytes())     
@@ -52,18 +51,18 @@ public class PulsarConsumers {
 		}
 	}
 	
-	private static void startConsumer() throws PulsarClientException {
-		
-		while (true) {
-			// Wait for a message
-			Message<byte[]> msg = consumer.receive();    
-			try {
-				System.out.printf("Message received: %s", new String(msg.getData()));    
+	private static void startConsumer() {
+		Message<byte[]> msg = null;
+		try {
+			while (true) {
+				// Wait for a message
+				msg = consumer.receive();
+				System.out.println(String.format("Message received: %s", new String(msg.getData())));
 				consumer.acknowledge(msg);    
-			} catch (Exception e) {
-				System.err.printf("Unable to consume message: %s", e.getMessage()); 
-				consumer.negativeAcknowledge(msg);
 			}
+		} catch (Exception e) {
+			System.err.println(String.format("Unable to consume message: %s", e.getMessage()));
+			consumer.negativeAcknowledge(msg);
 		}
 	}
 }
