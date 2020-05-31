@@ -6,6 +6,7 @@ import java.time.Duration;
 import org.apache.pulsar.client.impl.schema.AvroSchema;
 import org.apache.pulsar.functions.api.Context;
 import org.apache.pulsar.functions.api.Function;
+import org.apache.pulsar.shade.org.apache.commons.lang.StringUtils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -113,6 +114,10 @@ public class CreditCardAuthorizationService implements Function<CreditCard, Void
 	}
 
 	private String getToken(String json) {
+		if (StringUtils.isBlank(json)) {
+			return null;
+		}
+		
 		JsonElement jsonTree = new JsonParser().parse(json);
 		
 		if (jsonTree.isJsonObject()) {

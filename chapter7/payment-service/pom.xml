@@ -7,7 +7,7 @@
   </parent>
   <artifactId>payment-service</artifactId>
   <properties>
-	 <pulsar.version>2.5.0</pulsar.version>
+	 <pulsar.version>2.5.1</pulsar.version>
   </properties>
   
   <build>
