@@ -1,45 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.manning.pulsar</groupId>
-  <artifactId>chapter5</artifactId>
+  <artifactId>chapter4</artifactId>
   <version>0.0.1</version>
+  <description>Chapter on security</description>
   
   <properties>
-     <pulsar.version>2.5.1</pulsar.version>
+     <pulsar.version>2.5.0</pulsar.version>
   </properties>
-  
+
   <build>
-   <plugins>
-	  <plugin>
-		<groupId>org.apache.nifi</groupId>
-		<artifactId>nifi-nar-maven-plugin</artifactId>
-		<version>1.2.0</version>
-		<extensions>true</extensions>
-		<executions>
-			<execution>
-				<phase>package</phase>
-				<goals>
-					<goal>nar</goal>
-				</goals>
-			</execution>
-		</executions>
-	  </plugin>
-	  <plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-compiler-plugin</artifactId>
-	  <version>3.8.1</version>
-		<configuration>
+    <plugins>
+      <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>3.8.1</version>
+		  <configuration>
     		<source>1.8</source>
     		<target>1.8</target>
-  		</configuration>
-	</plugin>
-	<plugin>
+  		  </configuration>
+	  </plugin>
+	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
     </plugin>
     </plugins>
-</build>
+  </build>
   
   
   <dependencies>
@@ -47,33 +34,32 @@
   		<groupId>org.apache.pulsar</groupId>
   		<artifactId>pulsar-client</artifactId>
   		<version>${pulsar.version}</version>
-  		<exclusions>
-  			<exclusion>
-  				<groupId>com.google.guava</groupId>
-  				<artifactId>guava</artifactId>
-  			</exclusion>
-  		</exclusions>
+	</dependency>
+	
+	<dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.13</version>
+    	<scope>test</scope>
 	</dependency>
 
 	<dependency>
 		<groupId>org.apache.pulsar</groupId>
-		<artifactId>pulsar-functions-api</artifactId>
-		<version>${pulsar.version}</version>
-	
+		<artifactId>pulsar-io-core</artifactId>
+		<version>2.5.0-SNAPSHOT</version>
 	</dependency>
 	
 	<dependency>
-   		<groupId>org.apache.pulsar</groupId>
-   		<artifactId>pulsar-functions-local-runner-original</artifactId>
-   		<version>${pulsar.version}</version>
-   		<exclusions>
-   			<exclusion>
-   				<groupId>io.grpc</groupId>
-   				<artifactId>grpc-all</artifactId>
-   			</exclusion>
-   		</exclusions>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.10.1</version>
 	</dependency>
-	
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>3.0.0</version>
+		<scope>test</scope>
+	</dependency>
   </dependencies>
-  
+    
 </project>

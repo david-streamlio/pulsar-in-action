@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3.source;
+package com.manning.pulsar.chapter5.source;
 
 import java.util.Map;
 import java.util.Random;

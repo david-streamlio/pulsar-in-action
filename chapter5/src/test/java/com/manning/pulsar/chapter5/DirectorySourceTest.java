@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3;
+package com.manning.pulsar.chapter5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.manning.pulsar.chapter3.source.DirectorySource;
+import com.manning.pulsar.chapter5.source.DirectorySource;
 
 public class DirectorySourceTest {
 	

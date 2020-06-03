@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter2;
+package com.manning.pulsar.chapter3;
 
 import java.util.concurrent.TimeUnit;
 
