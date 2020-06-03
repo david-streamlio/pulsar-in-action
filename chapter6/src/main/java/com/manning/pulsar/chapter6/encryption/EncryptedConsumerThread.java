@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.encryption;
+package com.manning.pulsar.chapter6.encryption;
 
 import java.util.concurrent.TimeUnit;
 

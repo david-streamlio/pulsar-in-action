@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.clients;
+package com.manning.pulsar.chapter6.clients;
 
 import java.io.IOException;
 import java.nio.file.Files;

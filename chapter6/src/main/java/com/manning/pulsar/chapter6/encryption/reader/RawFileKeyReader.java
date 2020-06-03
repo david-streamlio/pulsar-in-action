@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.encryption.reader;
+package com.manning.pulsar.chapter6.encryption.reader;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.encryption;
+package com.manning.pulsar.chapter6.encryption;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,7 +29,7 @@ import com.bettercloud.vault.VaultConfig;
 import com.bettercloud.vault.VaultException;
 import com.bettercloud.vault.response.AuthResponse;
 import com.bettercloud.vault.response.LogicalResponse;
-import com.manning.pulsar.chapter5.encryption.reader.VaultKeyReader;
+import com.manning.pulsar.chapter6.encryption.reader.VaultKeyReader;
 
 
 public class EncryptedDemo {

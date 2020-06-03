@@ -17,7 +17,7 @@ import com.bettercloud.vault.Vault;
 import com.bettercloud.vault.VaultConfig;
 import com.bettercloud.vault.VaultException;
 import com.bettercloud.vault.response.AuthResponse;
-import com.manning.pulsar.chapter5.encryption.reader.VaultKeyReader;
+import com.manning.pulsar.chapter6.encryption.reader.VaultKeyReader;
 
 import org.junit.*;
 

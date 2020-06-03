@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.clients;
+package com.manning.pulsar.chapter6.clients;
 
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;

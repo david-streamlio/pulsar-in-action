@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter5.encryption;
+package com.manning.pulsar.chapter6.encryption;
 
 import org.apache.pulsar.client.api.CryptoKeyReader;
 import org.apache.pulsar.client.api.Producer;
