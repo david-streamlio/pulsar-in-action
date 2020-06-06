@@ -10,7 +10,7 @@
   <properties>
   	<resilience4j.version>1.4.0</resilience4j.version>
   	<pulsar.version>2.5.1</pulsar.version>
-  	<ignite.version>2.8.0</ignite.version>
+  	<ignite.version>2.8.1</ignite.version>
   </properties>
   
     <build>
