@@ -5,7 +5,7 @@
   <version>0.0.1</version>
   
   <properties>
-     <pulsar.version>2.4.2</pulsar.version>
+     <pulsar.version>2.5.1</pulsar.version>
   </properties>
   
   <build>

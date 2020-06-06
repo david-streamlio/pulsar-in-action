@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.manning.pulsar</groupId>
-    <artifactId>chapter8</artifactId>
+    <artifactId>chapter9</artifactId>
     <version>0.0.1</version>
   </parent>
   <groupId>com.gottaeat.services.geoencoding.google</groupId>
