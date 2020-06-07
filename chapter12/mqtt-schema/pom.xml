@@ -1,13 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.gottaeat</groupId>
-    <artifactId>GottaEat-Services</artifactId>
-    <version>0.0.1</version>
+    <groupId>com.manning.pulsar</groupId>
+    <artifactId>chapter12</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>domain-schema</artifactId>
-  <version>0.0.3</version>
-
+  <artifactId>mqtt-schema</artifactId>
+  
   <properties>
      <pulsar.version>2.5.1</pulsar.version>
   </properties>
@@ -25,7 +24,7 @@
                 <goal>idl-protocol</goal>
              </goals>
              <configuration>
-                <sourceDirectory>${project.basedir}/src/main/resources/avro/order</sourceDirectory>
+                <sourceDirectory>${project.basedir}/src/main/resources/avro/sensors</sourceDirectory>
                 <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
              </configuration>
             </execution>

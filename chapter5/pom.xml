@@ -6,7 +6,7 @@
   <description>Chapter on security</description>
   
   <properties>
-     <pulsar.version>2.5.0</pulsar.version>
+     <pulsar.version>2.5.1</pulsar.version>
   </properties>
 
   <build>

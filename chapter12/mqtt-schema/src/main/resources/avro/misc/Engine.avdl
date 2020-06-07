@@ -1,0 +1,14 @@
+@namespace("com.manning.pulsar.iiot.engine")
+
+protocol EngineProtocol {
+
+  record EngineSensor {
+  	int sensor_id;
+  	float motor_sator_winding_temp;
+  	float iron_temp;
+  	float cooling_air_temp;
+  	float air_temp;
+  	float motor_power_supply_current;  
+  }
+  
+}

@@ -1,0 +1,13 @@
+@namespace("com.manning.pulsar.iiot.oilcooler")
+
+protocol OilCoolerProtocol {
+
+  record OilCoolerSensor {
+  	int sensor_id;
+  	float lubricating_oil_temp;
+  	float lubricating_oil_pressure;
+  	float oil_temp_back;
+  	float oil_temp_front;
+  }
+  	
+}
