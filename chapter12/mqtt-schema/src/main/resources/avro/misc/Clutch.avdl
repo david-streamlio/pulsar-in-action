@@ -1,0 +1,17 @@
+@namespace("com.manning.pulsar.iiot.clutch")
+
+protocol ClutchProtocol {
+
+  record ClutchSensor {
+  	int sensor_id;
+  	float bearing_1_temp; 
+  	float bearing_2_temp;
+  	float bearing_3_temp;
+  	float bearing_4_temp;
+  	float bearing_5_temp;
+  	float bearing_6_temp; 
+  	float thrust_bearing_temp;
+  	float clutch_attitude;
+  }
+  
+}

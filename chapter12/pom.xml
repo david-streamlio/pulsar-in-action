@@ -44,4 +44,9 @@
 	
   </dependencies>
   
+  <packaging>pom</packaging>
+  <modules>
+  	<module>mqtt-schema</module>
+  	<module>Sensor-Simulator</module>
+  </modules>
 </project>

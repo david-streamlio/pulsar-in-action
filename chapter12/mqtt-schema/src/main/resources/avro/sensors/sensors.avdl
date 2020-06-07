@@ -1,0 +1,7 @@
+@namespace("com.manning.pulsar.iiot")
+protocol SensorProtocol {
+  import idl "../misc/Clutch.avdl";
+  import idl "../misc/Engine.avdl";
+  import idl "../misc/Pump.avdl";
+  import idl "../misc/OilCooler.avdl";
+}
