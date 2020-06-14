@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8284744304614970514L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PumpSensor\",\"namespace\":\"com.manning.pulsar.iiot.pump\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"output_water_pressure\",\"type\":\"float\"},{\"name\":\"supply_water_pressure\",\"type\":\"float\"},{\"name\":\"temp_at_discharge_nozzle\",\"type\":\"float\"},{\"name\":\"water_flow_rate\",\"type\":\"int\"}]}");
+  private static final long serialVersionUID = 1863023866172017177L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PumpSensor\",\"namespace\":\"com.manning.pulsar.iiot.pump\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"output_water_pressure\",\"type\":\"double\"},{\"name\":\"supply_water_pressure\",\"type\":\"double\"},{\"name\":\"temp_at_discharge_nozzle\",\"type\":\"double\"},{\"name\":\"water_flow_rate\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,9 +72,9 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @Deprecated public int sensor_id;
-  @Deprecated public float output_water_pressure;
-  @Deprecated public float supply_water_pressure;
-  @Deprecated public float temp_at_discharge_nozzle;
+  @Deprecated public double output_water_pressure;
+  @Deprecated public double supply_water_pressure;
+  @Deprecated public double temp_at_discharge_nozzle;
   @Deprecated public int water_flow_rate;
 
   /**
@@ -92,7 +92,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * @param temp_at_discharge_nozzle The new value for temp_at_discharge_nozzle
    * @param water_flow_rate The new value for water_flow_rate
    */
-  public PumpSensor(java.lang.Integer sensor_id, java.lang.Float output_water_pressure, java.lang.Float supply_water_pressure, java.lang.Float temp_at_discharge_nozzle, java.lang.Integer water_flow_rate) {
+  public PumpSensor(java.lang.Integer sensor_id, java.lang.Double output_water_pressure, java.lang.Double supply_water_pressure, java.lang.Double temp_at_discharge_nozzle, java.lang.Integer water_flow_rate) {
     this.sensor_id = sensor_id;
     this.output_water_pressure = output_water_pressure;
     this.supply_water_pressure = supply_water_pressure;
@@ -119,9 +119,9 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: sensor_id = (java.lang.Integer)value$; break;
-    case 1: output_water_pressure = (java.lang.Float)value$; break;
-    case 2: supply_water_pressure = (java.lang.Float)value$; break;
-    case 3: temp_at_discharge_nozzle = (java.lang.Float)value$; break;
+    case 1: output_water_pressure = (java.lang.Double)value$; break;
+    case 2: supply_water_pressure = (java.lang.Double)value$; break;
+    case 3: temp_at_discharge_nozzle = (java.lang.Double)value$; break;
     case 4: water_flow_rate = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -148,7 +148,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'output_water_pressure' field.
    * @return The value of the 'output_water_pressure' field.
    */
-  public float getOutputWaterPressure() {
+  public double getOutputWaterPressure() {
     return output_water_pressure;
   }
 
@@ -157,7 +157,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Sets the value of the 'output_water_pressure' field.
    * @param value the value to set.
    */
-  public void setOutputWaterPressure(float value) {
+  public void setOutputWaterPressure(double value) {
     this.output_water_pressure = value;
   }
 
@@ -165,7 +165,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'supply_water_pressure' field.
    * @return The value of the 'supply_water_pressure' field.
    */
-  public float getSupplyWaterPressure() {
+  public double getSupplyWaterPressure() {
     return supply_water_pressure;
   }
 
@@ -174,7 +174,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Sets the value of the 'supply_water_pressure' field.
    * @param value the value to set.
    */
-  public void setSupplyWaterPressure(float value) {
+  public void setSupplyWaterPressure(double value) {
     this.supply_water_pressure = value;
   }
 
@@ -182,7 +182,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'temp_at_discharge_nozzle' field.
    * @return The value of the 'temp_at_discharge_nozzle' field.
    */
-  public float getTempAtDischargeNozzle() {
+  public double getTempAtDischargeNozzle() {
     return temp_at_discharge_nozzle;
   }
 
@@ -191,7 +191,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
    * Sets the value of the 'temp_at_discharge_nozzle' field.
    * @param value the value to set.
    */
-  public void setTempAtDischargeNozzle(float value) {
+  public void setTempAtDischargeNozzle(double value) {
     this.temp_at_discharge_nozzle = value;
   }
 
@@ -253,9 +253,9 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
     implements org.apache.avro.data.RecordBuilder<PumpSensor> {
 
     private int sensor_id;
-    private float output_water_pressure;
-    private float supply_water_pressure;
-    private float temp_at_discharge_nozzle;
+    private double output_water_pressure;
+    private double supply_water_pressure;
+    private double temp_at_discharge_nozzle;
     private int water_flow_rate;
 
     /** Creates a new Builder */
@@ -362,7 +362,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * Gets the value of the 'output_water_pressure' field.
       * @return The value.
       */
-    public float getOutputWaterPressure() {
+    public double getOutputWaterPressure() {
       return output_water_pressure;
     }
 
@@ -372,7 +372,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'output_water_pressure'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setOutputWaterPressure(float value) {
+    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setOutputWaterPressure(double value) {
       validate(fields()[1], value);
       this.output_water_pressure = value;
       fieldSetFlags()[1] = true;
@@ -401,7 +401,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * Gets the value of the 'supply_water_pressure' field.
       * @return The value.
       */
-    public float getSupplyWaterPressure() {
+    public double getSupplyWaterPressure() {
       return supply_water_pressure;
     }
 
@@ -411,7 +411,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'supply_water_pressure'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setSupplyWaterPressure(float value) {
+    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setSupplyWaterPressure(double value) {
       validate(fields()[2], value);
       this.supply_water_pressure = value;
       fieldSetFlags()[2] = true;
@@ -440,7 +440,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * Gets the value of the 'temp_at_discharge_nozzle' field.
       * @return The value.
       */
-    public float getTempAtDischargeNozzle() {
+    public double getTempAtDischargeNozzle() {
       return temp_at_discharge_nozzle;
     }
 
@@ -450,7 +450,7 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'temp_at_discharge_nozzle'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setTempAtDischargeNozzle(float value) {
+    public com.manning.pulsar.iiot.pump.PumpSensor.Builder setTempAtDischargeNozzle(double value) {
       validate(fields()[3], value);
       this.temp_at_discharge_nozzle = value;
       fieldSetFlags()[3] = true;
@@ -520,9 +520,9 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
       try {
         PumpSensor record = new PumpSensor();
         record.sensor_id = fieldSetFlags()[0] ? this.sensor_id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.output_water_pressure = fieldSetFlags()[1] ? this.output_water_pressure : (java.lang.Float) defaultValue(fields()[1]);
-        record.supply_water_pressure = fieldSetFlags()[2] ? this.supply_water_pressure : (java.lang.Float) defaultValue(fields()[2]);
-        record.temp_at_discharge_nozzle = fieldSetFlags()[3] ? this.temp_at_discharge_nozzle : (java.lang.Float) defaultValue(fields()[3]);
+        record.output_water_pressure = fieldSetFlags()[1] ? this.output_water_pressure : (java.lang.Double) defaultValue(fields()[1]);
+        record.supply_water_pressure = fieldSetFlags()[2] ? this.supply_water_pressure : (java.lang.Double) defaultValue(fields()[2]);
+        record.temp_at_discharge_nozzle = fieldSetFlags()[3] ? this.temp_at_discharge_nozzle : (java.lang.Double) defaultValue(fields()[3]);
         record.water_flow_rate = fieldSetFlags()[4] ? this.water_flow_rate : (java.lang.Integer) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
@@ -558,11 +558,11 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
   {
     out.writeInt(this.sensor_id);
 
-    out.writeFloat(this.output_water_pressure);
+    out.writeDouble(this.output_water_pressure);
 
-    out.writeFloat(this.supply_water_pressure);
+    out.writeDouble(this.supply_water_pressure);
 
-    out.writeFloat(this.temp_at_discharge_nozzle);
+    out.writeDouble(this.temp_at_discharge_nozzle);
 
     out.writeInt(this.water_flow_rate);
 
@@ -575,11 +575,11 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
     if (fieldOrder == null) {
       this.sensor_id = in.readInt();
 
-      this.output_water_pressure = in.readFloat();
+      this.output_water_pressure = in.readDouble();
 
-      this.supply_water_pressure = in.readFloat();
+      this.supply_water_pressure = in.readDouble();
 
-      this.temp_at_discharge_nozzle = in.readFloat();
+      this.temp_at_discharge_nozzle = in.readDouble();
 
       this.water_flow_rate = in.readInt();
 
@@ -591,15 +591,15 @@ public class PumpSensor extends org.apache.avro.specific.SpecificRecordBase impl
           break;
 
         case 1:
-          this.output_water_pressure = in.readFloat();
+          this.output_water_pressure = in.readDouble();
           break;
 
         case 2:
-          this.supply_water_pressure = in.readFloat();
+          this.supply_water_pressure = in.readDouble();
           break;
 
         case 3:
-          this.temp_at_discharge_nozzle = in.readFloat();
+          this.temp_at_discharge_nozzle = in.readDouble();
           break;
 
         case 4:

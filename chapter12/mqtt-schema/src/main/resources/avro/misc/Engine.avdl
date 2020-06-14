@@ -4,11 +4,11 @@ protocol EngineProtocol {
 
   record EngineSensor {
   	int sensor_id;
-  	float motor_sator_winding_temp;
-  	float iron_temp;
-  	float cooling_air_temp;
-  	float air_temp;
-  	float motor_power_supply_current;  
+  	double motor_sator_winding_temp;
+  	double iron_temp;
+  	double cooling_air_temp;
+  	double air_temp;
+  	double motor_power_supply_current;  
   }
   
 }

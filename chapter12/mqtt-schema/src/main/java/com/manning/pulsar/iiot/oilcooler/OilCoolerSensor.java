@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6487798185041669920L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OilCoolerSensor\",\"namespace\":\"com.manning.pulsar.iiot.oilcooler\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"lubricating_oil_temp\",\"type\":\"float\"},{\"name\":\"lubricating_oil_pressure\",\"type\":\"float\"},{\"name\":\"oil_temp_back\",\"type\":\"float\"},{\"name\":\"oil_temp_front\",\"type\":\"float\"}]}");
+  private static final long serialVersionUID = 5652121809275217959L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OilCoolerSensor\",\"namespace\":\"com.manning.pulsar.iiot.oilcooler\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"lubricating_oil_temp\",\"type\":\"double\"},{\"name\":\"lubricating_oil_pressure\",\"type\":\"double\"},{\"name\":\"oil_temp_back\",\"type\":\"double\"},{\"name\":\"oil_temp_front\",\"type\":\"double\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,10 +72,10 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
   }
 
   @Deprecated public int sensor_id;
-  @Deprecated public float lubricating_oil_temp;
-  @Deprecated public float lubricating_oil_pressure;
-  @Deprecated public float oil_temp_back;
-  @Deprecated public float oil_temp_front;
+  @Deprecated public double lubricating_oil_temp;
+  @Deprecated public double lubricating_oil_pressure;
+  @Deprecated public double oil_temp_back;
+  @Deprecated public double oil_temp_front;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -92,7 +92,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * @param oil_temp_back The new value for oil_temp_back
    * @param oil_temp_front The new value for oil_temp_front
    */
-  public OilCoolerSensor(java.lang.Integer sensor_id, java.lang.Float lubricating_oil_temp, java.lang.Float lubricating_oil_pressure, java.lang.Float oil_temp_back, java.lang.Float oil_temp_front) {
+  public OilCoolerSensor(java.lang.Integer sensor_id, java.lang.Double lubricating_oil_temp, java.lang.Double lubricating_oil_pressure, java.lang.Double oil_temp_back, java.lang.Double oil_temp_front) {
     this.sensor_id = sensor_id;
     this.lubricating_oil_temp = lubricating_oil_temp;
     this.lubricating_oil_pressure = lubricating_oil_pressure;
@@ -119,10 +119,10 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: sensor_id = (java.lang.Integer)value$; break;
-    case 1: lubricating_oil_temp = (java.lang.Float)value$; break;
-    case 2: lubricating_oil_pressure = (java.lang.Float)value$; break;
-    case 3: oil_temp_back = (java.lang.Float)value$; break;
-    case 4: oil_temp_front = (java.lang.Float)value$; break;
+    case 1: lubricating_oil_temp = (java.lang.Double)value$; break;
+    case 2: lubricating_oil_pressure = (java.lang.Double)value$; break;
+    case 3: oil_temp_back = (java.lang.Double)value$; break;
+    case 4: oil_temp_front = (java.lang.Double)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -148,7 +148,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'lubricating_oil_temp' field.
    * @return The value of the 'lubricating_oil_temp' field.
    */
-  public float getLubricatingOilTemp() {
+  public double getLubricatingOilTemp() {
     return lubricating_oil_temp;
   }
 
@@ -157,7 +157,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'lubricating_oil_temp' field.
    * @param value the value to set.
    */
-  public void setLubricatingOilTemp(float value) {
+  public void setLubricatingOilTemp(double value) {
     this.lubricating_oil_temp = value;
   }
 
@@ -165,7 +165,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'lubricating_oil_pressure' field.
    * @return The value of the 'lubricating_oil_pressure' field.
    */
-  public float getLubricatingOilPressure() {
+  public double getLubricatingOilPressure() {
     return lubricating_oil_pressure;
   }
 
@@ -174,7 +174,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'lubricating_oil_pressure' field.
    * @param value the value to set.
    */
-  public void setLubricatingOilPressure(float value) {
+  public void setLubricatingOilPressure(double value) {
     this.lubricating_oil_pressure = value;
   }
 
@@ -182,7 +182,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'oil_temp_back' field.
    * @return The value of the 'oil_temp_back' field.
    */
-  public float getOilTempBack() {
+  public double getOilTempBack() {
     return oil_temp_back;
   }
 
@@ -191,7 +191,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'oil_temp_back' field.
    * @param value the value to set.
    */
-  public void setOilTempBack(float value) {
+  public void setOilTempBack(double value) {
     this.oil_temp_back = value;
   }
 
@@ -199,7 +199,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'oil_temp_front' field.
    * @return The value of the 'oil_temp_front' field.
    */
-  public float getOilTempFront() {
+  public double getOilTempFront() {
     return oil_temp_front;
   }
 
@@ -208,7 +208,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'oil_temp_front' field.
    * @param value the value to set.
    */
-  public void setOilTempFront(float value) {
+  public void setOilTempFront(double value) {
     this.oil_temp_front = value;
   }
 
@@ -253,10 +253,10 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
     implements org.apache.avro.data.RecordBuilder<OilCoolerSensor> {
 
     private int sensor_id;
-    private float lubricating_oil_temp;
-    private float lubricating_oil_pressure;
-    private float oil_temp_back;
-    private float oil_temp_front;
+    private double lubricating_oil_temp;
+    private double lubricating_oil_pressure;
+    private double oil_temp_back;
+    private double oil_temp_front;
 
     /** Creates a new Builder */
     private Builder() {
@@ -362,7 +362,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'lubricating_oil_temp' field.
       * @return The value.
       */
-    public float getLubricatingOilTemp() {
+    public double getLubricatingOilTemp() {
       return lubricating_oil_temp;
     }
 
@@ -372,7 +372,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'lubricating_oil_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setLubricatingOilTemp(float value) {
+    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setLubricatingOilTemp(double value) {
       validate(fields()[1], value);
       this.lubricating_oil_temp = value;
       fieldSetFlags()[1] = true;
@@ -401,7 +401,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'lubricating_oil_pressure' field.
       * @return The value.
       */
-    public float getLubricatingOilPressure() {
+    public double getLubricatingOilPressure() {
       return lubricating_oil_pressure;
     }
 
@@ -411,7 +411,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'lubricating_oil_pressure'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setLubricatingOilPressure(float value) {
+    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setLubricatingOilPressure(double value) {
       validate(fields()[2], value);
       this.lubricating_oil_pressure = value;
       fieldSetFlags()[2] = true;
@@ -440,7 +440,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'oil_temp_back' field.
       * @return The value.
       */
-    public float getOilTempBack() {
+    public double getOilTempBack() {
       return oil_temp_back;
     }
 
@@ -450,7 +450,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'oil_temp_back'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setOilTempBack(float value) {
+    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setOilTempBack(double value) {
       validate(fields()[3], value);
       this.oil_temp_back = value;
       fieldSetFlags()[3] = true;
@@ -479,7 +479,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'oil_temp_front' field.
       * @return The value.
       */
-    public float getOilTempFront() {
+    public double getOilTempFront() {
       return oil_temp_front;
     }
 
@@ -489,7 +489,7 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'oil_temp_front'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setOilTempFront(float value) {
+    public com.manning.pulsar.iiot.oilcooler.OilCoolerSensor.Builder setOilTempFront(double value) {
       validate(fields()[4], value);
       this.oil_temp_front = value;
       fieldSetFlags()[4] = true;
@@ -520,10 +520,10 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
       try {
         OilCoolerSensor record = new OilCoolerSensor();
         record.sensor_id = fieldSetFlags()[0] ? this.sensor_id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.lubricating_oil_temp = fieldSetFlags()[1] ? this.lubricating_oil_temp : (java.lang.Float) defaultValue(fields()[1]);
-        record.lubricating_oil_pressure = fieldSetFlags()[2] ? this.lubricating_oil_pressure : (java.lang.Float) defaultValue(fields()[2]);
-        record.oil_temp_back = fieldSetFlags()[3] ? this.oil_temp_back : (java.lang.Float) defaultValue(fields()[3]);
-        record.oil_temp_front = fieldSetFlags()[4] ? this.oil_temp_front : (java.lang.Float) defaultValue(fields()[4]);
+        record.lubricating_oil_temp = fieldSetFlags()[1] ? this.lubricating_oil_temp : (java.lang.Double) defaultValue(fields()[1]);
+        record.lubricating_oil_pressure = fieldSetFlags()[2] ? this.lubricating_oil_pressure : (java.lang.Double) defaultValue(fields()[2]);
+        record.oil_temp_back = fieldSetFlags()[3] ? this.oil_temp_back : (java.lang.Double) defaultValue(fields()[3]);
+        record.oil_temp_front = fieldSetFlags()[4] ? this.oil_temp_front : (java.lang.Double) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -558,13 +558,13 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
   {
     out.writeInt(this.sensor_id);
 
-    out.writeFloat(this.lubricating_oil_temp);
+    out.writeDouble(this.lubricating_oil_temp);
 
-    out.writeFloat(this.lubricating_oil_pressure);
+    out.writeDouble(this.lubricating_oil_pressure);
 
-    out.writeFloat(this.oil_temp_back);
+    out.writeDouble(this.oil_temp_back);
 
-    out.writeFloat(this.oil_temp_front);
+    out.writeDouble(this.oil_temp_front);
 
   }
 
@@ -575,13 +575,13 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
     if (fieldOrder == null) {
       this.sensor_id = in.readInt();
 
-      this.lubricating_oil_temp = in.readFloat();
+      this.lubricating_oil_temp = in.readDouble();
 
-      this.lubricating_oil_pressure = in.readFloat();
+      this.lubricating_oil_pressure = in.readDouble();
 
-      this.oil_temp_back = in.readFloat();
+      this.oil_temp_back = in.readDouble();
 
-      this.oil_temp_front = in.readFloat();
+      this.oil_temp_front = in.readDouble();
 
     } else {
       for (int i = 0; i < 5; i++) {
@@ -591,19 +591,19 @@ public class OilCoolerSensor extends org.apache.avro.specific.SpecificRecordBase
           break;
 
         case 1:
-          this.lubricating_oil_temp = in.readFloat();
+          this.lubricating_oil_temp = in.readDouble();
           break;
 
         case 2:
-          this.lubricating_oil_pressure = in.readFloat();
+          this.lubricating_oil_pressure = in.readDouble();
           break;
 
         case 3:
-          this.oil_temp_back = in.readFloat();
+          this.oil_temp_back = in.readDouble();
           break;
 
         case 4:
-          this.oil_temp_front = in.readFloat();
+          this.oil_temp_front = in.readDouble();
           break;
 
         default:
