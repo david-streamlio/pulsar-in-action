@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5216807985002897121L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClutchSensor\",\"namespace\":\"com.manning.pulsar.iiot.clutch\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"bearing_1_temp\",\"type\":\"float\"},{\"name\":\"bearing_2_temp\",\"type\":\"float\"},{\"name\":\"bearing_3_temp\",\"type\":\"float\"},{\"name\":\"bearing_4_temp\",\"type\":\"float\"},{\"name\":\"bearing_5_temp\",\"type\":\"float\"},{\"name\":\"bearing_6_temp\",\"type\":\"float\"},{\"name\":\"thrust_bearing_temp\",\"type\":\"float\"},{\"name\":\"clutch_attitude\",\"type\":\"float\"}]}");
+  private static final long serialVersionUID = 2034928845821017520L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClutchSensor\",\"namespace\":\"com.manning.pulsar.iiot.clutch\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"bearing_1_temp\",\"type\":\"double\"},{\"name\":\"bearing_2_temp\",\"type\":\"double\"},{\"name\":\"bearing_3_temp\",\"type\":\"double\"},{\"name\":\"bearing_4_temp\",\"type\":\"double\"},{\"name\":\"bearing_5_temp\",\"type\":\"double\"},{\"name\":\"bearing_6_temp\",\"type\":\"double\"},{\"name\":\"thrust_bearing_temp\",\"type\":\"double\"},{\"name\":\"clutch_attitude\",\"type\":\"double\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,14 +72,14 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
   }
 
   @Deprecated public int sensor_id;
-  @Deprecated public float bearing_1_temp;
-  @Deprecated public float bearing_2_temp;
-  @Deprecated public float bearing_3_temp;
-  @Deprecated public float bearing_4_temp;
-  @Deprecated public float bearing_5_temp;
-  @Deprecated public float bearing_6_temp;
-  @Deprecated public float thrust_bearing_temp;
-  @Deprecated public float clutch_attitude;
+  @Deprecated public double bearing_1_temp;
+  @Deprecated public double bearing_2_temp;
+  @Deprecated public double bearing_3_temp;
+  @Deprecated public double bearing_4_temp;
+  @Deprecated public double bearing_5_temp;
+  @Deprecated public double bearing_6_temp;
+  @Deprecated public double thrust_bearing_temp;
+  @Deprecated public double clutch_attitude;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -100,7 +100,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * @param thrust_bearing_temp The new value for thrust_bearing_temp
    * @param clutch_attitude The new value for clutch_attitude
    */
-  public ClutchSensor(java.lang.Integer sensor_id, java.lang.Float bearing_1_temp, java.lang.Float bearing_2_temp, java.lang.Float bearing_3_temp, java.lang.Float bearing_4_temp, java.lang.Float bearing_5_temp, java.lang.Float bearing_6_temp, java.lang.Float thrust_bearing_temp, java.lang.Float clutch_attitude) {
+  public ClutchSensor(java.lang.Integer sensor_id, java.lang.Double bearing_1_temp, java.lang.Double bearing_2_temp, java.lang.Double bearing_3_temp, java.lang.Double bearing_4_temp, java.lang.Double bearing_5_temp, java.lang.Double bearing_6_temp, java.lang.Double thrust_bearing_temp, java.lang.Double clutch_attitude) {
     this.sensor_id = sensor_id;
     this.bearing_1_temp = bearing_1_temp;
     this.bearing_2_temp = bearing_2_temp;
@@ -135,14 +135,14 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: sensor_id = (java.lang.Integer)value$; break;
-    case 1: bearing_1_temp = (java.lang.Float)value$; break;
-    case 2: bearing_2_temp = (java.lang.Float)value$; break;
-    case 3: bearing_3_temp = (java.lang.Float)value$; break;
-    case 4: bearing_4_temp = (java.lang.Float)value$; break;
-    case 5: bearing_5_temp = (java.lang.Float)value$; break;
-    case 6: bearing_6_temp = (java.lang.Float)value$; break;
-    case 7: thrust_bearing_temp = (java.lang.Float)value$; break;
-    case 8: clutch_attitude = (java.lang.Float)value$; break;
+    case 1: bearing_1_temp = (java.lang.Double)value$; break;
+    case 2: bearing_2_temp = (java.lang.Double)value$; break;
+    case 3: bearing_3_temp = (java.lang.Double)value$; break;
+    case 4: bearing_4_temp = (java.lang.Double)value$; break;
+    case 5: bearing_5_temp = (java.lang.Double)value$; break;
+    case 6: bearing_6_temp = (java.lang.Double)value$; break;
+    case 7: thrust_bearing_temp = (java.lang.Double)value$; break;
+    case 8: clutch_attitude = (java.lang.Double)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -168,7 +168,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_1_temp' field.
    * @return The value of the 'bearing_1_temp' field.
    */
-  public float getBearing1Temp() {
+  public double getBearing1Temp() {
     return bearing_1_temp;
   }
 
@@ -177,7 +177,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_1_temp' field.
    * @param value the value to set.
    */
-  public void setBearing1Temp(float value) {
+  public void setBearing1Temp(double value) {
     this.bearing_1_temp = value;
   }
 
@@ -185,7 +185,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_2_temp' field.
    * @return The value of the 'bearing_2_temp' field.
    */
-  public float getBearing2Temp() {
+  public double getBearing2Temp() {
     return bearing_2_temp;
   }
 
@@ -194,7 +194,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_2_temp' field.
    * @param value the value to set.
    */
-  public void setBearing2Temp(float value) {
+  public void setBearing2Temp(double value) {
     this.bearing_2_temp = value;
   }
 
@@ -202,7 +202,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_3_temp' field.
    * @return The value of the 'bearing_3_temp' field.
    */
-  public float getBearing3Temp() {
+  public double getBearing3Temp() {
     return bearing_3_temp;
   }
 
@@ -211,7 +211,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_3_temp' field.
    * @param value the value to set.
    */
-  public void setBearing3Temp(float value) {
+  public void setBearing3Temp(double value) {
     this.bearing_3_temp = value;
   }
 
@@ -219,7 +219,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_4_temp' field.
    * @return The value of the 'bearing_4_temp' field.
    */
-  public float getBearing4Temp() {
+  public double getBearing4Temp() {
     return bearing_4_temp;
   }
 
@@ -228,7 +228,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_4_temp' field.
    * @param value the value to set.
    */
-  public void setBearing4Temp(float value) {
+  public void setBearing4Temp(double value) {
     this.bearing_4_temp = value;
   }
 
@@ -236,7 +236,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_5_temp' field.
    * @return The value of the 'bearing_5_temp' field.
    */
-  public float getBearing5Temp() {
+  public double getBearing5Temp() {
     return bearing_5_temp;
   }
 
@@ -245,7 +245,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_5_temp' field.
    * @param value the value to set.
    */
-  public void setBearing5Temp(float value) {
+  public void setBearing5Temp(double value) {
     this.bearing_5_temp = value;
   }
 
@@ -253,7 +253,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'bearing_6_temp' field.
    * @return The value of the 'bearing_6_temp' field.
    */
-  public float getBearing6Temp() {
+  public double getBearing6Temp() {
     return bearing_6_temp;
   }
 
@@ -262,7 +262,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'bearing_6_temp' field.
    * @param value the value to set.
    */
-  public void setBearing6Temp(float value) {
+  public void setBearing6Temp(double value) {
     this.bearing_6_temp = value;
   }
 
@@ -270,7 +270,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'thrust_bearing_temp' field.
    * @return The value of the 'thrust_bearing_temp' field.
    */
-  public float getThrustBearingTemp() {
+  public double getThrustBearingTemp() {
     return thrust_bearing_temp;
   }
 
@@ -279,7 +279,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'thrust_bearing_temp' field.
    * @param value the value to set.
    */
-  public void setThrustBearingTemp(float value) {
+  public void setThrustBearingTemp(double value) {
     this.thrust_bearing_temp = value;
   }
 
@@ -287,7 +287,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'clutch_attitude' field.
    * @return The value of the 'clutch_attitude' field.
    */
-  public float getClutchAttitude() {
+  public double getClutchAttitude() {
     return clutch_attitude;
   }
 
@@ -296,7 +296,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'clutch_attitude' field.
    * @param value the value to set.
    */
-  public void setClutchAttitude(float value) {
+  public void setClutchAttitude(double value) {
     this.clutch_attitude = value;
   }
 
@@ -341,14 +341,14 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
     implements org.apache.avro.data.RecordBuilder<ClutchSensor> {
 
     private int sensor_id;
-    private float bearing_1_temp;
-    private float bearing_2_temp;
-    private float bearing_3_temp;
-    private float bearing_4_temp;
-    private float bearing_5_temp;
-    private float bearing_6_temp;
-    private float thrust_bearing_temp;
-    private float clutch_attitude;
+    private double bearing_1_temp;
+    private double bearing_2_temp;
+    private double bearing_3_temp;
+    private double bearing_4_temp;
+    private double bearing_5_temp;
+    private double bearing_6_temp;
+    private double thrust_bearing_temp;
+    private double clutch_attitude;
 
     /** Creates a new Builder */
     private Builder() {
@@ -486,7 +486,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_1_temp' field.
       * @return The value.
       */
-    public float getBearing1Temp() {
+    public double getBearing1Temp() {
       return bearing_1_temp;
     }
 
@@ -496,7 +496,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_1_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing1Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing1Temp(double value) {
       validate(fields()[1], value);
       this.bearing_1_temp = value;
       fieldSetFlags()[1] = true;
@@ -525,7 +525,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_2_temp' field.
       * @return The value.
       */
-    public float getBearing2Temp() {
+    public double getBearing2Temp() {
       return bearing_2_temp;
     }
 
@@ -535,7 +535,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_2_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing2Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing2Temp(double value) {
       validate(fields()[2], value);
       this.bearing_2_temp = value;
       fieldSetFlags()[2] = true;
@@ -564,7 +564,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_3_temp' field.
       * @return The value.
       */
-    public float getBearing3Temp() {
+    public double getBearing3Temp() {
       return bearing_3_temp;
     }
 
@@ -574,7 +574,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_3_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing3Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing3Temp(double value) {
       validate(fields()[3], value);
       this.bearing_3_temp = value;
       fieldSetFlags()[3] = true;
@@ -603,7 +603,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_4_temp' field.
       * @return The value.
       */
-    public float getBearing4Temp() {
+    public double getBearing4Temp() {
       return bearing_4_temp;
     }
 
@@ -613,7 +613,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_4_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing4Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing4Temp(double value) {
       validate(fields()[4], value);
       this.bearing_4_temp = value;
       fieldSetFlags()[4] = true;
@@ -642,7 +642,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_5_temp' field.
       * @return The value.
       */
-    public float getBearing5Temp() {
+    public double getBearing5Temp() {
       return bearing_5_temp;
     }
 
@@ -652,7 +652,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_5_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing5Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing5Temp(double value) {
       validate(fields()[5], value);
       this.bearing_5_temp = value;
       fieldSetFlags()[5] = true;
@@ -681,7 +681,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'bearing_6_temp' field.
       * @return The value.
       */
-    public float getBearing6Temp() {
+    public double getBearing6Temp() {
       return bearing_6_temp;
     }
 
@@ -691,7 +691,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'bearing_6_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing6Temp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setBearing6Temp(double value) {
       validate(fields()[6], value);
       this.bearing_6_temp = value;
       fieldSetFlags()[6] = true;
@@ -720,7 +720,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'thrust_bearing_temp' field.
       * @return The value.
       */
-    public float getThrustBearingTemp() {
+    public double getThrustBearingTemp() {
       return thrust_bearing_temp;
     }
 
@@ -730,7 +730,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'thrust_bearing_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setThrustBearingTemp(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setThrustBearingTemp(double value) {
       validate(fields()[7], value);
       this.thrust_bearing_temp = value;
       fieldSetFlags()[7] = true;
@@ -759,7 +759,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'clutch_attitude' field.
       * @return The value.
       */
-    public float getClutchAttitude() {
+    public double getClutchAttitude() {
       return clutch_attitude;
     }
 
@@ -769,7 +769,7 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'clutch_attitude'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setClutchAttitude(float value) {
+    public com.manning.pulsar.iiot.clutch.ClutchSensor.Builder setClutchAttitude(double value) {
       validate(fields()[8], value);
       this.clutch_attitude = value;
       fieldSetFlags()[8] = true;
@@ -800,14 +800,14 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
       try {
         ClutchSensor record = new ClutchSensor();
         record.sensor_id = fieldSetFlags()[0] ? this.sensor_id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.bearing_1_temp = fieldSetFlags()[1] ? this.bearing_1_temp : (java.lang.Float) defaultValue(fields()[1]);
-        record.bearing_2_temp = fieldSetFlags()[2] ? this.bearing_2_temp : (java.lang.Float) defaultValue(fields()[2]);
-        record.bearing_3_temp = fieldSetFlags()[3] ? this.bearing_3_temp : (java.lang.Float) defaultValue(fields()[3]);
-        record.bearing_4_temp = fieldSetFlags()[4] ? this.bearing_4_temp : (java.lang.Float) defaultValue(fields()[4]);
-        record.bearing_5_temp = fieldSetFlags()[5] ? this.bearing_5_temp : (java.lang.Float) defaultValue(fields()[5]);
-        record.bearing_6_temp = fieldSetFlags()[6] ? this.bearing_6_temp : (java.lang.Float) defaultValue(fields()[6]);
-        record.thrust_bearing_temp = fieldSetFlags()[7] ? this.thrust_bearing_temp : (java.lang.Float) defaultValue(fields()[7]);
-        record.clutch_attitude = fieldSetFlags()[8] ? this.clutch_attitude : (java.lang.Float) defaultValue(fields()[8]);
+        record.bearing_1_temp = fieldSetFlags()[1] ? this.bearing_1_temp : (java.lang.Double) defaultValue(fields()[1]);
+        record.bearing_2_temp = fieldSetFlags()[2] ? this.bearing_2_temp : (java.lang.Double) defaultValue(fields()[2]);
+        record.bearing_3_temp = fieldSetFlags()[3] ? this.bearing_3_temp : (java.lang.Double) defaultValue(fields()[3]);
+        record.bearing_4_temp = fieldSetFlags()[4] ? this.bearing_4_temp : (java.lang.Double) defaultValue(fields()[4]);
+        record.bearing_5_temp = fieldSetFlags()[5] ? this.bearing_5_temp : (java.lang.Double) defaultValue(fields()[5]);
+        record.bearing_6_temp = fieldSetFlags()[6] ? this.bearing_6_temp : (java.lang.Double) defaultValue(fields()[6]);
+        record.thrust_bearing_temp = fieldSetFlags()[7] ? this.thrust_bearing_temp : (java.lang.Double) defaultValue(fields()[7]);
+        record.clutch_attitude = fieldSetFlags()[8] ? this.clutch_attitude : (java.lang.Double) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -842,21 +842,21 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
   {
     out.writeInt(this.sensor_id);
 
-    out.writeFloat(this.bearing_1_temp);
+    out.writeDouble(this.bearing_1_temp);
 
-    out.writeFloat(this.bearing_2_temp);
+    out.writeDouble(this.bearing_2_temp);
 
-    out.writeFloat(this.bearing_3_temp);
+    out.writeDouble(this.bearing_3_temp);
 
-    out.writeFloat(this.bearing_4_temp);
+    out.writeDouble(this.bearing_4_temp);
 
-    out.writeFloat(this.bearing_5_temp);
+    out.writeDouble(this.bearing_5_temp);
 
-    out.writeFloat(this.bearing_6_temp);
+    out.writeDouble(this.bearing_6_temp);
 
-    out.writeFloat(this.thrust_bearing_temp);
+    out.writeDouble(this.thrust_bearing_temp);
 
-    out.writeFloat(this.clutch_attitude);
+    out.writeDouble(this.clutch_attitude);
 
   }
 
@@ -867,21 +867,21 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
     if (fieldOrder == null) {
       this.sensor_id = in.readInt();
 
-      this.bearing_1_temp = in.readFloat();
+      this.bearing_1_temp = in.readDouble();
 
-      this.bearing_2_temp = in.readFloat();
+      this.bearing_2_temp = in.readDouble();
 
-      this.bearing_3_temp = in.readFloat();
+      this.bearing_3_temp = in.readDouble();
 
-      this.bearing_4_temp = in.readFloat();
+      this.bearing_4_temp = in.readDouble();
 
-      this.bearing_5_temp = in.readFloat();
+      this.bearing_5_temp = in.readDouble();
 
-      this.bearing_6_temp = in.readFloat();
+      this.bearing_6_temp = in.readDouble();
 
-      this.thrust_bearing_temp = in.readFloat();
+      this.thrust_bearing_temp = in.readDouble();
 
-      this.clutch_attitude = in.readFloat();
+      this.clutch_attitude = in.readDouble();
 
     } else {
       for (int i = 0; i < 9; i++) {
@@ -891,35 +891,35 @@ public class ClutchSensor extends org.apache.avro.specific.SpecificRecordBase im
           break;
 
         case 1:
-          this.bearing_1_temp = in.readFloat();
+          this.bearing_1_temp = in.readDouble();
           break;
 
         case 2:
-          this.bearing_2_temp = in.readFloat();
+          this.bearing_2_temp = in.readDouble();
           break;
 
         case 3:
-          this.bearing_3_temp = in.readFloat();
+          this.bearing_3_temp = in.readDouble();
           break;
 
         case 4:
-          this.bearing_4_temp = in.readFloat();
+          this.bearing_4_temp = in.readDouble();
           break;
 
         case 5:
-          this.bearing_5_temp = in.readFloat();
+          this.bearing_5_temp = in.readDouble();
           break;
 
         case 6:
-          this.bearing_6_temp = in.readFloat();
+          this.bearing_6_temp = in.readDouble();
           break;
 
         case 7:
-          this.thrust_bearing_temp = in.readFloat();
+          this.thrust_bearing_temp = in.readDouble();
           break;
 
         case 8:
-          this.clutch_attitude = in.readFloat();
+          this.clutch_attitude = in.readDouble();
           break;
 
         default:

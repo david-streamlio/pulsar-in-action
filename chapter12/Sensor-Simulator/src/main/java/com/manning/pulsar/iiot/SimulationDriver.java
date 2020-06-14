@@ -32,9 +32,9 @@ public class SimulationDriver {
 		List<SimulatorThread> sims = new ArrayList<SimulatorThread> ();
 		
 		sims.add(new SimulatorThread(new ClutchSensorSimulator("localhost", 1883, "persistent://public/default/clutch_sensor")));
-//		sims.add(new SimulatorThread(new EngineSensorSimulator("127.0.0.1", 1883, "persistent://public/default/engine_sensor")));
-//		sims.add(new SimulatorThread(new OilCoolerSensorSimulator("127.0.0.1", 1883, "persistent://public/default/oil_sensor")));
-//		sims.add(new SimulatorThread(new PumpSensorSimulator("127.0.0.1", 1883, "persistent://public/default/pump_sensor")));
+		sims.add(new SimulatorThread(new EngineSensorSimulator("localhost", 1883, "persistent://public/default/engine_sensor")));
+		sims.add(new SimulatorThread(new OilCoolerSensorSimulator("localhost", 1883, "persistent://public/default/oil_sensor")));
+		sims.add(new SimulatorThread(new PumpSensorSimulator("localhost", 1883, "persistent://public/default/pump_sensor")));
 		return sims;
 	}
 	

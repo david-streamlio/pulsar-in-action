@@ -4,4 +4,5 @@ protocol SensorProtocol {
   import idl "../misc/Engine.avdl";
   import idl "../misc/Pump.avdl";
   import idl "../misc/OilCooler.avdl";
+  import idl "../db-schema/sensor-quantile.avdl";
 }

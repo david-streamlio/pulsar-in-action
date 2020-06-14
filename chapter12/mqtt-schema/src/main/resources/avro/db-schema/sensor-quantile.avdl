@@ -1,0 +1,16 @@
+@namespace("com.manning.pulsar.iiot.db")
+
+protocol DatabaseProtocol {
+
+  record SensorQuantile {
+  	int sensor_id;
+  	string signal_id;
+  	long interval_start;
+  	long interval_end;
+  	double min;
+  	double max;
+  	long retained_items;
+  	bytes quantile;
+  }
+  
+}

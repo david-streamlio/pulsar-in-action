@@ -48,5 +48,7 @@
   <modules>
   	<module>mqtt-schema</module>
   	<module>Sensor-Simulator</module>
+  	<module>edge-analytics-functions</module>
+  	<module>sensor-quantiles-sink</module>
   </modules>
 </project>

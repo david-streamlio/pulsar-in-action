@@ -4,14 +4,14 @@ protocol ClutchProtocol {
 
   record ClutchSensor {
   	int sensor_id;
-  	float bearing_1_temp; 
-  	float bearing_2_temp;
-  	float bearing_3_temp;
-  	float bearing_4_temp;
-  	float bearing_5_temp;
-  	float bearing_6_temp; 
-  	float thrust_bearing_temp;
-  	float clutch_attitude;
+  	double bearing_1_temp; 
+  	double bearing_2_temp;
+  	double bearing_3_temp;
+  	double bearing_4_temp;
+  	double bearing_5_temp;
+  	double bearing_6_temp; 
+  	double thrust_bearing_temp;
+  	double clutch_attitude;
   }
   
 }

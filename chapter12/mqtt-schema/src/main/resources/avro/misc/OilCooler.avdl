@@ -4,10 +4,10 @@ protocol OilCoolerProtocol {
 
   record OilCoolerSensor {
   	int sensor_id;
-  	float lubricating_oil_temp;
-  	float lubricating_oil_pressure;
-  	float oil_temp_back;
-  	float oil_temp_front;
+  	double lubricating_oil_temp;
+  	double lubricating_oil_pressure;
+  	double oil_temp_back;
+  	double oil_temp_front;
   }
   	
 }

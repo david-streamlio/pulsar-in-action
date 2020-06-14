@@ -4,9 +4,9 @@ protocol PumpProtocol {
 
   record PumpSensor {
   	int sensor_id;
-  	float output_water_pressure;
-  	float supply_water_pressure;
-  	float temp_at_discharge_nozzle;
+  	double output_water_pressure;
+  	double supply_water_pressure;
+  	double temp_at_discharge_nozzle;
   	int water_flow_rate;
   }
   

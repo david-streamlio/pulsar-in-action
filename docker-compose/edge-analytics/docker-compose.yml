@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+
+  pulsar:
+    image: apachepulsar/pulsar-standalone:latest
+    expose:
+      - 8080
+      - 6650 
+  
+  sensor-db:
+    image: pia/sensor-db
+    expose:
+      - 3306

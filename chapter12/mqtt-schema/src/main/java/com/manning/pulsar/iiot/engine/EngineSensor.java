@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1967545707143282780L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EngineSensor\",\"namespace\":\"com.manning.pulsar.iiot.engine\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"motor_sator_winding_temp\",\"type\":\"float\"},{\"name\":\"iron_temp\",\"type\":\"float\"},{\"name\":\"cooling_air_temp\",\"type\":\"float\"},{\"name\":\"air_temp\",\"type\":\"float\"},{\"name\":\"motor_power_supply_current\",\"type\":\"float\"}]}");
+  private static final long serialVersionUID = -7856760375455018280L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EngineSensor\",\"namespace\":\"com.manning.pulsar.iiot.engine\",\"fields\":[{\"name\":\"sensor_id\",\"type\":\"int\"},{\"name\":\"motor_sator_winding_temp\",\"type\":\"double\"},{\"name\":\"iron_temp\",\"type\":\"double\"},{\"name\":\"cooling_air_temp\",\"type\":\"double\"},{\"name\":\"air_temp\",\"type\":\"double\"},{\"name\":\"motor_power_supply_current\",\"type\":\"double\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,11 +72,11 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
   }
 
   @Deprecated public int sensor_id;
-  @Deprecated public float motor_sator_winding_temp;
-  @Deprecated public float iron_temp;
-  @Deprecated public float cooling_air_temp;
-  @Deprecated public float air_temp;
-  @Deprecated public float motor_power_supply_current;
+  @Deprecated public double motor_sator_winding_temp;
+  @Deprecated public double iron_temp;
+  @Deprecated public double cooling_air_temp;
+  @Deprecated public double air_temp;
+  @Deprecated public double motor_power_supply_current;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -94,7 +94,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * @param air_temp The new value for air_temp
    * @param motor_power_supply_current The new value for motor_power_supply_current
    */
-  public EngineSensor(java.lang.Integer sensor_id, java.lang.Float motor_sator_winding_temp, java.lang.Float iron_temp, java.lang.Float cooling_air_temp, java.lang.Float air_temp, java.lang.Float motor_power_supply_current) {
+  public EngineSensor(java.lang.Integer sensor_id, java.lang.Double motor_sator_winding_temp, java.lang.Double iron_temp, java.lang.Double cooling_air_temp, java.lang.Double air_temp, java.lang.Double motor_power_supply_current) {
     this.sensor_id = sensor_id;
     this.motor_sator_winding_temp = motor_sator_winding_temp;
     this.iron_temp = iron_temp;
@@ -123,11 +123,11 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: sensor_id = (java.lang.Integer)value$; break;
-    case 1: motor_sator_winding_temp = (java.lang.Float)value$; break;
-    case 2: iron_temp = (java.lang.Float)value$; break;
-    case 3: cooling_air_temp = (java.lang.Float)value$; break;
-    case 4: air_temp = (java.lang.Float)value$; break;
-    case 5: motor_power_supply_current = (java.lang.Float)value$; break;
+    case 1: motor_sator_winding_temp = (java.lang.Double)value$; break;
+    case 2: iron_temp = (java.lang.Double)value$; break;
+    case 3: cooling_air_temp = (java.lang.Double)value$; break;
+    case 4: air_temp = (java.lang.Double)value$; break;
+    case 5: motor_power_supply_current = (java.lang.Double)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -153,7 +153,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'motor_sator_winding_temp' field.
    * @return The value of the 'motor_sator_winding_temp' field.
    */
-  public float getMotorSatorWindingTemp() {
+  public double getMotorSatorWindingTemp() {
     return motor_sator_winding_temp;
   }
 
@@ -162,7 +162,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'motor_sator_winding_temp' field.
    * @param value the value to set.
    */
-  public void setMotorSatorWindingTemp(float value) {
+  public void setMotorSatorWindingTemp(double value) {
     this.motor_sator_winding_temp = value;
   }
 
@@ -170,7 +170,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'iron_temp' field.
    * @return The value of the 'iron_temp' field.
    */
-  public float getIronTemp() {
+  public double getIronTemp() {
     return iron_temp;
   }
 
@@ -179,7 +179,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'iron_temp' field.
    * @param value the value to set.
    */
-  public void setIronTemp(float value) {
+  public void setIronTemp(double value) {
     this.iron_temp = value;
   }
 
@@ -187,7 +187,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'cooling_air_temp' field.
    * @return The value of the 'cooling_air_temp' field.
    */
-  public float getCoolingAirTemp() {
+  public double getCoolingAirTemp() {
     return cooling_air_temp;
   }
 
@@ -196,7 +196,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'cooling_air_temp' field.
    * @param value the value to set.
    */
-  public void setCoolingAirTemp(float value) {
+  public void setCoolingAirTemp(double value) {
     this.cooling_air_temp = value;
   }
 
@@ -204,7 +204,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'air_temp' field.
    * @return The value of the 'air_temp' field.
    */
-  public float getAirTemp() {
+  public double getAirTemp() {
     return air_temp;
   }
 
@@ -213,7 +213,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'air_temp' field.
    * @param value the value to set.
    */
-  public void setAirTemp(float value) {
+  public void setAirTemp(double value) {
     this.air_temp = value;
   }
 
@@ -221,7 +221,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'motor_power_supply_current' field.
    * @return The value of the 'motor_power_supply_current' field.
    */
-  public float getMotorPowerSupplyCurrent() {
+  public double getMotorPowerSupplyCurrent() {
     return motor_power_supply_current;
   }
 
@@ -230,7 +230,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'motor_power_supply_current' field.
    * @param value the value to set.
    */
-  public void setMotorPowerSupplyCurrent(float value) {
+  public void setMotorPowerSupplyCurrent(double value) {
     this.motor_power_supply_current = value;
   }
 
@@ -275,11 +275,11 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
     implements org.apache.avro.data.RecordBuilder<EngineSensor> {
 
     private int sensor_id;
-    private float motor_sator_winding_temp;
-    private float iron_temp;
-    private float cooling_air_temp;
-    private float air_temp;
-    private float motor_power_supply_current;
+    private double motor_sator_winding_temp;
+    private double iron_temp;
+    private double cooling_air_temp;
+    private double air_temp;
+    private double motor_power_supply_current;
 
     /** Creates a new Builder */
     private Builder() {
@@ -393,7 +393,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'motor_sator_winding_temp' field.
       * @return The value.
       */
-    public float getMotorSatorWindingTemp() {
+    public double getMotorSatorWindingTemp() {
       return motor_sator_winding_temp;
     }
 
@@ -403,7 +403,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'motor_sator_winding_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setMotorSatorWindingTemp(float value) {
+    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setMotorSatorWindingTemp(double value) {
       validate(fields()[1], value);
       this.motor_sator_winding_temp = value;
       fieldSetFlags()[1] = true;
@@ -432,7 +432,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'iron_temp' field.
       * @return The value.
       */
-    public float getIronTemp() {
+    public double getIronTemp() {
       return iron_temp;
     }
 
@@ -442,7 +442,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'iron_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setIronTemp(float value) {
+    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setIronTemp(double value) {
       validate(fields()[2], value);
       this.iron_temp = value;
       fieldSetFlags()[2] = true;
@@ -471,7 +471,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'cooling_air_temp' field.
       * @return The value.
       */
-    public float getCoolingAirTemp() {
+    public double getCoolingAirTemp() {
       return cooling_air_temp;
     }
 
@@ -481,7 +481,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'cooling_air_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setCoolingAirTemp(float value) {
+    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setCoolingAirTemp(double value) {
       validate(fields()[3], value);
       this.cooling_air_temp = value;
       fieldSetFlags()[3] = true;
@@ -510,7 +510,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'air_temp' field.
       * @return The value.
       */
-    public float getAirTemp() {
+    public double getAirTemp() {
       return air_temp;
     }
 
@@ -520,7 +520,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'air_temp'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setAirTemp(float value) {
+    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setAirTemp(double value) {
       validate(fields()[4], value);
       this.air_temp = value;
       fieldSetFlags()[4] = true;
@@ -549,7 +549,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'motor_power_supply_current' field.
       * @return The value.
       */
-    public float getMotorPowerSupplyCurrent() {
+    public double getMotorPowerSupplyCurrent() {
       return motor_power_supply_current;
     }
 
@@ -559,7 +559,7 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'motor_power_supply_current'.
       * @return This builder.
       */
-    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setMotorPowerSupplyCurrent(float value) {
+    public com.manning.pulsar.iiot.engine.EngineSensor.Builder setMotorPowerSupplyCurrent(double value) {
       validate(fields()[5], value);
       this.motor_power_supply_current = value;
       fieldSetFlags()[5] = true;
@@ -590,11 +590,11 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
       try {
         EngineSensor record = new EngineSensor();
         record.sensor_id = fieldSetFlags()[0] ? this.sensor_id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.motor_sator_winding_temp = fieldSetFlags()[1] ? this.motor_sator_winding_temp : (java.lang.Float) defaultValue(fields()[1]);
-        record.iron_temp = fieldSetFlags()[2] ? this.iron_temp : (java.lang.Float) defaultValue(fields()[2]);
-        record.cooling_air_temp = fieldSetFlags()[3] ? this.cooling_air_temp : (java.lang.Float) defaultValue(fields()[3]);
-        record.air_temp = fieldSetFlags()[4] ? this.air_temp : (java.lang.Float) defaultValue(fields()[4]);
-        record.motor_power_supply_current = fieldSetFlags()[5] ? this.motor_power_supply_current : (java.lang.Float) defaultValue(fields()[5]);
+        record.motor_sator_winding_temp = fieldSetFlags()[1] ? this.motor_sator_winding_temp : (java.lang.Double) defaultValue(fields()[1]);
+        record.iron_temp = fieldSetFlags()[2] ? this.iron_temp : (java.lang.Double) defaultValue(fields()[2]);
+        record.cooling_air_temp = fieldSetFlags()[3] ? this.cooling_air_temp : (java.lang.Double) defaultValue(fields()[3]);
+        record.air_temp = fieldSetFlags()[4] ? this.air_temp : (java.lang.Double) defaultValue(fields()[4]);
+        record.motor_power_supply_current = fieldSetFlags()[5] ? this.motor_power_supply_current : (java.lang.Double) defaultValue(fields()[5]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -629,15 +629,15 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
   {
     out.writeInt(this.sensor_id);
 
-    out.writeFloat(this.motor_sator_winding_temp);
+    out.writeDouble(this.motor_sator_winding_temp);
 
-    out.writeFloat(this.iron_temp);
+    out.writeDouble(this.iron_temp);
 
-    out.writeFloat(this.cooling_air_temp);
+    out.writeDouble(this.cooling_air_temp);
 
-    out.writeFloat(this.air_temp);
+    out.writeDouble(this.air_temp);
 
-    out.writeFloat(this.motor_power_supply_current);
+    out.writeDouble(this.motor_power_supply_current);
 
   }
 
@@ -648,15 +648,15 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
     if (fieldOrder == null) {
       this.sensor_id = in.readInt();
 
-      this.motor_sator_winding_temp = in.readFloat();
+      this.motor_sator_winding_temp = in.readDouble();
 
-      this.iron_temp = in.readFloat();
+      this.iron_temp = in.readDouble();
 
-      this.cooling_air_temp = in.readFloat();
+      this.cooling_air_temp = in.readDouble();
 
-      this.air_temp = in.readFloat();
+      this.air_temp = in.readDouble();
 
-      this.motor_power_supply_current = in.readFloat();
+      this.motor_power_supply_current = in.readDouble();
 
     } else {
       for (int i = 0; i < 6; i++) {
@@ -666,23 +666,23 @@ public class EngineSensor extends org.apache.avro.specific.SpecificRecordBase im
           break;
 
         case 1:
-          this.motor_sator_winding_temp = in.readFloat();
+          this.motor_sator_winding_temp = in.readDouble();
           break;
 
         case 2:
-          this.iron_temp = in.readFloat();
+          this.iron_temp = in.readDouble();
           break;
 
         case 3:
-          this.cooling_air_temp = in.readFloat();
+          this.cooling_air_temp = in.readDouble();
           break;
 
         case 4:
-          this.air_temp = in.readFloat();
+          this.air_temp = in.readDouble();
           break;
 
         case 5:
-          this.motor_power_supply_current = in.readFloat();
+          this.motor_power_supply_current = in.readDouble();
           break;
 
         default:
