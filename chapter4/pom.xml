@@ -5,7 +5,7 @@
   <version>0.0.1</version>
   
   <properties>
-     <pulsar.version>2.5.1</pulsar.version>
+     <pulsar.version>2.7.0-SNAPSHOT</pulsar.version>
   </properties>
   
   <build>
@@ -38,14 +38,38 @@
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
     </plugin>
-    </plugins>
+    
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <descriptor>src/main/assembly/assembly.xml</descriptor>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+    </plugin>
+            
+  </plugins>
 </build>
   
   
   <dependencies>
     <dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+  		<artifactId>jackson-core</artifactId>
+ 		<version>2.11.1</version>
+    </dependency>
+  
+    <dependency>
   		<groupId>org.apache.pulsar</groupId>
-  		<artifactId>pulsar-client</artifactId>
+  		<artifactId>pulsar-client-original</artifactId>
   		<version>${pulsar.version}</version>
   		<exclusions>
   			<exclusion>
@@ -59,19 +83,20 @@
 		<groupId>org.apache.pulsar</groupId>
 		<artifactId>pulsar-functions-api</artifactId>
 		<version>${pulsar.version}</version>
-	
 	</dependency>
 	
 	<dependency>
    		<groupId>org.apache.pulsar</groupId>
    		<artifactId>pulsar-functions-local-runner-original</artifactId>
    		<version>${pulsar.version}</version>
-   		<exclusions>
-   			<exclusion>
-   				<groupId>io.grpc</groupId>
-   				<artifactId>grpc-all</artifactId>
-   			</exclusion>
-   		</exclusions>
+   		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.mockito</groupId>
+   		<artifactId>mockito-core</artifactId>
+    	<version>2.28.2</version>
+    	<scope>test</scope>
 	</dependency>
 	
   </dependencies>

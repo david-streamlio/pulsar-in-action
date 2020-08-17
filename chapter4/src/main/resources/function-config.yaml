@@ -1,0 +1,46 @@
+className: com.manning.pulsar.chapter4.functions.sdk.KeywordFilterFunction
+tenant: public
+namespace: default
+name: keyword-filter
+inputs:
+- persistent://public/default/raw-feed
+output: persistent://public/default/filtered-feed
+
+# customSchemaInputs:
+#  persistent://public/default/raw-feed: org.apache.pulsar.client.api.Schema.STRING
+
+userConfig: 
+  keyword : Director
+  ignore-case: false
+
+##################################
+# Processing 
+##################################
+autoAck: true
+# deadLetterTopic: persistent://public/default/keyword-filter-DLQ
+logTopic: persistent://public/default/keyword-filter-log
+# maxMessageRetries: 5
+processingGuarantees: ATLEAST_ONCE
+retainOrdering: false
+timeoutMs: 30000
+
+subName: keyword-filter-sub
+cleanupSubscription: true
+
+##################################
+# Function instance resources
+##################################
+CPU: 2.0
+disk: 50000
+ram: 200000000
+# parallelism: 3
+
+##################################
+# Security 
+##################################
+# clientAuthParams:
+# clientAuthPlugin:
+# hostnameVerificationEnabled: false
+# tlsAllowInsecure:
+# tlsTrustCertPath:
+# useTls: 
