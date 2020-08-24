@@ -1,4 +1,4 @@
-package com.manning.pulsar.chapter3;
+package com.manning.pulsar.chapter3.readers;
 
 import org.apache.pulsar.client.api.Message;
 import org.apache.pulsar.client.api.MessageId;
