@@ -1,38 +1,38 @@
 package com.manning.pulsar.chapter5.source;
 
-import java.io.File;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.pulsar.io.core.PushSource;
 import org.apache.pulsar.io.core.SourceContext;
+import org.slf4j.Logger;
 
 public class DirectorySource extends PushSource<String> {
 	
-	private ExecutorService executor;
+	private final ScheduledExecutorService scheduler =
+		     Executors.newScheduledThreadPool(1);
+	
+	private DirectoryConsumerThread scanner;
+	
+	private Logger log;
 	
 	@Override
 	public void open(Map<String, Object> config, SourceContext context) throws Exception {
+		log = context.getLogger();
 		String inputDir = (String) config.getOrDefault("inputDir", ".");
-		File[] files = new File(inputDir).listFiles();
-		if (files == null || files.length < 1) {
-			throw new RuntimeException("Input Directory doesn't contain any files");
-		}
-		executor = Executors.newFixedThreadPool(1);
-		executor.execute(new DirectoryConsumerThread(this, files));
+		String processedDir = (String) config.getOrDefault("processedDir", ".");
+		String frequency = (String) config.getOrDefault("frequency", "10");
+		
+		scanner = new DirectoryConsumerThread(this, inputDir, processedDir, log);
+		scheduler.scheduleAtFixedRate(scanner, 0, Long.parseLong(frequency), TimeUnit.MINUTES);
+	    log.info(String.format("Scheduled to run every %s minutes", frequency));
 	}
 	
 	@Override
 	public void close() throws Exception {
-		executor.shutdown();
-        try {
-            if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-                executor.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            executor.shutdownNow();
-        }
+		log.info("Closing connector");
+		scheduler.shutdownNow();
 	}
 }

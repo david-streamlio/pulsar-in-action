@@ -12,6 +12,8 @@ import org.apache.pulsar.io.core.SinkContext;
 
 public class LocalFileSink implements Sink<String> {
 	
+	public static final String FILENAME_PREFIX_CONFIG_KEY = "filenamePrefix";
+	public static final String FILENAME_SUFFIX_CONFIG_KEY = "filenameSuffix";
 	private String filenamePrefix;
 	private String filenameSuffix;
 	private BufferedWriter bw = null;
@@ -29,8 +31,8 @@ public class LocalFileSink implements Sink<String> {
 	}
 
 	public void open(Map<String, Object> config, SinkContext sinkContext) throws Exception {
-		filenamePrefix = (String) config.getOrDefault("filenamePrefix", "test-out");
-		filenameSuffix = (String) config.getOrDefault("filenameSuffix", ".tmp");
+		filenamePrefix = (String) config.getOrDefault(FILENAME_PREFIX_CONFIG_KEY, "test-out");
+		filenameSuffix = (String) config.getOrDefault(FILENAME_SUFFIX_CONFIG_KEY, ".tmp");
 		File file = File.createTempFile(filenamePrefix, filenameSuffix);
 		fw = new FileWriter(file.getAbsoluteFile(), true);
 		bw = new BufferedWriter(fw);

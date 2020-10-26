@@ -1,0 +1,15 @@
+# Fuly-qualified name
+tenant: public
+namespace: default
+name: directory-source
+
+className: com.manning.pulsar.chapter5.source.DirectorySource
+topicName: "persistent://public/default/directory-scan"
+parallelism: 1
+processingGuarantees: ATLEAST_ONCE
+
+# Connector specific config
+configs:
+    inputDir: "/tmp/input"
+    processedDir: "/tmp/processed"
+    frequency: "2"

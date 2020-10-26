@@ -5,10 +5,6 @@ name: keyword-filter
 inputs:
 - persistent://public/default/raw-feed
 output: persistent://public/default/filtered-feed
-
-# customSchemaInputs:
-#  persistent://public/default/raw-feed: org.apache.pulsar.client.api.Schema.STRING
-
 userConfig: 
   keyword : Director
   ignore-case: false
@@ -17,15 +13,15 @@ userConfig:
 # Processing 
 ##################################
 autoAck: true
-# deadLetterTopic: persistent://public/default/keyword-filter-DLQ
 logTopic: persistent://public/default/keyword-filter-log
-# maxMessageRetries: 5
 processingGuarantees: ATLEAST_ONCE
 retainOrdering: false
 timeoutMs: 30000
-
 subName: keyword-filter-sub
 cleanupSubscription: true
+
+# deadLetterTopic: persistent://public/default/keyword-filter-DLQ
+# maxMessageRetries: 5
 
 ##################################
 # Function instance resources

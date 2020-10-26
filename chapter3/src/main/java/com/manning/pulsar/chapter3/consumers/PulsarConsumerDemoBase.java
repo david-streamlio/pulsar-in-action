@@ -17,6 +17,7 @@ public abstract class PulsarConsumerDemoBase extends PulsarDemoBase {
 					msg = getConsumer().receive();    
 					System.out.printf("Message received: %s \n", new String(msg.getData()));    
 					getConsumer().acknowledge(msg);    
+					Thread.sleep(100);
 				} catch (Exception e) {
 					System.err.printf("Unable to consume message: %s \n", e.getMessage()); 
 					consumer.negativeAcknowledge(msg);

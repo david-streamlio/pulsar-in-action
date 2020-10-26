@@ -22,7 +22,7 @@ public abstract class PulsarDemoBase {
 	
 	public PulsarDemoBase() {
 		this.serviceUrl = "pulsar://localhost:6650";
-		this.topic = "persistent://public/default/my-topic";
+		this.topic = "persistent://manning/chapter03/example-topic";
 		this.subscriptionName = "my-sub";
 		this.readerName = "my-reader";
 	}
@@ -43,7 +43,7 @@ public abstract class PulsarDemoBase {
 					.value(String.format("{id: %d, time: %tc}", ++counter, new Date()).getBytes())     
 					.send();
 
-					Thread.sleep(1000);
+//					Thread.sleep(1000);
 				} catch (final Exception ex) { }
 			}
 		};
