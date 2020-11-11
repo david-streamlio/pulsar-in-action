@@ -12,16 +12,17 @@ public class LatestReader extends PulsarReaderDemoBase {
 		lr.startReader();
 	}
 	
-	@Override
-	protected Reader<byte[]> getReader() throws PulsarClientException {
-		if (reader == null) {
-			reader = getClient().newReader()
-					.topic(topic)
-					.readerName(readerName)
-					.startMessageId(MessageId.latest)
-					.create();
+	protected Reader<byte[]> getReader() {
+		try {
+			return getClient().newReader()
+						.topic(topic)
+						.readerName(readerName)
+						.startMessageId(MessageId.latest)
+						.create();
+		} catch (PulsarClientException e) {
+			return null;
 		}
-		return reader;
+		
 	}
 
 }

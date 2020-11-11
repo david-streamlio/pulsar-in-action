@@ -2,11 +2,9 @@ package com.manning.pulsar.chapter3;
 
 import java.util.Date;
 
-import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
-import org.apache.pulsar.client.api.Reader;
 
 public abstract class PulsarDemoBase {
 
@@ -17,8 +15,6 @@ public abstract class PulsarDemoBase {
 
 	private PulsarClient client;
 	private Producer<byte[]> producer;
-	protected Consumer<byte[]> consumer;
-	protected Reader<byte[]> reader;
 	
 	public PulsarDemoBase() {
 		this.serviceUrl = "pulsar://localhost:6650";
@@ -67,9 +63,5 @@ public abstract class PulsarDemoBase {
 		}
 		return producer;
 	}
-
-	abstract protected Consumer<byte[]> getConsumer() throws PulsarClientException;
-	
-	abstract protected Reader<byte[]> getReader() throws PulsarClientException;
 
 }

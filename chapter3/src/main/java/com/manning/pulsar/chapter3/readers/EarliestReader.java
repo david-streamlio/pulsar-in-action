@@ -13,14 +13,16 @@ public class EarliestReader extends PulsarReaderDemoBase {
 	}
 	
 	@Override
-	protected Reader<byte[]> getReader() throws PulsarClientException {
-		if (reader == null) {
-			reader = getClient().newReader()
-					.topic(topic)
-					.readerName(readerName)
-					.startMessageId(MessageId.earliest)
-					.create();
+	protected Reader<byte[]> getReader() {
+		try {
+			return getClient().newReader()
+						.topic(topic)
+						.readerName(readerName)
+						.startMessageId(MessageId.earliest)
+						.create();
+		} catch (PulsarClientException e) {
+			return null;
 		}
-		return reader;
+
 	}
 }

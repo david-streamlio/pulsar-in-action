@@ -1,15 +1,19 @@
 package com.manning.pulsar.chapter3.consumers;
 
+import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.Message;
-import org.apache.pulsar.client.api.PulsarClientException;
-import org.apache.pulsar.client.api.Reader;
 
 import com.manning.pulsar.chapter3.PulsarDemoBase;
 
 public abstract class PulsarConsumerDemoBase extends PulsarDemoBase {
 
 	protected void startConsumer() {
-		Runnable run = () -> {
+		final Consumer<byte[]> consumer = getConsumer();
+		startConsumer(consumer);
+	}
+	protected void startConsumer(final Consumer<byte[]> consumer) {
+		
+		Runnable run = () -> {	
 			while (true) {
 				Message<byte[]> msg = null;  
 				// Wait for a message
@@ -27,10 +31,6 @@ public abstract class PulsarConsumerDemoBase extends PulsarDemoBase {
 		new Thread(run).start();
 	}
 	
-	@Override
-	protected Reader<byte[]> getReader() throws PulsarClientException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	protected abstract Consumer<byte[]> getConsumer();
 
 }
