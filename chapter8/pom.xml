@@ -3,44 +3,30 @@
     <parent>
      <groupId>com.manning.pulsar</groupId>
      <artifactId>pulsar-in-action</artifactId>
-     <version>1.0.0</version>
+     <version>${revision}</version>
   </parent>
 
   <artifactId>chapter8</artifactId>
   <name>Pulsar In Action :: Chapter 8</name>
   
   <build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.nifi</groupId>
-				<artifactId>nifi-nar-maven-plugin</artifactId>
-				<version>1.2.0</version>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>nar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>
-		</plugins>
-	</build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.nifi</groupId>
+			<artifactId>nifi-nar-maven-plugin</artifactId>
+		</plugin>
+		
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+		</plugin>
+		
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+		</plugin>
+	</plugins>
+  </build>
 	
 	<dependencies>
 		<dependency>

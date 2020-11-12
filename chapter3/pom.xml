@@ -4,7 +4,7 @@
   <parent>
      <groupId>com.manning.pulsar</groupId>
      <artifactId>pulsar-in-action</artifactId>
-     <version>1.0.0</version>
+     <version>${revision}</version>
   </parent>
     
   <artifactId>chapter3</artifactId>
@@ -15,16 +15,10 @@
   	  <plugin>
 	     <groupId>org.apache.maven.plugins</groupId>
 	     <artifactId>maven-compiler-plugin</artifactId>
-	     <version>3.8.1</version>
-		   <configuration>
-    		   <source>1.8</source>
-    		   <target>1.8</target>
-  		   </configuration>
 	  </plugin>
 	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
     </plugin>
   	</plugins>
   </build>

@@ -8,10 +8,14 @@
     <artifactId>pulsar-in-action</artifactId>
     <packaging>pom</packaging>
     <name>Pulsar In Action :: Parent</name>
-    <version>1.0.0</version>
+    <version>${revision}</version>
 
     <properties>
         <revision>1.0.0</revision>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        
+        <mockito.version>3.0.0</mockito.version>
         <pulsar.version>2.6.1</pulsar.version>
     </properties>
 
@@ -22,5 +26,40 @@
       <module>chapter6</module>
       <module>chapter8</module>
     </modules>
+    
+   <build>
+    <pluginManagement>
+  	  <plugins>
+  	    <plugin>
+	       <groupId>org.apache.maven.plugins</groupId>
+	       <artifactId>maven-compiler-plugin</artifactId>
+	       <version>3.8.1</version>
+		     <configuration>
+    	  	   <source>${maven.compiler.source}</source>
+    		   <target>${maven.compiler.target}</target>
+  		     </configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.nifi</groupId>
+		<artifactId>nifi-nar-maven-plugin</artifactId>
+		<version>1.2.0</version>
+		<extensions>true</extensions>
+		<executions>
+			<execution>
+				<phase>package</phase>
+				<goals>
+					<goal>nar</goal>
+				</goals>
+			</execution>
+		</executions>
+	  </plugin>
+	    <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+       </plugin>
+  	  </plugins>
+  	</pluginManagement>
+  </build>
 
 </project>
