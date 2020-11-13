@@ -1,0 +1,194 @@
+{
+    "type": "record",
+    "name": "Order",
+    "namespace": "com.gottaeat.customer",
+    "fields": [
+      {
+        "name": "order_id",
+        "type": "long"
+      },
+      {
+        "name": "time_placed",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "order_status",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "name": "OrderStatus",
+            "symbols": [
+              "NEW",
+              "ACCEPTED",
+              "READY",
+              "DISPATCHED",
+              "DELIVERED"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "customer_id",
+        "type": "long"
+      },
+      {
+        "name": "resturant_id",
+        "type": "long"
+      },
+      {
+        "name": "details",
+        "type": [
+          "null",
+          {
+            "type": "array",
+            "items": {
+              "type": "record",
+              "name": "OrderDetail",
+              "fields": [
+                {
+                  "name": "quantity",
+                  "type": "int"
+                },
+                {
+                  "name": "total",
+                  "type": "float"
+                },
+                {
+                  "name": "food_item",
+                  "type": [
+                    "null",
+                    {
+                      "type": "record",
+                      "name": "FoodItem",
+                      "fields": [
+                        {
+                          "name": "item_id",
+                          "type": "long"
+                        },
+                        {
+                          "name": "item_name",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        {
+                          "name": "item_description",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        {
+                          "name": "price",
+                          "type": "float"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "java-class": "java.util.List"
+          }
+        ]
+      },
+      {
+        "name": "delivery_location",
+        "type": [
+          "null",
+          {
+            "type": "record",
+            "name": "Address",
+            "fields": [
+              {
+                "name": "street",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "city",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "state",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "zip",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "payment_method",
+        "type": [
+          "null",
+          {
+            "type": "record",
+            "name": "CreditCard",
+            "fields": [
+              {
+                "name": "card_type",
+                "type": [
+                  "null",
+                  {
+                    "type": "enum",
+                    "name": "CardType",
+                    "symbols": [
+                      "MASTERCARD",
+                      "AMEX",
+                      "VISA",
+                      "DISCOVER"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "account_number",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "billing_zip",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              {
+                "name": "ccv",
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "total",
+        "type": "float"
+      }
+    ]
+  }

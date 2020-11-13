@@ -25,6 +25,7 @@
       <module>chapter5</module>
       <module>chapter6</module>
       <module>chapter8</module>
+      <module>docker-image</module>
     </modules>
     
    <build>
