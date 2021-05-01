@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    <parent>
+     <groupId>com.manning.pulsar</groupId>
+     <artifactId>pulsar-in-action</artifactId>
+     <version>${revision}</version>
+  </parent>
+
+  <packaging>pom</packaging>
+  <artifactId>docker-image</artifactId>
+  <name>Pulsar In Action :: Docker Image</name>
+  
+  <build>
+	<plugins>
+	    <plugin>
+		   <groupId>io.fabric8</groupId>
+           <artifactId>docker-maven-plugin</artifactId>
+           <configuration>
+             <images>
+                <image>
+                   <name>pia/pulsar-standalone</name>
+                   <build>
+                     <compression>gzip</compression>
+                     <dockerFileDir>standalone</dockerFileDir>
+                   </build>
+                </image>
+                
+                <image>
+                   <name>pia/pulsar-standalone-secure</name>
+                   <build>
+                     <compression>gzip</compression>
+                     <dockerFileDir>standalone-secure</dockerFileDir>
+                   </build>
+                </image>
+              </images>
+           </configuration>
+           <executions>
+             <execution>
+               <phase>package</phase>
+                <goals>
+                   <goal>build</goal>
+               </goals>
+             </execution>
+           </executions>
+        </plugin>
+	</plugins>
+  </build>
+	
+</project>
