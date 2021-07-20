@@ -10,8 +10,8 @@ public class WordCountFunction implements Function<String, Integer> {
     @Override
     public Integer process(String input, Context context) throws Exception {
         List<String> words = Arrays.asList(input.split("\\s"));
-//    	words.forEach(word -> context.incrCounter(word, 1));
-        return new Integer(words.size());
+    	words.forEach(word -> context.incrCounter(word, 1));
+        return  Integer.valueOf(words.size());
     }
     
 }
